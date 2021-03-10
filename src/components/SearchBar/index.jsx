@@ -11,7 +11,7 @@ import {
   SearchBarCointainer,
 } from "./styles";
 
-const SearchBar = () => {
+const SearchBar = ({ handleFilter }) => {
   return (
     <SearchBarCointainer>
       <InputContainer placeholder="Pesquisar" />
