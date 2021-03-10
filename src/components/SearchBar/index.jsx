@@ -4,14 +4,24 @@
 //
 // =======================================================================
 
-import { BiSearchAlt } from "react-icons/bi";
-import { SearchBarCointainer } from "./styles";
+import Lupa from "../../images/Icons/lupa2.png";
+import {
+  IconButtonContainer,
+  InputContainer,
+  SearchBarCointainer,
+} from "./styles";
 
 const SearchBar = () => {
   return (
     <SearchBarCointainer>
-      <input placeholder="Pesquisar" className="InputBar" />
-      <BiSearchAlt size="30px" onClick={(e) => console.log("Funcionando!")} />
+      <InputContainer placeholder="Pesquisar" />
+      <IconButtonContainer>
+        <img
+          alt="Searc Icon"
+          onClick={(e) => console.log("Funcionou!")}
+          src={Lupa}
+        />
+      </IconButtonContainer>
     </SearchBarCointainer>
   );
 };
