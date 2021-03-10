@@ -20,6 +20,7 @@ export const InputArea = styled.div`
   outline: 1px solid transparent;
   box-shadow: 0px 2px 4px ${Colors.ShadowColor};
   transition: 300ms;
+  margin: 20px 0;
   &:focus-within {
     box-shadow: 0px 2px 4px ${Colors.ShadowColorHighlight};
   }
