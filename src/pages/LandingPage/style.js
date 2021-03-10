@@ -46,7 +46,6 @@ export const Container = styled.div`
 
 export const Div = styled.div`
   order: ${(props) => props.order};
-
   width: 100vw;
 
   padding: ${(props) =>
@@ -115,6 +114,10 @@ export const Div = styled.div`
 export const DivStyled = styled.div`
   order: ${(props) => props.order};
   padding: 0.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 
   @media (min-width: 700px) {
@@ -149,6 +152,17 @@ export const DivAjust = styled.div`
     &:nth-child(2) {
       order: 1;
     }
+  }
+`;
+
+export const DivButton = styled(Div)`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 400px;
+
+  @media (min-width: 700px) {
+    width: 500px;
   }
 `;
 

@@ -1,7 +1,7 @@
 import { ButtonStyle } from "./style";
 
-const Button = ({ name, action }) => {
-  return <ButtonStyle onClick={action}>{name}</ButtonStyle>;
+const Button = ({ children, action }) => {
+  return <ButtonStyle onClick={action}>{children}</ButtonStyle>;
 };
 
 export default Button;
