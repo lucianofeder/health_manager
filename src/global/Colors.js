@@ -7,6 +7,9 @@ const Colors = {
   BackgroundBaseGray: "#F3F2FE",
   TextColorBlack: "#1F214A",
   TextColorWhite: "#ffffff",
+  BackgroundInput: "#EDEDED",
+  TextColorInput: "rgba(0,0,0, 0.32)",
+  ShadowColor: "rgba(0, 0, 0, 0.2)",
 };
 
 export default Colors;
