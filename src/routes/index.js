@@ -7,6 +7,7 @@ import NewUser from "../pages/NewUser";
 import AllUsers from "../pages/AllUsers";
 import AllGroups from "../pages/AllGroups";
 import Group from "../pages/Group";
+import Page404 from "../pages/Page404";
 
 const Routes = () => {
   return (
@@ -37,6 +38,10 @@ const Routes = () => {
 
       <Route path="/Group">
         <Group />
+      </Route>
+
+      <Route>
+        <Page404 />
       </Route>
     </Switch>
   );
