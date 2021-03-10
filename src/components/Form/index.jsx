@@ -7,6 +7,10 @@ essa prop é um objeto que recebe as chaves:
 *exemple - import IconeTest from "./img/icon.png";
 *to use - icon: IconeTest, 
 !--------------------
+*iconWidth - Format: string --- Valor do width da Imagem Icon
+*exemple - 250px (DEVE CONTER A MEDIDA)
+*to use - iconWidth: "250px",
+!--------------------
 *title - Format: string --- nome que ficara  no topo do form
 *exemple - "Fazer Login"
 *to use - title: "Fazer Login",
@@ -30,11 +34,18 @@ import Input from "../Input";
 import Button from "../Button";
 
 const FormStyle = ({ instructions }) => {
-  const { icon, title, inputName, buttonName, buttonAction } = instructions;
+  const {
+    icon,
+    iconWidth,
+    title,
+    inputName,
+    buttonName,
+    buttonAction,
+  } = instructions;
 
   return (
     <FormContainer>
-      <img src={icon} alt="Icon" />
+      <img src={icon} alt="Icon" style={{ width: iconWidth }} />
       <h1>{title}</h1>
       <form>
         {inputName.map((input, index) => {

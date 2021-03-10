@@ -1,6 +1,6 @@
 const Colors = {
   BackgroundLinear:
-    "linear-gradient(32deg, rgba(127,180,242,1) 0%, rgba(135,239,99,1) 100%);",
+    "linear-gradient(170deg, rgba(127,180,242,1) 0%, rgba(135,239,99,1) 100%);",
   BaseGreen: "#87EF63",
   BaseLightBlue: "#97DFF5",
   BasePurple: "#5F4DEF",
