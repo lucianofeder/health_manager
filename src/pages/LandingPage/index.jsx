@@ -1,5 +1,11 @@
+import { Container } from "./style";
+
 const LandingPage = () => {
-  return <h1>LandingPage</h1>;
+  return (
+    <Container>
+      <h1>LandingPage</h1>
+    </Container>
+  );
 };
 
 export default LandingPage;
