@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
 
+export const InputStyled = styled.input`
+  width: 100%;
+  height: 100%;
+  background-color: ${Colors.BackgroundInput};
+  color: ${Colors.TextColorBlack};
+  border: none;
+  outline: none;
+`;
+
 export const InputArea = styled.div`
   height: 30px;
   background-color: ${Colors.BackgroundInput};
@@ -8,16 +17,12 @@ export const InputArea = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-export const InputStyled = styled.input`
-  width: 100%;
-  height: 100%;
-  background-color: ${Colors.BackgroundInput};
-  color: ${Colors.TextColorBlack};
+  outline: 1px solid transparent;
   box-shadow: 0px 2px 4px ${Colors.ShadowColor};
-  border: none;
-  outline: none;
+  transition: 300ms;
+  &:focus-within {
+    box-shadow: 0px 2px 4px ${Colors.ShadowColorHighlight};
+  }
 `;
 
 export const Placeholder = styled.span`
@@ -26,4 +31,9 @@ export const Placeholder = styled.span`
   position: absolute;
   text-transform: uppercase;
   font-weight: 300;
+  pointer-events: none;
+  transition: 300ms;
+  ${InputArea}:focus-within & {
+    color: transparent;
+  }
 `;
