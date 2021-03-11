@@ -9,9 +9,15 @@ import {
 import group from "../../images/group.svg";
 import user from "../../images/user.svg";
 
-const ListedInfo = (props) => {
-  const mock = ["atividade1", "atividade2", "atividade3", "atividade4"];
-  const { type } = props;
+import api from "../../services/api";
+import { useState } from "react";
+
+const ListedInfo = ({ info, type }) => {
+  const [groupName, setGroupName] = useState("");
+  const fetchGroupName = async (id) => {
+    await api.get(`groups/${id}/`).then((res) => setGroupName(res.data.name));
+  };
+
   return (
     <ListedCard>
       {type === "group" ? (
@@ -19,19 +25,21 @@ const ListedInfo = (props) => {
           <Img src={group} />
           <MainText>Teste</MainText>
           <ExtraTextArea>
-            {mock.map((activity) => (
-              <ExtraText>{activity}</ExtraText>
+            {info.map((activity, index) => (
+              <ExtraText key={index}>{activity}</ExtraText>
             ))}
           </ExtraTextArea>
         </>
       ) : (
         <>
           <ImgUser src={user} />
-          <MainText>Teste</MainText>
+          <MainText>{info.username}</MainText>
           <ExtraTextArea>
-            {mock.map((activity) => (
-              <ExtraText>{activity}</ExtraText>
-            ))}
+            {info.group ? (
+              <ExtraText>{fetchGroupName(info.group) && groupName}</ExtraText>
+            ) : (
+              <ExtraText>Sem grupo</ExtraText>
+            )}
           </ExtraTextArea>
         </>
       )}

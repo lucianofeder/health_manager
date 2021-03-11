@@ -6,7 +6,7 @@ export const SearchBarCointainer = styled.div`
   width: 100%;
   border-radius: 5px;
   height: 30px;
-  background-color: ${Colors.BackgroundInput};
+  background-color: "#fff";
   position: relative;
   display: flex;
   justify-content: center;
@@ -21,7 +21,7 @@ export const InputContainer = styled.input`
   height: 100%;
   border-radius: 5px;
   padding-left: 10px;
-  background-color: ${Colors.BackgroundInput};
+  background-color: "#fff";
   color: ${Colors.TextColorBlack};
   border: none;
   outline: none;
