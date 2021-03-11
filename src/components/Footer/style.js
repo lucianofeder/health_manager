@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
 
-const FooterStyled = styled.footer`
+const CardUsersGroupStyled = styled.footer`
   background-color: ${Colors.BaseLightBlue};
   height: 70px;
   display: flex;
@@ -12,4 +12,4 @@ const FooterStyled = styled.footer`
   }
 `;
 
-export default FooterStyled;
+export default CardUsersGroupStyled;
