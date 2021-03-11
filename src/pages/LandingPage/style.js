@@ -46,7 +46,7 @@ export const Container = styled.div`
 
 export const Div = styled.div`
   order: ${(props) => props.order};
-  width: 100vw;
+  width: 90vw;
 
   padding: ${(props) =>
     props.small
@@ -159,10 +159,13 @@ export const DivButton = styled(Div)`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 400px;
+  width: 300px;
 
   @media (min-width: 700px) {
     width: 500px;
+  }
+  @media (min-width: 1020px) {
+    padding: 0.5em 0 0.5em 0;
   }
 `;
 
@@ -172,7 +175,7 @@ export const LogoStyled = styled.img`
     props.small
       ? "200px"
       : props.medium
-      ? "300px"
+      ? "280px"
       : props.fullWidth
       ? "100%"
       : ""};
