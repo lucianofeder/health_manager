@@ -1,15 +1,25 @@
-/*
-  Quando for integrar o FormStyled, basta colocá-lo dentro do componente DivForm
-  Para abrir o formulario em outra página, basta colocar a função toggleModal no onClick de algum elemento
-  fora do <StyledModal/>
+/*!---------------------------------------------------
+
+Quando for integrar o FormStyled, basta colocá-lo dentro do componente DivForm
+Para abrir o formulario em outra página, a função toggleModal está no onClick do elemento
+ImgStyled, fora do <StyledModal/>, no topo.
+
+!---------------------------------------------------
+
+A prop recebida pelo Modal -> ImgSrc, é o src da ícone clicável que abrirá o Modal e estará nas
+páginas HomeUser e HomeGroup
+
+
 */
 
 import { useState } from "react";
-import { StyledModal, DivImg, DivForm } from "./style";
+import { StyledModal, DivImg, ImgStyled, DivForm } from "./style";
 
 import close from "../../images/Icons/close.png";
+import habitsModal from "../../images/Icons/habitsModal.svg";
+import FormStyle from "../../components/Form";
 
-const Modal = () => {
+const Modal = ({ ImgSrc, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
@@ -30,10 +40,13 @@ const Modal = () => {
       setTimeout(resolve, 300);
     });
   };
+
   return (
     <>
-      {/*Pode-se colocar algum elemento para click nessa mesma posição do button para ser renderizado na página*/}
-      <button onClick={() => toggleModal()}>Open</button>
+      {/* Aqui embaixo estará o ícone clicável que abrirá o Modal  */}
+
+      <ImgStyled onClick={(e) => toggleModal(e)} src={ImgSrc} alt="icon" />
+
       <StyledModal
         isOpen={isOpen}
         afterOpen={afterOpen}
@@ -46,7 +59,8 @@ const Modal = () => {
         <DivImg>
           <img src={close} alt="logo" onClick={() => toggleModal()}></img>
         </DivImg>
-        <DivForm></DivForm>
+
+        {children}
       </StyledModal>
     </>
   );
