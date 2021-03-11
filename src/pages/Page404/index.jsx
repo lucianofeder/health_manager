@@ -1,7 +1,7 @@
 import { Container, LogoStyled, Div } from "./style";
 import logo2 from "../../images/Logo/logo2.png";
 import error from "../../images/Error404/error.svg";
-import clouds from "../../images/clouds.svg";
+import clouds from "../../images/Undraw/clouds.svg";
 
 const Page404 = () => {
   return (
