@@ -1,7 +1,7 @@
 import { InputArea, InputStyled, Placeholder } from "./styles";
 import { useState } from "react";
 
-const Input = (props) => {
+const Input = ({ placeholder, name, reference, error }) => {
   const [hasValue, setHasValue] = useState(false);
 
   const handleInput = (evt) => {
@@ -13,11 +13,11 @@ const Input = (props) => {
     }
   };
 
-  const { placeholder, name } = props;
   return (
-    <InputArea>
+    <InputArea error={error ? true : false}>
       {!hasValue && <Placeholder>{placeholder}</Placeholder>}
-      <InputStyled name={name} onChange={handleInput} />
+      {error && <span>{error}</span>}
+      <InputStyled name={name} onChange={handleInput} ref={reference} />
     </InputArea>
   );
 };
