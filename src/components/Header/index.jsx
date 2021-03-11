@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { HeaderContainer } from "./style";
 import { Link } from "react-router-dom";
-import Avatar from "../../images/user.svg";
+import Avatar from "../../images/Undraw/user.svg";
 import Logo from "../../images/Logo/logo4.png";
 import Logout from "../../images/Icons/checkout.png";
 import Menu from "../../images/Icons/menuDrop.png";
