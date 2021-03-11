@@ -9,7 +9,7 @@ import {
 import group from "../../images/group.svg";
 import user from "../../images/user.svg";
 
-const CardList = (props) => {
+const ListedInfo = (props) => {
   const mock = ["atividade1", "atividade2", "atividade3", "atividade4"];
   const { type } = props;
   return (
@@ -39,4 +39,4 @@ const CardList = (props) => {
   );
 };
 
-export default CardList;
+export default ListedInfo;
