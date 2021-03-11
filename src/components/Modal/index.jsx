@@ -16,8 +16,6 @@ import { useState } from "react";
 import { StyledModal, DivImg, ImgStyled, DivForm } from "./style";
 
 import close from "../../images/Icons/close.png";
-import habitsModal from "../../images/Icons/habitsModal.svg";
-import FormStyle from "../../components/Form";
 
 const Modal = ({ ImgSrc, children }) => {
   const [isOpen, setIsOpen] = useState(false);
