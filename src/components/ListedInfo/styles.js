@@ -17,10 +17,16 @@ export const ListedCard = styled.div`
 
 export const Img = styled.img`
   width: 100px;
+  @media (max-width: 430px) {
+    width: 70px;
+  }
 `;
 
 export const ImgUser = styled.img`
   height: 100%;
+  @media (max-width: 430px) {
+    width: 60px;
+  }
 `;
 
 export const MainText = styled.h2`

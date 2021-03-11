@@ -8,6 +8,7 @@ const Colors = {
   TextColorBlack: "#1F214A",
   TextColorWhite: "#ffffff",
   BackgroundInput: "#EDEDED",
+  BorderBottom: "#ccc",
   TextColorInput: "rgba(0,0,0, 0.32)",
   ShadowColor: "rgba(0, 0, 0, 0.2)",
   ShadowColorHighlight: "rgba(95, 77, 239, 0.6)",
