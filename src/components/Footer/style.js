@@ -3,7 +3,10 @@ import Colors from "../../global/Colors";
 
 const FooterStyled = styled.footer`
   background-color: ${Colors.BaseLightBlue};
-  text-align: center;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   p {
     padding: 15px 0;
   }

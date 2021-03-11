@@ -9,7 +9,7 @@ import {
 import Button from "../../components/Button";
 import landingPage from "../../images/Logo/landingPage.svg";
 import logo1 from "../../images/Logo/logo1.png";
-import clouds from "../../images/clouds.svg";
+import clouds from "../../images/Undraw/clouds.svg";
 
 const LandingPage = () => {
   return (

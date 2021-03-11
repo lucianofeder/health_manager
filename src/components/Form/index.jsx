@@ -37,7 +37,11 @@ TODO Props necessaria = form
 *errors - Format: Variavel --- variavel errors do useForm;
 ?exemple - errors
 *to use - errors: errors,
+!--------------------
 
+Para testar o layout:
+Comentar 'key', 'reference' e 'error' e passar uma função qualquer
+em 'form ={{ formAction: qualquerFn() }}'
 */
 
 import { FormContainer } from "./style";
@@ -65,7 +69,7 @@ const FormStyle = ({ instructions, form }) => {
             />
           );
         })}
-        <Button name={buttonName} />
+        <Button>{buttonName}</Button>
       </form>
     </FormContainer>
   );

@@ -4,7 +4,8 @@ import FormStyle from "../../components/Form";
 import LogoTipo from "../../images/Logo/logo2.png";
 import Image from "../../images/NewUsers/NewUser.svg";
 import Icone from "../../images/NewUsers/IconCadastro.svg";
-import Clouds from "../../images/clouds.svg";
+import Clouds from "../../images/Undraw/clouds.svg";
+
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -43,7 +44,7 @@ const NewUser = () => {
     <MainContainer>
       <img src={LogoTipo} alt="Logo Tipo" id="logo" />
       <div>
-        <img src={Image} alt="image" id="image" />
+        <img src={Image} alt="AnotherImage" id="image" />
         <FormStyle
           instructions={{
             icon: Icone,

@@ -6,7 +6,7 @@ export const ListedCard = styled.div`
   height: 60px;
   display: flex;
   flex-flow: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 2px solid ${Colors.BorderBottom};
   max-width: 900px;
@@ -17,10 +17,18 @@ export const ListedCard = styled.div`
 
 export const Img = styled.img`
   width: 100px;
+  margin-left: 25px;
+  @media (max-width: 430px) {
+    width: 70px;
+  }
 `;
 
 export const ImgUser = styled.img`
   height: 100%;
+  margin-left: 25px;
+  @media (max-width: 430px) {
+    width: 60px;
+  }
 `;
 
 export const MainText = styled.h2`

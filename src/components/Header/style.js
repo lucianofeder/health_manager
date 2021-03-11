@@ -4,10 +4,12 @@ import Colors from "../../global/Colors";
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 60px;
+  max-width: 1733px;
   background-color: ${Colors.BasePurple};
   display: flex;
   flex-direction: column;
-  margin: 0 0 50px 0;
+  align-items: center;
+  margin: 0 auto 50px auto;
 
   .containerUser {
     margin: 0;
