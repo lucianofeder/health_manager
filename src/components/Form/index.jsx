@@ -65,7 +65,7 @@ const FormStyle = ({ instructions, form }) => {
             />
           );
         })}
-        <Button name={buttonName} />
+        <Button>{buttonName}</Button>
       </form>
     </FormContainer>
   );
