@@ -11,18 +11,15 @@ export const InputStyled = styled.input`
   padding-left: 10px;
 `;
 
-const InputAreaStyled = styled.div((props) => ({
-  height: "30px",
-  backgroundColor: Colors.BackgroundInput,
-  position: "relative",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-}));
-
-// shadowColor: "#F00",
-// shadowOffset: { width: 10, height: 10 },
-// shadowRadius: 2,
+const InputAreaStyled = styled.div`
+  height: "30px";
+  background-color: ${Colors.BackgroundInput};
+  position: "relative";
+  display: "flex";
+  justify-content: "center";
+  align-items: "center";
+  box-shadow: ${(props) => props.error} && 0px 2px 4px ${Colors.ShadowAlert};
+`;
 
 export const InputArea = styled(InputAreaStyled)`
   outline: 1px solid transparent;

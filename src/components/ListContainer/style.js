@@ -3,12 +3,15 @@ import Button from "../Button/";
 
 export const Container = styled.div`
   max-width: 900px;
+  width: 100%;
   background-color: #fff;
   padding: 60px 30px 30px 30px;
   border-radius: 10px;
+  box-sizing: border-box;
   margin: 0 auto;
   display: flex;
   flex-flow: column;
+  margin-top: 45px;
   @media (max-width: 900px) {
     margin: 0 2px;
   }

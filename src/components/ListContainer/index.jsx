@@ -3,7 +3,6 @@ import ListedInfo from "../ListedInfo";
 import Button from "../Button/";
 
 const ListContainer = ({ list, type }) => {
-  const mock = ["Grupo1", "Grupo2", "Grupo3", "Grupo4"];
   return (
     <Container>
       {type === "group" && (
@@ -12,8 +11,8 @@ const ListContainer = ({ list, type }) => {
           <Button name="New Group" action={() => console.log("oi")} />
         </Header>
       )}
-      {mock.map((info) => (
-        <ListedInfo type={type} />
+      {list.map((info, index) => (
+        <ListedInfo type={type} info={info} key={index} />
       ))}
     </Container>
   );
