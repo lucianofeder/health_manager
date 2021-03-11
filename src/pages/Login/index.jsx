@@ -1,7 +1,7 @@
 import { Container, LogoStyled, Div } from "./style";
 import logo2 from "../../images/Logo/logo2.png";
 import ImageLogin from "../../images/Login/imageLogin.svg";
-import clouds from "../../images/clouds.svg";
+import clouds from "../../images/Undraw/clouds.svg";
 import FormStyle from "../../components/Form";
 import IconLogin from "../../images/Login/iconeLogin.svg";
 import { useHistory } from "react-router-dom";
