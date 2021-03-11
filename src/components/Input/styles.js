@@ -8,6 +8,7 @@ export const InputStyled = styled.input`
   color: ${Colors.TextColorBlack};
   border: none;
   outline: none;
+  padding-left: 10px;
 `;
 
 export const InputArea = styled.div`
