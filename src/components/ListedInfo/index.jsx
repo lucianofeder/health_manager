@@ -8,7 +8,7 @@ import {
   ExtraMainText,
 } from "./styles";
 import group from "../../images/group.svg";
-import Avatar from "../../images/Undraw/user.svg";
+import user from "../../images/Undraw/user.svg";
 
 import api from "../../services/api";
 import { useState } from "react";
