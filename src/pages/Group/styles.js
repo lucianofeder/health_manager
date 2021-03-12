@@ -30,6 +30,12 @@ export const NameGroupContainer = styled.div`
 `;
 export const ImageGroupStyles = styled.img`
   width: 400px;
+  @media (max-width: 500px) {
+    width: 30%;
+  }
+  @media (max-width: 768px) {
+    width: 40%;
+  }
 `;
 export const Title = styled.h1`
   margin: 0;
@@ -54,6 +60,11 @@ export const GroupDescriptionContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
 `;
 export const InfoContainer = styled.div`
   width: 45%;
@@ -63,7 +74,11 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  background-color: lightblue;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const DescriptioCard = styled.div`
@@ -73,18 +88,31 @@ export const DescriptioCard = styled.div`
   margin: 10px 0 10px 0;
   background-color: ${Colors.BasePurple};
 `;
-
-export const ActivitiesCard = styled(DescriptioCard)`
-`;
-
-export const GoalsCard = styled(DescriptioCard)`
-`;
+export const ActivitiesCard = styled(DescriptioCard)``;
+export const GoalsCard = styled(DescriptioCard)``;
 
 export const UsersContainer = styled.div`
   width: 45%;
   height: 100%;
   border-radius: 20px;
-  background-color: lightgoldenrodyellow;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const UserSubscribedCard = styled.ul`
+  text-align: center;
+  width: 60%;
+  height: 80%;
+  margin: 10px 0 10px 0;
+  padding: 0;
+  background-color: ${Colors.BasePurple};
+  border: 1px solid red;
 `;
 
 export const ListStyle = styled.li`
