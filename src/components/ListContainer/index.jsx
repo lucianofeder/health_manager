@@ -1,4 +1,11 @@
-import { Container, Header, Title, RightArrow, LeftArrow } from "./style";
+import {
+  Container,
+  Header,
+  Title,
+  RightArrow,
+  LeftArrow,
+  DivButtons,
+} from "./style";
 import ListedInfo from "../ListedInfo";
 import Button from "../Button/";
 
@@ -18,10 +25,12 @@ const ListContainer = ({
           <Button name="New Group" action={() => console.log("oi")} />
         </Header>
       )}
-      {actualPage > 1 && (
-        <LeftArrow onClick={handlePreviousPage}>Previous</LeftArrow>
-      )}
-      {nextPage && <RightArrow onClick={handleNextPage}>Next</RightArrow>}
+      <DivButtons>
+        {actualPage > 1 && (
+          <LeftArrow onClick={handlePreviousPage}>Previous</LeftArrow>
+        )}
+        {nextPage && <RightArrow onClick={handleNextPage}>Next</RightArrow>}
+      </DivButtons>
       {list.map((info, index) => (
         <ListedInfo type={type} info={info} key={index} />
       ))}
