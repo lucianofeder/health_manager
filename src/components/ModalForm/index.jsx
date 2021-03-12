@@ -13,10 +13,14 @@ const inputName = [
 e passe por props normalmente
 
 inputName={inputName}
+*!----------------------------*
+Para ativar ou desativar o aparecimento do botão é necessário passar a props em booleano
 
 *!----------------------------*
 EXEMPLO DE USO:
 <ModalForm
+                isButton={true}
+                nameBtn="Enviar"
                 ImgSrc={logo3}
                 icon={habitsModal}
                 iconWidth="300px"
@@ -42,12 +46,14 @@ const ModalForm = ({
   inputName,
   buttonName,
   formAction,
-  ref,
+  reference,
   errors,
+  isButton,
+  nameBtn,
 }) => {
   return (
     <>
-      <Modal ImgSrc={ImgSrc}>
+      <Modal ImgSrc={ImgSrc} isButton={isButton} nameBtn={nameBtn}>
         <FormStyle
           instructions={{
             icon: icon,
@@ -58,7 +64,7 @@ const ModalForm = ({
           }}
           form={{
             formAction: formAction,
-            reference: ref,
+            ref: reference,
             errors: errors,
           }}
         />
