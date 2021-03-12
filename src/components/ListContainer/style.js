@@ -14,6 +14,8 @@ export const Container = styled.div`
   display: flex;
   flex-flow: column;
   margin-top: 45px;
+  align-items: center;
+
   @media (max-width: 900px) {
     margin: 0 2px;
   }
@@ -74,4 +76,8 @@ export const LeftArrow = styled(GoArrowLeft)`
   &:hover {
     color: ${Colors.BasePurpleDarker};
   }
+`;
+
+export const DivButtons = styled.div`
+  width: 40%;
 `;
