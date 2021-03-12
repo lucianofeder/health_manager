@@ -11,7 +11,11 @@ import landingPage from "../../images/Logo/landingPage.svg";
 import logo1 from "../../images/Logo/logo1.png";
 import clouds from "../../images/Undraw/clouds.svg";
 
+import { useHistory } from "react-router-dom";
+
 const LandingPage = () => {
+  const history = useHistory();
+
   return (
     <>
       <Container>
@@ -26,8 +30,8 @@ const LandingPage = () => {
             </Div>
             <Div small>Habitualmente Conectados</Div>
             <DivButton>
-              <Button>Login</Button>
-              <Button>Register</Button>
+              <Button action={() => history.push("/Login")}>Login</Button>
+              <Button action={() => history.push("/NewUser")}>Register</Button>
             </DivButton>
           </DivStyled>
         </DivAjust>
