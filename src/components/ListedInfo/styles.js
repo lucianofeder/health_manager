@@ -24,6 +24,7 @@ export const Img = styled.img`
 `;
 
 export const ImgUser = styled.img`
+  cursor: pointer;
   height: 100%;
   margin-left: 25px;
   @media (max-width: 430px) {
@@ -33,6 +34,7 @@ export const ImgUser = styled.img`
 
 export const MainText = styled.h2`
   font-size: 1.5rem;
+  cursor: pointer;
   @media (max-width: 550px) {
     font-size: 1.3rem;
   }
@@ -49,6 +51,7 @@ export const ExtraTextArea = styled.div`
 export const ExtraText = styled.h3`
   font-size: 1rem;
   margin: 0 2px;
+  cursor: pointer;
   @media (max-width: 550px) {
     font-size: 0.9rem;
   }
