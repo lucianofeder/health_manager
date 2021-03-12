@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
 
 export const Main = styled.main`
   background-color: ${Colors.BackgroundBaseGray};
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
 `;
 
@@ -16,3 +17,7 @@ export const Container = styled.div`
   min-height: calc(100vh - 180px);
   margin: 0 auto;
 `;
+
+export const rightArrow = styled(GoArrowRight)``;
+
+export const leftArrow = styled(GoArrowLeft)``;
