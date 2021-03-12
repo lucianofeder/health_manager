@@ -10,8 +10,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { signInThunk } from "../../store/modules/users/thunk";
 
 const Login = () => {
+  const dispatch = useDispatch();
   const history = useHistory();
   const schema = yup.object().shape({
     username: yup.string().required("Campo Obrigatório"),
@@ -31,8 +34,8 @@ const Login = () => {
         localStorage.clear();
         localStorage.setItem("token", token);
         localStorage.setItem("user_id", user_id);
-
-        history.push(`/HomeUser`);
+        dispatch(signInThunk(token, user_id));
+        history.push(`/HomeUser/${user_id}`);
       })
       .catch((err) => console.log(err));
     reset();
@@ -69,22 +72,6 @@ const Login = () => {
       </Div>
 
       <LogoStyled fullWidth src={clouds} />
-      {/* 
-      <form onSubmit={handleSubmit(handleForm)}>
-        <div>
-          <p className="label">userName</p>
-          <input ref={register} name="username" type="text" />
-          <p className="errorM">{errors.username?.message}</p>
-        </div>
-
-        <div>
-          <p className="label">Senha</p>
-          <input ref={register} name="password" type="password" />
-          <p className="errorM">{errors.password?.message}</p>
-        </div>
-
-        <button type="submit">Entrar</button>
-      </form> */}
     </Container>
   );
 };
