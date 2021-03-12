@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Button from "../Button/";
+import { GoArrowRight, GoArrowLeft } from "react-icons/go";
+import Colors from "../../global/Colors";
 
 export const Container = styled.div`
   max-width: 900px;
@@ -12,6 +14,8 @@ export const Container = styled.div`
   display: flex;
   flex-flow: column;
   margin-top: 45px;
+  align-items: center;
+
   @media (max-width: 900px) {
     margin: 0 2px;
   }
@@ -53,4 +57,27 @@ export const Title = styled.h1`
 
 export const ButtonStyled = styled(Button)`
   margin-right: 30px;
+`;
+
+export const RightArrow = styled(GoArrowRight)`
+  color: ${Colors.BasePurple};
+  font-size: 3rem;
+  cursor: pointer;
+  transition: 400ms;
+  &:hover {
+    color: ${Colors.BasePurpleDarker};
+  }
+`;
+
+export const LeftArrow = styled(GoArrowLeft)`
+  color: ${Colors.BasePurple};
+  font-size: 3rem;
+  cursor: pointer;
+  &:hover {
+    color: ${Colors.BasePurpleDarker};
+  }
+`;
+
+export const DivButtons = styled.div`
+  width: 40%;
 `;

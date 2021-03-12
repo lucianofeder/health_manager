@@ -5,14 +5,17 @@ import {
   ExtraText,
   ExtraTextArea,
   ImgUser,
+  ExtraMainText,
 } from "./styles";
 import group from "../../images/group.svg";
 import user from "../../images/Undraw/user.svg";
 
 import api from "../../services/api";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const ListedInfo = ({ info, type }) => {
+  const history = useHistory();
   const [groupName, setGroupName] = useState("");
   const fetchGroupName = async (id) => {
     await api.get(`groups/${id}/`).then((res) => setGroupName(res.data.name));
@@ -32,11 +35,20 @@ const ListedInfo = ({ info, type }) => {
         </>
       ) : (
         <>
-          <ImgUser src={user} />
-          <MainText>{info.username}</MainText>
+          <ImgUser
+            src={Avatar}
+            onClick={() => history.push(`/HomeUser/${info.id}`)}
+          />
+          <ExtraMainText>
+            <MainText onClick={() => history.push(`/HomeUser/${info.id}`)}>
+              {info.username}
+            </MainText>
+          </ExtraMainText>
           <ExtraTextArea>
             {info.group ? (
-              <ExtraText>{fetchGroupName(info.group) && groupName}</ExtraText>
+              <ExtraText onClick={() => history.push(`/Group/${info.group}`)}>
+                {fetchGroupName(info.group) && groupName}
+              </ExtraText>
             ) : (
               <ExtraText>Sem grupo</ExtraText>
             )}
