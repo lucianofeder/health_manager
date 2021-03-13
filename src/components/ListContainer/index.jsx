@@ -22,7 +22,7 @@ const ListContainer = ({
       {type === "group" && (
         <Header>
           <Title>Groups</Title>
-          <Button name="New Group" action={() => console.log("oi")} />
+          <Button action={() => console.log("oi")}>New Group</Button>
         </Header>
       )}
       <DivButtons>
