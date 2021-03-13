@@ -18,6 +18,7 @@ export const ListedCard = styled.div`
 export const Img = styled.img`
   width: 100px;
   margin-left: 25px;
+  cursor: pointer;
   @media (max-width: 430px) {
     width: 70px;
   }

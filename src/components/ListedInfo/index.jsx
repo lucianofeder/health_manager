@@ -21,22 +21,23 @@ const ListedInfo = ({ info, type }) => {
     await api.get(`groups/${id}/`).then((res) => setGroupName(res.data.name));
   };
 
+  console.log(info);
+
   return (
     <ListedCard>
       {type === "group" ? (
         <>
-          <Img src={group} />
-          <MainText>Teste</MainText>
-          <ExtraTextArea>
-            {info.map((activity, index) => (
-              <ExtraText key={index}>{activity}</ExtraText>
-            ))}
-          </ExtraTextArea>
+          <Img src={group} onClick={() => history.push(`/Group/${info.id}`)} />
+          <MainText onClick={() => history.push(`/Group/${info.id}`)}>
+            {info.name}
+          </MainText>
+          <ExtraTextArea>{info.category}</ExtraTextArea>
+          <ExtraTextArea>{info.description}</ExtraTextArea>
         </>
       ) : (
         <>
           <ImgUser
-            src={Avatar}
+            src={user}
             onClick={() => history.push(`/HomeUser/${info.id}`)}
           />
           <ExtraMainText>
