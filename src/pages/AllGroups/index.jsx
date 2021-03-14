@@ -18,7 +18,6 @@ const AllGroups = () => {
     api
       .get(`groups/?page=${page}`)
       .then((res) => {
-        console.log(res);
         setActualPage(page);
         setNextPage(getPageFromURL(res.data.next));
         setGroups(res.data.results);
