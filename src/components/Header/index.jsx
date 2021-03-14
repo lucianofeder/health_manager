@@ -5,38 +5,76 @@ import Avatar from "../../images/Undraw/user.svg";
 import Logo from "../../images/Logo/logo4.png";
 import Logout from "../../images/Icons/checkout.png";
 import Menu from "../../images/Icons/menuDrop.png";
+import { useSelector } from "react-redux";
+import { signInThunk } from "../../store/modules/users/thunk";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const HeaderComponent = () => {
-  const [open, SetOpen] = useState(true);
+  const [open, SetOpen] = useState(false);
+  const [onMenu, SetonMenu] = useState(false);
+
+  const { user_id } = useSelector((state) => state.users);
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(signInThunk("", ""));
+    history.push(`/Login`);
+  };
+  const handleOnBlurMenu = () => {
+    !onMenu && SetOpen(false);
+  };
 
   return (
     <HeaderContainer>
       <div className="containerUser">
-        <img src={Logo} alt="Logo Tipo" />
-        <div className="user">
-          <Link to="/HomeUser">
-            <img src={Avatar} alt="Avatar" />
-          </Link>
-          <img
-            src={Menu}
-            alt="Menu"
-            className="menor"
-            onClick={() => SetOpen(!open)}
-          />
-          <img src={Logout} alt="Logout" className="menor" />
+        <img id="logo" src={Logo} alt="Logo Tipo" />
+
+        <div id="containerLinks">
+          <div className="user">
+            <button onClick={() => history.push(`/HomeUser/${user_id}`)}>
+              <img src={Avatar} alt="Avatar" />
+            </button>
+            <button onClick={() => SetOpen(!open)} onBlur={handleOnBlurMenu}>
+              <img src={Menu} alt="Menu" className="menor" />
+            </button>
+            <button onClick={handleLogout} id="logout">
+              <img src={Logout} alt="Logout" className="menor" />
+            </button>
+          </div>
+          {open && (
+            <div
+              onMouseEnter={() => SetonMenu(true)}
+              onMouseLeave={() => SetonMenu(false)}
+              className="nav"
+            >
+              <nav>
+                <ul>
+                  <li>
+                    <Link to={"/AllGroups"}>
+                      <p>All Groups</p>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link to={"/AllUsers"}>
+                      <p>All Users</p>
+                    </Link>
+                  </li>
+                  <li>
+                    {" "}
+                    <Link to={"/AllUsers"}>
+                      <p>dont get</p>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          )}
         </div>
       </div>
-      {open && (
-        <div className="nav">
-          <nav>
-            <ul>
-              <li>Link1</li>
-              <li>Link2</li>
-              <li>Link3</li>
-            </ul>
-          </nav>
-        </div>
-      )}
     </HeaderContainer>
   );
 };
