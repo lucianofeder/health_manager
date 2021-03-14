@@ -19,8 +19,11 @@ export const Img = styled.img`
   width: 100px;
   margin-left: 25px;
   cursor: pointer;
-  @media (max-width: 430px) {
+  @media (max-width: 550px) {
     width: 70px;
+  }
+  @media (max-width: 440px) {
+    display: none;
   }
 `;
 
@@ -35,14 +38,17 @@ export const ImgUser = styled.img`
 `;
 
 export const MainText = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  margin: 0;
+  margin-left: 5px;
+  text-align: start;
   cursor: pointer;
 
   &:hover {
     color: ${Colors.BasePurpleDarker};
   }
   @media (max-width: 550px) {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 `;
 
