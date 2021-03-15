@@ -39,7 +39,7 @@ export const DivImg = styled.div`
 export const DivForm = styled.div`
   width: 90%;
   height: 80%;
-  border: 1px solid;
+  /* border: 1px solid; */
 `;
 
 export const ImgStyled = styled.img.attrs((props) => ({
@@ -48,5 +48,5 @@ export const ImgStyled = styled.img.attrs((props) => ({
   width: ${(props) => props.size};
   height: ${(props) => props.size};
   cursor: pointer;
-  border: 1px solid;
+  /* border: 1px solid; */
 `;
