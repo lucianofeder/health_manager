@@ -58,8 +58,14 @@ export const HeaderContainer = styled.header`
     height: 43.5px;
   }
 
+  div.nav {
+    width: 150px;
+  }
+
   .nav {
-    width: 100%;
+    position: absolute;
+
+    /* width: 50px; */
 
     background-color: ${Colors.BasePurple};
     transition: 0.4;

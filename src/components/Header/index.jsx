@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HeaderContainer } from "./style";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Avatar from "../../images/Undraw/user.svg";
 import Logo from "../../images/Logo/logo4.png";
 import Logout from "../../images/Icons/checkout.png";
@@ -8,7 +8,6 @@ import Menu from "../../images/Icons/menuDrop.png";
 import { useSelector } from "react-redux";
 import { signInThunk } from "../../store/modules/users/thunk";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 const HeaderComponent = () => {
   const [open, SetOpen] = useState(false);
@@ -26,9 +25,6 @@ const HeaderComponent = () => {
   const handleOnBlurMenu = () => {
     !onMenu && SetOpen(false);
   };
-
-  const history = useHistory();
-  const user_id = localStorage.getItem("user_id") || "";
 
   return (
     <HeaderContainer>
@@ -64,12 +60,6 @@ const HeaderComponent = () => {
                   <li>
                     <Link to={"/AllUsers"}>
                       <p>All Users</p>
-                    </Link>
-                  </li>
-                  <li>
-                    {" "}
-                    <Link to={"/AllUsers"}>
-                      <p>dont get</p>
                     </Link>
                   </li>
                 </ul>
