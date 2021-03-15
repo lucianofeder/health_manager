@@ -42,6 +42,22 @@ export const Avatar = styled.img`
   border-radius: 100%;
 `;
 
+export const GroupInfo = styled.div`
+  width: 300px;
+  height: 80px;
+
+  h2 {
+    line-height: 0;
+    cursor: pointer;
+    &:hover {
+      color: ${Colors.BasePurpleDarker};
+    }
+  }
+  h3 {
+    font-weight: normal;
+  }
+`;
+
 export const DivGroup = styled(UserContainer)`
   flex-direction: row;
 
