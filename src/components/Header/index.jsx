@@ -5,12 +5,13 @@ import Avatar from "../../images/Undraw/user.svg";
 import Logo from "../../images/Logo/logo4.png";
 import Logout from "../../images/Icons/checkout.png";
 import Menu from "../../images/Icons/menuDrop.png";
+import { useSelector } from "react-redux";
 
 const HeaderComponent = () => {
   const [open, SetOpen] = useState(true);
+  const { user_id } = useSelector((state) => state.users);
 
   const history = useHistory();
-  const user_id = localStorage.getItem("user_id") || "";
 
   return (
     <HeaderContainer>
