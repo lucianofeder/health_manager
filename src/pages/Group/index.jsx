@@ -70,7 +70,7 @@ const Group = () => {
       difficulty: data.difficulty,
       group: group.id,
 
-      // MUDAR ACHIEVED COM BARRA DE STATUS
+      // !MUDAR ACHIEVED COM BARRA DE STATUS
       how_much_achieved: 70,
     };
     api
@@ -107,7 +107,9 @@ const Group = () => {
                 ? group.activities.map((item) => (
                     <ul key={item.id}>
                       <ListStyle>{item.title}</ListStyle>
-                      <ListStyle>{item.realization_time}</ListStyle>
+                      <ListStyle>
+                        {new Date(item.realization_time).toUTCString().slice(0, -7)}
+                      </ListStyle>
                     </ul>
                   ))
                 : "Sem Atividades"}
