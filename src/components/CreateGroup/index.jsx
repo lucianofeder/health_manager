@@ -10,7 +10,7 @@ import Image from "../../images/Undraw/creatGroup.svg";
 import { useSelector } from "react-redux";
 
 const CreateGroup = () => {
-  let token = useSelector((state) => state.users);
+  let token = useSelector((state) => state.users.token);
 
   const ob = "Campo Obrigatorio";
 
