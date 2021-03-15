@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { HeaderContainer } from "./style";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Avatar from "../../images/Undraw/user.svg";
 import Logo from "../../images/Logo/logo4.png";
 import Logout from "../../images/Icons/checkout.png";
@@ -26,6 +26,9 @@ const HeaderComponent = () => {
   const handleOnBlurMenu = () => {
     !onMenu && SetOpen(false);
   };
+
+  const history = useHistory();
+  const user_id = localStorage.getItem("user_id") || "";
 
   return (
     <HeaderContainer>
