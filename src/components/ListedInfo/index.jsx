@@ -8,7 +8,7 @@ import {
   ExtraMainText,
 } from "./styles";
 import group from "../../images/group.svg";
-import user from "../../images/Undraw/user.svg";
+import Avatar from "../../images/Undraw/user.svg";
 
 import api from "../../services/api";
 import { useState } from "react";
@@ -37,7 +37,7 @@ const ListedInfo = ({ info, type }) => {
       ) : (
         <>
           <ImgUser
-            src={user}
+            src={Avatar}
             onClick={() => history.push(`/HomeUser/${info.id}`)}
           />
           <ExtraMainText>
