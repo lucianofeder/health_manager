@@ -19,7 +19,7 @@ import Imagem from "../../images/Undraw/user.svg";
 import CommunityImg from "../../images/Undraw/community.svg";
 import TravelerImg from "../../images/Undraw/Traveler.svg";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import api from "../../services/api";
@@ -27,6 +27,7 @@ import api from "../../services/api";
 import { useSelector } from "react-redux";
 
 const HomeUser = () => {
+  const { id } = useParams();
   // TODO Criar integração com: CARDS // HEADER // FOOTER
   // TODO DEIXAR MOBILE FIRST
   const { token, user_id } = useSelector((state) => state.users);
@@ -45,7 +46,7 @@ const HomeUser = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setHabits(res.data));
-    await api.get(`users/${user_id}/`).then((res) => setUser(res.data));
+    await api.get(`users/${id}/`).then((res) => setUser(res.data));
     api.get(`groups/${user.group}/`).then((res) => setGroup(res.data));
     api
       .get(`groups/${user.group}/`)
@@ -90,21 +91,22 @@ const HomeUser = () => {
         </DivGroup>
 
         <LastContainer>
-          {habits.map((item, index) => (
-            <div key={index}>
-              <h1>Hábito</h1>
-              <DivHabits>
-                <HabitsCardContainer>
-                  <h2>{item.title}</h2>
-                  <div>Categoria: {item.category}</div>
-                  <div>Dificuldade: {item.difficulty}</div>
-                  <div>Frequência: {item.frequency}</div>
-                  <div>Quanto foi alcançado: {item.how_much_achieved}%</div>
-                </HabitsCardContainer>
-                <Traveler src={TravelerImg} />
-              </DivHabits>
-            </div>
-          ))}
+          {user_id === id &&
+            habits.map((item, index) => (
+              <div key={index}>
+                <h1>Hábito</h1>
+                <DivHabits>
+                  <HabitsCardContainer>
+                    <h2>{item.title}</h2>
+                    <div>Categoria: {item.category}</div>
+                    <div>Dificuldade: {item.difficulty}</div>
+                    <div>Frequência: {item.frequency}</div>
+                    <div>Quanto foi alcançado: {item.how_much_achieved}%</div>
+                  </HabitsCardContainer>
+                  <Traveler src={TravelerImg} />
+                </DivHabits>
+              </div>
+            ))}
         </LastContainer>
         <Footer />
       </LimitContainer>
