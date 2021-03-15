@@ -12,12 +12,12 @@ export const InputStyled = styled.input`
 `;
 
 const InputAreaStyled = styled.div`
-  height: "30px";
+  height: 30px;
   background-color: ${Colors.BackgroundInput};
-  position: "relative";
-  display: "flex";
-  justify-content: "center";
-  align-items: "center";
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-shadow: ${(props) => props.error} && 0px 2px 4px ${Colors.ShadowAlert};
 `;
 

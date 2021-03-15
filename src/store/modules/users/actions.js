@@ -1,8 +1,5 @@
-//EXEMPLO
-
-import { SHOW_USERS } from "./actionTypes";
-
-export const showUsers = (list) => ({
-  type: SHOW_USERS,
-  list,
+export const signIn = (token, user_id) => ({
+  type: "@user/SIGN_IN",
+  token,
+  user_id,
 });

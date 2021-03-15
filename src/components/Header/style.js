@@ -20,6 +20,7 @@ export const HeaderContainer = styled.header`
   img {
     width: 120px;
     margin: 10px;
+    cursor: pointer;
   }
 
   .user {

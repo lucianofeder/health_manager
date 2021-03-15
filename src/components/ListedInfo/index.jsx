@@ -5,6 +5,7 @@ import {
   ExtraText,
   ExtraTextArea,
   ImgUser,
+  ExtraMainText,
 } from "./styles";
 import group from "../../images/group.svg";
 import Avatar from "../../images/Undraw/user.svg";
@@ -20,17 +21,18 @@ const ListedInfo = ({ info, type }) => {
     await api.get(`groups/${id}/`).then((res) => setGroupName(res.data.name));
   };
 
+  console.log(info);
+
   return (
     <ListedCard>
       {type === "group" ? (
         <>
-          <Img src={group} />
-          <MainText>Teste</MainText>
-          <ExtraTextArea>
-            {info.map((activity, index) => (
-              <ExtraText key={index}>{activity}</ExtraText>
-            ))}
-          </ExtraTextArea>
+          <Img src={group} onClick={() => history.push(`/Group/${info.id}`)} />
+          <MainText onClick={() => history.push(`/Group/${info.id}`)}>
+            {info.name}
+          </MainText>
+          <ExtraTextArea>{info.category}</ExtraTextArea>
+          <ExtraTextArea>{info.description}</ExtraTextArea>
         </>
       ) : (
         <>
@@ -38,9 +40,11 @@ const ListedInfo = ({ info, type }) => {
             src={Avatar}
             onClick={() => history.push(`/HomeUser/${info.id}`)}
           />
-          <MainText onClick={() => history.push(`/HomeUser/${info.id}`)}>
-            {info.username}
-          </MainText>
+          <ExtraMainText>
+            <MainText onClick={() => history.push(`/HomeUser/${info.id}`)}>
+              {info.username}
+            </MainText>
+          </ExtraMainText>
           <ExtraTextArea>
             {info.group ? (
               <ExtraText onClick={() => history.push(`/Group/${info.group}`)}>

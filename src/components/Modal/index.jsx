@@ -13,15 +13,17 @@ páginas HomeUser e HomeGroup
 */
 
 import { useState } from "react";
-import { StyledModal, DivImg, ImgStyled, DivForm } from "./style";
+import { StyledModal, DivImg, ImgStyled } from "./style";
+
+import Button from "../Button";
 
 import close from "../../images/Icons/close.png";
 
-const Modal = ({ ImgSrc, children }) => {
+const Modal = ({ isButton, nameBtn, ImgSrc, children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
-  const toggleModal = (e) => {
+  const toggleModal = () => {
     setOpacity(0);
     setIsOpen(!isOpen);
   };
@@ -43,8 +45,11 @@ const Modal = ({ ImgSrc, children }) => {
     <>
       {/* Aqui embaixo estará o ícone clicável que abrirá o Modal  */}
 
-      <ImgStyled onClick={(e) => toggleModal(e)} src={ImgSrc} alt="icon" />
-
+      {isButton ? (
+        <Button action={() => toggleModal()}>{nameBtn}</Button>
+      ) : (
+        <ImgStyled onClick={() => toggleModal()} src={ImgSrc} alt="icon" />
+      )}
       <StyledModal
         isOpen={isOpen}
         afterOpen={afterOpen}
