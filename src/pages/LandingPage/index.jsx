@@ -10,15 +10,18 @@ import Button from "../../components/Button";
 import landingPage from "../../images/Logo/landingPage.svg";
 import logo1 from "../../images/Logo/logo1.png";
 import clouds from "../../images/Undraw/clouds.svg";
-
+import { Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const LandingPage = () => {
   const history = useHistory();
+  const { user_id } = useSelector((state) => state.users);
 
   return (
     <>
       <Container>
+        {user_id && <Redirect to={`/HomeUser/${user_id}`} />}
         <DivAjust>
           <Div large order="1">
             <LogoStyled src={landingPage} />
