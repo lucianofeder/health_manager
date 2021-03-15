@@ -1,6 +1,5 @@
 import ListContainer from "../../components/ListContainer";
 import Header from "../../components/Header";
-import SearchBar from "../../components/SearchBar";
 import Footer from "../../components/Footer";
 
 import { useEffect, useState } from "react";
@@ -55,7 +54,6 @@ const AllUsers = () => {
     <Main>
       <Header />
       <Container>
-        <SearchBar />
         <ListContainer
           list={users}
           handleNextPage={handleNextPage}
