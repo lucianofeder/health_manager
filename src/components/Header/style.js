@@ -64,6 +64,7 @@ export const HeaderContainer = styled.header`
 
   .nav {
     position: absolute;
+    z-index: 1;
 
     /* width: 50px; */
 
