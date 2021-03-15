@@ -21,16 +21,16 @@ const ListedInfo = ({ info, type }) => {
     await api.get(`groups/${id}/`).then((res) => setGroupName(res.data.name));
   };
 
-  console.log(info);
-
   return (
     <ListedCard>
       {type === "group" ? (
         <>
           <Img src={group} onClick={() => history.push(`/Group/${info.id}`)} />
-          <MainText onClick={() => history.push(`/Group/${info.id}`)}>
-            {info.name}
-          </MainText>
+          <ExtraMainText>
+            <MainText onClick={() => history.push(`/Group/${info.id}`)}>
+              {info.name}
+            </MainText>
+          </ExtraMainText>
           <ExtraTextArea>{info.category}</ExtraTextArea>
           <ExtraTextArea>{info.description}</ExtraTextArea>
         </>

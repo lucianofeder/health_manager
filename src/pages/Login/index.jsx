@@ -4,13 +4,13 @@ import ImageLogin from "../../images/Login/imageLogin.svg";
 import clouds from "../../images/Undraw/clouds.svg";
 import FormStyle from "../../components/Form";
 import IconLogin from "../../images/Login/iconeLogin.svg";
-import { useHistory } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signInThunk } from "../../store/modules/users/thunk";
 
 const Login = () => {
@@ -20,6 +20,8 @@ const Login = () => {
     username: yup.string().required("Campo Obrigatório"),
     password: yup.string().required("Campo obrigatório"),
   });
+  const { user_id } = useSelector((state) => state.users);
+
   const { register, handleSubmit, errors, reset } = useForm({
     resolver: yupResolver(schema),
   });
@@ -60,6 +62,8 @@ const Login = () => {
 
   return (
     <Container>
+      {user_id && <Redirect to={`/HomeUser/${user_id}`} />}
+
       <Div>
         <LogoStyled small src={logo2} />
       </Div>

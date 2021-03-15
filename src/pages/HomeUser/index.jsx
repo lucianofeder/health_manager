@@ -19,6 +19,7 @@ import {
 import Imagem from "../../images/Undraw/user.svg";
 import CommunityImg from "../../images/Undraw/community.svg";
 import TravelerImg from "../../images/Undraw/Traveler.svg";
+import { Redirect } from "react-router-dom";
 
 import { useHistory, useParams } from "react-router-dom";
 
@@ -57,6 +58,7 @@ const HomeUser = () => {
 
   return (
     <MainContainer>
+      {!user_id && <Redirect to={`/Login`} />}
       <Menu />
       <LimitContainer>
         <UserContainer>
@@ -107,8 +109,8 @@ const HomeUser = () => {
               </div>
             ))}
         </LastContainer>
-        <Footer />
       </LimitContainer>
+      <Footer />
     </MainContainer>
   );
 };

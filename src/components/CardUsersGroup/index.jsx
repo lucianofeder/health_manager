@@ -19,7 +19,7 @@ const CardUsersGroup = ({ users }) => {
       <div id="containerUsers">
         {users?.map((user) => (
           <div id="containerInfos">
-            <img src={userIcon} />
+            <img src={userIcon} alt="User Icon"/>
             <p>{user.username}</p>
           </div>
         ))}

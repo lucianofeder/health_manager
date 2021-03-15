@@ -37,6 +37,7 @@ export const CardContainer = styled.div`
     img {
       margin: 0;
       width: 25px;
+      border: none;
     }
   }
 
