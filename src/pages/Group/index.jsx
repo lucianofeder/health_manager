@@ -1,6 +1,7 @@
 import HeaderComponent from "../../components/Header";
 import Footer from "../../components/Footer";
 import ModalForm from "../../components/ModalForm";
+import CardUsersGroup from "../../components/CardUsersGroup";
 
 import ImageGroup from "../../images/group.svg";
 import pen from "../../images/pen.svg";
@@ -21,7 +22,6 @@ import {
   TypeGroup,
   GroupDescriptionContainer,
   InfoContainer,
-  UsersContainer,
   DescriptioCard,
   ActivitiesCard,
   GoalsCard,
@@ -41,8 +41,6 @@ const Group = () => {
   const [activities, setActivities] = useState([]);
   const [goals, setGoals] = useState([]);
   const [participatingUsers, setParticipatingUsers] = useState([]);
-
-  console.log(group);
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo Obrigatório"),
@@ -82,7 +80,7 @@ const Group = () => {
       difficulty: data.difficulty,
       group: group.id,
 
-      // MUDAR ACHIEVED COM BARRA DE STATUS
+      // !MUDAR ACHIEVED COM BARRA DE STATUS
       how_much_achieved: 70,
     };
     api
@@ -116,9 +114,17 @@ const Group = () => {
             <ActivitiesCard>
               <Subtitle>Activities</Subtitle>
               {activities.map((item) => (
-                <ul key={item.id}>
+                <ul
+                  key={item.id}
+                  style={{
+                    margin: "10px 0",
+                    padding: 0,
+                  }}
+                >
                   <ListStyle>{item.title}</ListStyle>
-                  <ListStyle>{item.realization_time}</ListStyle>
+                  <ListStyle>
+                    {new Date(item.realization_time).toUTCString().slice(0, -7)}
+                  </ListStyle>
                 </ul>
               ))}
             </ActivitiesCard>
@@ -138,7 +144,13 @@ const Group = () => {
                 errors={errors}
               />
               {goals.map((item) => (
-                <ul key={item.id}>
+                <ul
+                  key={item.id}
+                  style={{
+                    margin: "10px 0",
+                    padding: 0,
+                  }}
+                >
                   <ListStyle>
                     {item.title} || {item.difficulty} ||
                     {item.how_much_achieved}%
@@ -147,18 +159,7 @@ const Group = () => {
               ))}
             </GoalsCard>
           </InfoContainer>
-
-          <GoalsCard>
-            <UsersContainer>
-              <Subtitle>Usuários Participantes</Subtitle>
-
-              {participatingUsers.map((item) => (
-                <ul key={item.id}>
-                  <ListStyle>{item.username}</ListStyle>
-                </ul>
-              ))}
-            </UsersContainer>
-          </GoalsCard>
+          {loaded && <CardUsersGroup users={participatingUsers} />}
         </GroupDescriptionContainer>
         <Footer />
       </LimitContainer>
