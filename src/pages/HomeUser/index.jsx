@@ -28,13 +28,6 @@ import api from "../../services/api";
 
 import { useSelector } from "react-redux";
 
-import { useHistory, useParams } from "react-router-dom";
-
-import { useState, useEffect } from "react";
-import api from "../../services/api";
-
-import { useSelector } from "react-redux";
-
 const HomeUser = () => {
   const { id } = useParams();
   const history = useHistory();

@@ -1,17 +1,30 @@
 import { useState } from "react";
 import { HeaderContainer } from "./style";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Avatar from "../../images/Undraw/user.svg";
 import Logo from "../../images/Logo/logo4.png";
 import Logout from "../../images/Icons/checkout.png";
 import Menu from "../../images/Icons/menuDrop.png";
 import { useSelector } from "react-redux";
+import { signInThunk } from "../../store/modules/users/thunk";
+import { useDispatch } from "react-redux";
 
 const HeaderComponent = () => {
-  const [open, SetOpen] = useState(true);
-  const { user_id } = useSelector((state) => state.users);
+  const [open, SetOpen] = useState(false);
+  const [onMenu, SetonMenu] = useState(false);
 
+  const { user_id } = useSelector((state) => state.users);
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    localStorage.clear();
+    dispatch(signInThunk("", ""));
+    history.push(`/Login`);
+  };
+  const handleOnBlurMenu = () => {
+    !onMenu && SetOpen(false);
+  };
 
   return (
     <HeaderContainer>
