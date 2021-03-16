@@ -26,7 +26,7 @@ export const Container = styled.div`
   }
 
   /* Desktop */
-  @media (min-width: 1020px) {
+  @media (min-width: 1135px) {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -88,16 +88,16 @@ export const Div = styled.div`
         : "40px"};
   }
 
-  @media (min-width: 1020px) {
+  @media (min-width: 1135px) {
     padding: 0.5em;
 
     width: ${(props) =>
       props.small
-        ? "550px"
-        : props.medium
-        ? "550px"
-        : props.large
         ? "600px"
+        : props.medium
+        ? "600px"
+        : props.large
+        ? "650px"
         : "450px"};
 
     min-height: ${(props) =>
@@ -128,7 +128,7 @@ export const DivStyled = styled.div`
     height: 40vh;
   }
 
-  @media (min-width: 1020px) {
+  @media (min-width: 1135px) {
     width: 500px;
     display: flex;
     flex-direction: column;
@@ -145,7 +145,7 @@ export const DivAjust = styled.div`
   height: 58vh;
   align-items: center;
 
-  @media (min-width: 1020px) {
+  @media (min-width: 1135px) {
     flex-direction: row;
     justify-content: space-around;
 
@@ -164,7 +164,7 @@ export const DivButton = styled(Div)`
   @media (min-width: 700px) {
     width: 500px;
   }
-  @media (min-width: 1020px) {
+  @media (min-width: 1135px) {
     padding: 0.5em 0 0.5em 0;
   }
 `;
@@ -180,7 +180,7 @@ export const LogoStyled = styled.img`
       ? "100%"
       : ""};
 
-  @media (min-width: 1020px) {
+  @media (min-width: 1135px) {
     width: ${(props) =>
       props.small
         ? "200px"
