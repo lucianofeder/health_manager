@@ -2,6 +2,7 @@ import HeaderComponent from "../../components/Header";
 import Footer from "../../components/Footer";
 import ModalForm from "../../components/ModalForm";
 import CardUsersGroup from "../../components/CardUsersGroup";
+import SaveIcon from "@material-ui/icons/Save";
 
 import ImageGroup from "../../images/group.svg";
 import add from "../../images/add.svg";
@@ -25,14 +26,16 @@ import {
   DescriptioCard,
   ActivitiesCard,
   GoalsCard,
+  InputEditStyled,
 } from "./styles";
 
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-
+import pen from "../../images/pen.svg";
 import api from "../../services/api";
 import { GroupSharp } from "@material-ui/icons";
+import { Icon, IconButton } from "@material-ui/core";
 
 const Group = () => {
   const { id } = useParams();
@@ -42,7 +45,7 @@ const Group = () => {
   const [loaded, setLoaded] = useState(false);
 
   // const [user, setUser] = useState([]);
-
+  const [editDescription, setEditDescription] = useState(false);
   const [group, setGroup] = useState([]);
 
   const schema = yup.object().shape({
@@ -83,6 +86,9 @@ const Group = () => {
 
     setLoaded(true);
   };
+  const handleSaveEditDescription = () => {
+    setEditDescription(false);
+  };
 
   useEffect(() => {
     !loaded && getDataPageGroup();
@@ -101,7 +107,22 @@ const Group = () => {
           <InfoContainer>
             <DescriptioCard>
               <Subtitle>Description</Subtitle>
-              <p>{loaded && group.description}</p>
+
+              <IconButton onClick={() => setEditDescription(!editDescription)}>
+                <img src={pen} alt="pen" />
+              </IconButton>
+              {editDescription && (
+                <IconButton onClick={() => handleSaveEditDescription()}>
+                  <SaveIcon />
+                </IconButton>
+              )}
+              {editDescription ? (
+                <div>
+                  <InputEditStyled value={group.description} />
+                </div>
+              ) : (
+                <p>{loaded && group.description}</p>
+              )}
             </DescriptioCard>
             <ActivitiesCard>
               <Subtitle>Activities</Subtitle>

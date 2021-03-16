@@ -11,6 +11,18 @@ export const MainContainer = styled.div`
   align-items: center;
 `;
 
+export const InputEditStyled = styled.input`
+  width: 80%;
+  height: 80%;
+  margin: 1rem 0;
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  background: ${Colors.BackgroundBaseGray};
+`;
+
 export const LimitContainer = styled.div`
   width: 100%;
   max-width: 1733px;
