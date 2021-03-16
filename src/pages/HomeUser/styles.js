@@ -64,9 +64,15 @@ export const DivGroup = styled(UserContainer)`
   img {
     width: 250px;
     height: 140px;
-    @media (max-width: 1050px) {
+    @media (max-width: 700px) {
       display: none;
     }
+  }
+
+  img.calendarIcon {
+    width: 20%;
+    height: 20%;
+    margin: 10px 10px;
   }
 
   @media (max-width: 1050px) {
@@ -90,6 +96,7 @@ export const BioCardContainer = styled.div`
 
 export const Community = styled.img`
   width: 100%;
+  margin: 0 18px 0 40px;
 `;
 
 export const CalendarCardContainer = styled(BioCardContainer)``;
@@ -112,4 +119,8 @@ export const HabitsCardContainer = styled(BioCardContainer)``;
 export const Traveler = styled.img`
   width: 400px;
   height: 350px;
+`;
+
+export const DivHabitsCard = styled.div`
+  padding: 5px 5px 5px 5px;
 `;
