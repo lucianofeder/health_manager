@@ -108,7 +108,7 @@ const Group = () => {
                     <ul key={item.id}>
                       <ListStyle>{item.title}</ListStyle>
                       <ListStyle>
-                        {new Date(item.realization_time).toUTCString().slice(0, -7)}
+                      {new Date(item.realization_time).toUTCString().slice(0, -7)}
                       </ListStyle>
                     </ul>
                   ))
