@@ -47,6 +47,7 @@ em 'form ={{ formAction: qualquerFn() }}'
 import { FormContainer } from "./style";
 import Input from "../Input";
 import Button from "../Button";
+import InputSelector from "../InputSelector";
 
 const FormStyle = ({ instructions, form }) => {
   const { icon, iconWidth, title, inputName, buttonName } = instructions;
@@ -60,7 +61,14 @@ const FormStyle = ({ instructions, form }) => {
       <h1>{title}</h1>
       <form onSubmit={formAction}>
         {inputName.map((input, index) => {
-          return (
+          return input[0] === "difficulty" ? (
+            <InputSelector
+              placeholder={input[1]}
+              name={input[0]}
+              reference={ref}
+              error={errors}
+            />
+          ) : (
             <Input
               placeholder={input[1]}
               name={input[0]}
