@@ -29,25 +29,41 @@ const HeaderComponent = () => {
   return (
     <HeaderContainer>
       <div className="containerUser">
-        <img src={Logo} alt="Logo Tipo" className="logo" />
-        <div className="user">
-          <img
-            src={Avatar}
-            alt="Avatar"
-            onClick={() => history.push(`/HomeUser/${user_id}`)}
-          />
-          <img
-            src={Menu}
-            alt="Menu"
-            className="menor"
-            onClick={() => SetOpen(!open)}
-          />
-          <img
-            src={Logout}
-            alt="Logout"
-            className="menor"
-            onClick={() => history.push("/")}
-          />
+        <img id="logo" src={Logo} alt="Logo Tipo" />
+        <div id="containerLinks">
+          <div className="user">
+            <button onClick={() => history.push(`/HomeUser/${user_id}`)}>
+              <img src={Avatar} alt="Avatar" />
+            </button>
+            <button onClick={() => SetOpen(!open)} onBlur={handleOnBlurMenu}>
+              <img src={Menu} alt="Menu" className="menor" />
+            </button>
+            <button onClick={handleLogout} id="logout">
+              <img src={Logout} alt="Logout" className="menor" />
+            </button>
+          </div>
+          {open && (
+            <div
+              onMouseEnter={() => SetonMenu(true)}
+              onMouseLeave={() => SetonMenu(false)}
+              className="nav"
+            >
+              <nav>
+                <ul>
+                  <li>
+                    <Link to={"/AllGroups"}>
+                      <p>All Groups</p>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={"/AllUsers"}>
+                      <p>All Users</p>
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          )}
         </div>
       </div>
     </HeaderContainer>
