@@ -1,7 +1,8 @@
 import ModalForm from "../../components/ModalForm";
-import { Subtitle, GoalsCard, ListStyle } from "../../pages/Group/styles";
+import { Subtitle, ListStyle } from "./style";
 
 import add from "../../images/add.svg";
+import pen from "../../images/pen.svg";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 
 import * as yup from "yup";
@@ -19,6 +20,7 @@ const GroupGoals = () => {
 
   const [loaded, setLoaded] = useState(false);
   const [group, setGroup] = useState([]);
+  console.log(group);
 
   const schema = yup.object().shape({
     title: yup.string().required("Campo Obrigatório"),
@@ -40,7 +42,12 @@ const GroupGoals = () => {
     ["difficulty", "DIFICULDADE"],
   ];
 
-  const handleForm = (data) => {
+  const inputEditGoals = [
+    ["title", "NOME DA META"],
+    ["difficulty", "DIFICULDADE"],
+  ];
+
+  const handleCreateGoals = (data) => {
     const newData = {
       title: data.title,
       difficulty: data.difficulty,
@@ -57,13 +64,25 @@ const GroupGoals = () => {
     setLoaded(true);
   };
 
+  const handleUpdateGoals = (data, idGoal) => {
+    group.goals.map((item) => {
+      if (item.id === idGoal) {
+        api
+          .patch(`goals/${idGoal}/`, data, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then(() => setGroup({ ...group, goals: [group.goals, data] }));
+      }
+    });
+  };
+
   useEffect(() => {
     !loaded && getDataPageGroup();
   });
   return (
     <>
-      <GoalsCard>
-        <Subtitle>Goals</Subtitle>
+      <div>
+        <h2>Goals</h2>
 
         <ModalForm
           isButton={false}
@@ -73,7 +92,7 @@ const GroupGoals = () => {
           title="Create Goals"
           inputName={inputName}
           buttonName="Enviar"
-          formAction={handleSubmit(handleForm)}
+          formAction={handleSubmit(handleCreateGoals)}
           reference={register}
           errors={errors}
         />
@@ -84,11 +103,25 @@ const GroupGoals = () => {
                 <ListStyle>
                   {item.title} || {item.difficulty} ||
                   {item.how_much_achieved}%
+                  <ModalForm
+                    isButton={false}
+                    ImgSrc={pen}
+                    icon={goalsModal}
+                    iconWidth="300px"
+                    title="Edit Goals"
+                    inputName={inputEditGoals}
+                    buttonName="Editar"
+                    formAction={handleSubmit((data) =>
+                      handleUpdateGoals(data, item.id)
+                    )}
+                    reference={register}
+                    errors={errors}
+                  />
                 </ListStyle>
               </ul>
             ))
           : "Nenhuma meta"}
-      </GoalsCard>
+      </div>
     </>
   );
 };
