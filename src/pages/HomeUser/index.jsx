@@ -12,10 +12,11 @@ import {
   HabitsCardContainer,
   Traveler,
   Community,
-  CalendarCardContainer,
   GroupInfo,
+  DivHabitsCard,
 } from "./styles";
 
+import Calendar from "../../images/Icons/calendar.png";
 import Imagem from "../../images/Undraw/user.svg";
 import CommunityImg from "../../images/Undraw/community.svg";
 import TravelerImg from "../../images/Undraw/Traveler.svg";
@@ -27,12 +28,13 @@ import { useState, useEffect } from "react";
 import api from "../../services/api";
 
 import { useSelector } from "react-redux";
+import Card from "../../components/Card";
 
 const HomeUser = () => {
   const { id } = useParams();
+
   const history = useHistory();
-  // TODO Criar integração com: CARDS // HEADER // FOOTER
-  // TODO DEIXAR MOBILE FIRST
+
   const { token, user_id } = useSelector((state) => state.users);
   const [loaded, setLoaded] = useState(false);
 
@@ -73,24 +75,29 @@ const HomeUser = () => {
           <h3>{loaded && group.category}</h3>
         </GroupInfo>
         <DivGroup>
-          <BioCardContainer>
-            <h1>Card BIO</h1>
-            <div>Descrição: {group.description}</div>
-          </BioCardContainer>
+          <Card title="Description">
+            <DivHabitsCard>Descrição: {group.description}</DivHabitsCard>
+          </Card>
           <Community src={CommunityImg} alt="Community" />
-          <CalendarCardContainer>
-            <h1>Calendar</h1>
+          <Card title="Calendar">
+            <img
+              className="calendarIcon"
+              id="icon"
+              src={Calendar}
+              alt="Calendar Icon"
+            />
             {loaded &&
               group.activities.map((item) => (
-                <div key={item.id}>
+                <DivHabitsCard key={item.id}>
                   <div>Título: {item.title} </div>
                   <div>
                     Data:{" "}
                     {new Date(item.realization_time).toUTCString().slice(0, -7)}
                   </div>
-                </div>
+                  <hr></hr>
+                </DivHabitsCard>
               ))}
-          </CalendarCardContainer>
+          </Card>
         </DivGroup>
 
         <LastContainer>
@@ -98,15 +105,18 @@ const HomeUser = () => {
             user_id === id &&
             habits.map((item, index) => (
               <div key={index}>
-                <h1>Hábito</h1>
+                <h1>Habits</h1>
                 <DivHabits>
-                  <HabitsCardContainer>
-                    <h2>{item.title}</h2>
-                    <div>Categoria: {item.category}</div>
-                    <div>Dificuldade: {item.difficulty}</div>
-                    <div>Frequência: {item.frequency}</div>
-                    <div>Quanto foi alcançado: {item.how_much_achieved}%</div>
-                  </HabitsCardContainer>
+                  <Card title={item.title}>
+                    <DivHabitsCard>Categoria: {item.category}</DivHabitsCard>
+                    <DivHabitsCard>
+                      Dificuldade: {item.difficulty}
+                    </DivHabitsCard>
+                    <DivHabitsCard>Frequência: {item.frequency}</DivHabitsCard>
+                    <DivHabitsCard>
+                      Quanto foi alcançado: {item.how_much_achieved}%
+                    </DivHabitsCard>
+                  </Card>
                   <Traveler src={TravelerImg} />
                 </DivHabits>
               </div>

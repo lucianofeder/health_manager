@@ -4,8 +4,9 @@ import Colors from "../../global/Colors";
 export const CardContainer = styled.div`
   width: 310px;
   min-height: 100px;
+  padding: 30px 10px 30px 10px;
   background-color: ${Colors.BasePurple};
-  border: solid 2px ${Colors.BaseLightBlue};
+  border: solid 3px ${Colors.BaseLightBlue};
   border-radius: 15px;
   color: ${Colors.TextColorWhite};
   text-align: center;
@@ -15,6 +16,7 @@ export const CardContainer = styled.div`
     margin: 0;
     font-size: 25px;
     font-weight: normal;
+    margin-bottom: 10px;
   }
 
   p {
