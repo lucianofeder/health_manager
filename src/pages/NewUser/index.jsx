@@ -6,7 +6,6 @@ import Image from "../../images/NewUsers/NewUser.svg";
 import Icone from "../../images/NewUsers/IconCadastro.svg";
 import Clouds from "../../images/Undraw/clouds.svg";
 
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -52,7 +51,7 @@ const NewUser = () => {
             iconWidth: "200px",
             inputName: [
               ["username", "userName"],
-              ["password", "Password"],
+              ["password", "Password", "password"],
               ["email", "email"],
             ],
             buttonName: "Register",

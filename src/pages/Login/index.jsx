@@ -48,7 +48,7 @@ const Login = () => {
     title: "Fazer Login",
     inputName: [
       ["username", "USERNAME"],
-      ["password", "SENHA"],
+      ["password", "SENHA", "password"],
     ],
     buttonName: "Login",
 

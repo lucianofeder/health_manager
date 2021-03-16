@@ -10,6 +10,13 @@ export const InputStyled = styled.input`
   outline: none;
   padding-left: 10px;
 `;
+export const ErrorMesagem = styled.span`
+  color: ${Colors.ErrorInput};
+  font-size: 15px;
+  position: absolute;
+  top: -15px;
+  right: 0;
+`;
 
 const InputAreaStyled = styled.div`
   height: 30px;
@@ -18,17 +25,19 @@ const InputAreaStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: ${(props) => props.error} && 0px 2px 4px ${Colors.ShadowAlert};
+  box-shadow: 0px 2px 4px
+    ${(props) => (props.error ? Colors.ErrorInput : Colors.ShadowColor)};
 `;
 
 export const InputArea = styled(InputAreaStyled)`
   outline: 1px solid transparent;
-  box-shadow: 0px 2px 4px ${Colors.ShadowColor};
   transition: 300ms;
   margin: 20px 0;
 
   &:focus-within {
-    box-shadow: 0px 2px 4px ${Colors.ShadowColorHighlight};
+    box-shadow: 0px 2px 4px
+      ${(props) =>
+        props.error ? Colors.ErrorInput : Colors.ShadowColorHighlight};
   }
 `;
 

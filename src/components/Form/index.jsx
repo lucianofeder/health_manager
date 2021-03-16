@@ -66,6 +66,7 @@ const FormStyle = ({ instructions, form }) => {
               name={input[0]}
               key={index}
               reference={ref}
+              type={input[2]}
               error={errors[input[0]]?.message}
             />
           );
