@@ -32,6 +32,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
 import api from "../../services/api";
+import { GroupSharp } from "@material-ui/icons";
 
 const Group = () => {
   const { id } = useParams();
@@ -41,6 +42,7 @@ const Group = () => {
   const [loaded, setLoaded] = useState(false);
 
   // const [user, setUser] = useState([]);
+
   const [group, setGroup] = useState([]);
 
   const schema = yup.object().shape({
@@ -77,7 +79,7 @@ const Group = () => {
       .post(`goals/`, newData, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => console.log(res));
+      .then(() => setGroup({ ...group, goals: [...group.goals, newData] }));
 
     setLoaded(true);
   };
@@ -108,7 +110,9 @@ const Group = () => {
                     <ul key={item.id}>
                       <ListStyle>{item.title}</ListStyle>
                       <ListStyle>
-                      {new Date(item.realization_time).toUTCString().slice(0, -7)}
+                        {new Date(item.realization_time)
+                          .toUTCString()
+                          .slice(0, -7)}
                       </ListStyle>
                     </ul>
                   ))
