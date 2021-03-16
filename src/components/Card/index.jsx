@@ -38,19 +38,18 @@ const Card = (props) => {
   const { id } = useParams();
   const id_user = useSelector((state) => state.users.user_id);
 
-  const { children, add, title, modalAdd, modalEdit } = props;
+  const { children, title, modalAdd, modalEdit } = props;
   return (
     <CardContainer>
       {id === id_user && (
         <div className="iconModal">
-          {add && modalAdd}
+          {modalAdd === undefined ? undefined : modalAdd}
           {modalEdit}
         </div>
       )}
-
-      <div>
-        <h1>{title}</h1>
-        {children}
+      <h1>{title}</h1>
+      <div className="container">
+        {children === undefined ? <p>No Informations</p> : children}
       </div>
     </CardContainer>
   );

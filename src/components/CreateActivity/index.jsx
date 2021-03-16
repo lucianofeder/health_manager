@@ -7,7 +7,7 @@ import api from "../../services/api";
 import ModalForm from "../ModalForm";
 
 import Image from "../../images/Undraw/creatActivy.svg";
-import IconAdd from "../../images/+.svg";
+import IconAdd from "../../images/add.svg";
 
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
