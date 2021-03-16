@@ -9,7 +9,7 @@ import ModalForm from "../ModalForm";
 import { useSelector } from "react-redux";
 
 import Image from "../../images/Undraw/Habit.svg";
-import IconAdd from "../../images/+.svg";
+import IconAdd from "../../images/add.svg";
 
 const CreateHabit = () => {
   const token = useSelector((state) => state.users.token);
