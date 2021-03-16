@@ -3,7 +3,14 @@ import logo2 from "../../images/Logo/logo2.png";
 import error from "../../images/Error404/error.svg";
 import clouds from "../../images/Undraw/clouds.svg";
 
+import { useHistory } from "react-router-dom";
+
 const Page404 = () => {
+  const history = useHistory();
+  setTimeout(() => {
+    history.push("/");
+  }, 2500);
+
   return (
     <Container>
       <Div>
