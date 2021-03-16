@@ -25,7 +25,6 @@ const AllUsers = () => {
   };
 
   const getPageFromURL = (url) => {
-    console.log(url);
     if (url) {
       url = url.split("=");
       return Number(url[url.length - 1]);
