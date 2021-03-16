@@ -7,6 +7,7 @@ const FooterStyled = styled.div`
   text-align: center;
   display: inline-block;
   padding: 5px 25px;
+  border: 3px solid ${Colors.BaseLightBlue};
   border-radius: 10px;
   div#containerInfos {
     display: flex;
