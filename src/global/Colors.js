@@ -13,6 +13,7 @@ const Colors = {
   TextColorInput: "rgba(0,0,0, 0.32)",
   ShadowColor: "rgba(0, 0, 0, 0.2)",
   ShadowColorHighlight: "rgba(95, 77, 239, 0.6)",
+  ErrorInput: "#f00",
 };
 
 export default Colors;
