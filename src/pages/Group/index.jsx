@@ -2,6 +2,7 @@ import HeaderComponent from "../../components/Header";
 import Footer from "../../components/Footer";
 import ModalForm from "../../components/ModalForm";
 import CardUsersGroup from "../../components/CardUsersGroup";
+import Card from "../../components/Card";
 
 import ImageGroup from "../../images/group.svg";
 import add from "../../images/add.svg";
@@ -17,14 +18,15 @@ import {
   ImageGroupStyles,
   NameGroupContainer,
   Title,
-  Subtitle,
+  // Subtitle,
   ListStyle,
   TypeGroup,
   GroupDescriptionContainer,
   InfoContainer,
-  DescriptioCard,
-  ActivitiesCard,
-  GoalsCard,
+  // DescriptioCard,
+  // ActivitiesCard,
+  // GoalsCard,
+  Ul,
 } from "./styles";
 
 import { useParams } from "react-router-dom";
@@ -32,7 +34,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
 import api from "../../services/api";
-import { GroupSharp } from "@material-ui/icons";
+// import { GroupSharp } from "@material-ui/icons";
 
 const Group = () => {
   const { id } = useParams();
@@ -98,28 +100,25 @@ const Group = () => {
 
         <GroupDescriptionContainer>
           <InfoContainer>
-            <DescriptioCard>
-              <Subtitle>Description</Subtitle>
+            <Card title="Description">
               <p>{loaded && group.description}</p>
-            </DescriptioCard>
-            <ActivitiesCard>
-              <Subtitle>Activities</Subtitle>
+            </Card>
+            <Card title="Activities">
               {loaded && group.activities
                 ? group.activities.map((item) => (
-                    <ul key={item.id}>
+                    <Ul key={item.id}>
                       <ListStyle>{item.title}</ListStyle>
                       <ListStyle>
                         {new Date(item.realization_time)
                           .toUTCString()
                           .slice(0, -7)}
                       </ListStyle>
-                    </ul>
+                      <hr />
+                    </Ul>
                   ))
                 : "Sem Atividades"}
-            </ActivitiesCard>
-            <GoalsCard>
-              <Subtitle>Goals</Subtitle>
-
+            </Card>
+            <Card title="Goals">
               {/* CRIAR RENDERIZAÇÃO CONDICIONAL PARA QUANDO O USUARIO ACESSAR O 
               PERFIL DE OUTRO USUARIO NÃO PODER ADICIONAR GOALS NO OUTRO PERFIL */}
 
@@ -138,15 +137,15 @@ const Group = () => {
 
               {loaded && group.goals
                 ? group.goals.map((item) => (
-                    <ul key={item.id}>
+                    <Ul key={item.id}>
                       <ListStyle>
                         {item.title} || {item.difficulty} ||
                         {item.how_much_achieved}%
                       </ListStyle>
-                    </ul>
+                    </Ul>
                   ))
                 : "Nenhuma meta"}
-            </GoalsCard>
+            </Card>
           </InfoContainer>
 
           {loaded && <CardUsersGroup users={group.users} />}

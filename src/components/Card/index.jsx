@@ -8,10 +8,6 @@ Todo - Instruções
 *example - "Grupos"
 *to use - title="Grupos"
 !--------------
-*add - format: boleano - permição para exibir botão adicionar
-*example - true
-*to use - add={true}
-!--------------
 *modalAdd - format: component - Componente a ser usado ao adicionar
 *example - <CreateGroup/>
 *to use - modalAdd={<CreateGroup/>}
