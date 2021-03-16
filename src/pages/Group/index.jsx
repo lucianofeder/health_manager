@@ -71,7 +71,6 @@ const Group = () => {
       title: data.title,
       difficulty: data.difficulty,
       group: group.id,
-
       // !MUDAR ACHIEVED COM BARRA DE STATUS
       how_much_achieved: 70,
     };

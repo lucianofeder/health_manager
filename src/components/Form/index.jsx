@@ -66,7 +66,7 @@ const FormStyle = ({ instructions, form }) => {
               placeholder={input[1]}
               name={input[0]}
               reference={ref}
-              error={errors}
+              error={errors[input[0]]?.message}
             />
           ) : (
             <Input
