@@ -71,15 +71,13 @@ const Group = () => {
       title: data.title,
       difficulty: data.difficulty,
       group: group.id,
-
       // !MUDAR ACHIEVED COM BARRA DE STATUS
       how_much_achieved: 70,
     };
-    api
-      .post(`goals/`, newData, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then(() => setGroup({ ...group, goals: [...group.goals, newData] }));
+    api.post(`goals/`, newData, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    // .then(() => setGroup({ ...group, goals: [...group.goals, newData] }));
 
     setLoaded(true);
   };
