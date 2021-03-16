@@ -61,7 +61,7 @@ const GroupGoals = () => {
       })
       .then(() => setGroup({ ...group, goals: [...group.goals, newData] }));
 
-    setLoaded(true);
+    setLoaded(false);
   };
 
   const handleUpdateGoals = (data, idGoal) => {
@@ -74,11 +74,13 @@ const GroupGoals = () => {
           .then(() => setGroup({ ...group, goals: [group.goals, data] }));
       }
     });
+    setLoaded(false);
   };
 
   useEffect(() => {
     !loaded && getDataPageGroup();
-  });
+  }, [group]);
+
   return (
     <>
       <div>
