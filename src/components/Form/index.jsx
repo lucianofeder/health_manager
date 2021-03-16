@@ -60,25 +60,24 @@ const FormStyle = ({ instructions, form }) => {
       <img src={icon} alt="Icon" style={{ width: iconWidth }} />
       <h1>{title}</h1>
       <form onSubmit={formAction}>
-        {inputName.map((input, index) => {
-          return input[0] === "difficulty" ? (
-            <InputSelector
-              placeholder={input[1]}
-              name={input[0]}
-              reference={ref}
-              error={errors}
-            />
-          ) : (
-            <Input
-              placeholder={input[1]}
-              name={input[0]}
-              key={index}
-              reference={ref}
-              type={input[2]}
-              error={errors[input[0]]?.message}
-            />
-          );
-        })}
+        {inputName.map((input, index) => (
+          // return input[0] === "difficulty" ? (
+          //   <InputSelector
+          //     placeholder={input[1]}
+          //     name={input[0]}
+          //     reference={ref}
+          //     error={errors}
+          //   />
+          // ) : (
+          <Input
+            placeholder={input[1]}
+            name={input[0]}
+            key={index}
+            reference={ref}
+            type={input[2]}
+            error={errors[input[0]]?.message}
+          />
+        ))}
         <Button>{buttonName}</Button>
       </form>
     </FormContainer>
