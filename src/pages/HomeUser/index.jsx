@@ -84,7 +84,10 @@ const HomeUser = () => {
               group.activities.map((item) => (
                 <div key={item.id}>
                   <div>Título: {item.title} </div>
-                  <div>Data: {item.realization_time}</div>
+                  <div>
+                    Data:{" "}
+                    {new Date(item.realization_time).toUTCString().slice(0, -7)}
+                  </div>
                 </div>
               ))}
           </CalendarCardContainer>
