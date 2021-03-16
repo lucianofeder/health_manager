@@ -30,7 +30,6 @@ const HeaderComponent = () => {
     <HeaderContainer>
       <div className="containerUser">
         <img id="logo" src={Logo} alt="Logo Tipo" />
-
         <div id="containerLinks">
           <div className="user">
             <button onClick={() => history.push(`/HomeUser/${user_id}`)}>
@@ -56,7 +55,6 @@ const HeaderComponent = () => {
                       <p>All Groups</p>
                     </Link>
                   </li>
-
                   <li>
                     <Link to={"/AllUsers"}>
                       <p>All Users</p>
