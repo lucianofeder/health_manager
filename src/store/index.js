@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 
-import thunk from "thunk";
+import thunk from "redux-thunk";
 
 // EXEMPLO DE IMPORTAÇÃO
-import usersReducer from "./modules/users/usersReducer";
+import usersReducer from "./modules/users/reducer";
 
 const reducer = combineReducers({
   users: usersReducer,

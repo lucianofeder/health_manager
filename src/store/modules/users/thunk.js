@@ -1,11 +1,9 @@
-// EXEMPLO
+import { signIn, redirectToGroup } from "./actions";
 
-import { showUsers } from "./actions";
-
-export const showUsersThunk = () => (dispatch, getState) => {
-  // alguma logica
-
-  dispatch(showUsers());
+export const signInThunk = (token, user_id) => (dispatch) => {
+  dispatch(signIn(token, user_id));
 };
 
-export default showUsersThunk;
+export const redirectToGroupThunk = (curr_id) => (dispatch) => {
+  dispatch(redirectToGroup(curr_id));
+};

@@ -16,7 +16,7 @@ const Routes = () => {
         <LandingPage />
       </Route>
 
-      <Route path="/HomeUser">
+      <Route path="/HomeUser/:id">
         <HomeUser />
       </Route>
 
@@ -36,7 +36,7 @@ const Routes = () => {
         <AllGroups />
       </Route>
 
-      <Route path="/Group">
+      <Route path="/Group/:id">
         <Group />
       </Route>
 

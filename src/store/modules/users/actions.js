@@ -1,8 +1,10 @@
-//EXEMPLO
+export const signIn = (token, user_id) => ({
+  type: "@user/SIGN_IN",
+  token,
+  user_id,
+});
 
-import { SHOW_USERS } from "./actionTypes";
-
-export const showUsers = (list) => ({
-  type: SHOW_USERS,
-  list,
+export const redirectToGroup = (curr_id) => ({
+  type: "@user/REDIRECT",
+  curr_id,
 });
