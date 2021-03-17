@@ -46,7 +46,7 @@ const CreateGroup = () => {
   return (
     <ModalForm
       isButton={true}
-      nameBtn="Create Group"
+      nameBtn="New Group"
       icon={Image}
       iconWidth="200px"
       title="Criar grupo"

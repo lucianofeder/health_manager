@@ -40,10 +40,22 @@ export const ContainerImg = styled.div`
     animation: anima 1000ms infinite;
     animation-delay: 500ms;
   }
+
+  @media (max-width: 400px) {
+    width: 70px;
+    height: 70px;
+  }
 `;
 export const Container = styled.div`
   display: flex;
   justify-content: center;
+
+  @media (max-width: 400px) {
+    width: 300px;
+    img#i5 {
+      width: 200px;
+    }
+  }
 `;
 
 export const FullScreen = styled.div`
