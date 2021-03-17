@@ -37,9 +37,10 @@ export const IconButtonContainer = styled.button`
   border: 0;
   border-radius: 5px;
   outline: none;
+  background-color: "#fff";
+`;
 
-  img {
-    height: 25px;
-    width: 25px;
-  }
+export const Img = styled.img`
+  height: 25px;
+  width: 25px;
 `;
