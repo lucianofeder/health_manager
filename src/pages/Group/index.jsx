@@ -3,6 +3,7 @@ import Footer from "../../components/Footer";
 import ModalForm from "../../components/ModalForm";
 import CardUsersGroup from "../../components/CardUsersGroup";
 import Card from "../../components/Card";
+import GroupGoals from "../../components/GroupGoals";
 
 import ImageGroup from "../../images/group.svg";
 import add from "../../images/add.svg";
@@ -40,7 +41,6 @@ const Group = () => {
   const { id } = useParams();
 
   const { token } = useSelector((state) => state.users);
-
   const [loaded, setLoaded] = useState(false);
 
   // const [user, setUser] = useState([]);
@@ -106,7 +106,7 @@ const Group = () => {
             <Card title="Activities">
               {loaded && group.activities
                 ? group.activities.map((item) => (
-                    <Ul key={item.id}>
+                    <ul key={item.id}>
                       <ListStyle>{item.title}</ListStyle>
                       <ListStyle>
                         {new Date(item.realization_time)
@@ -114,15 +114,19 @@ const Group = () => {
                           .slice(0, -7)}
                       </ListStyle>
                       <hr />
-                    </Ul>
+                    </ul>
                   ))
                 : "Sem Atividades"}
             </Card>
-            <Card title="Goals">
-              {/* CRIAR RENDERIZAÇÃO CONDICIONAL PARA QUANDO O USUARIO ACESSAR O 
+
+            {/* CARD NOVO !!! */}
+            <GroupGoals />
+
+            {/* <Card title="Goals"> */}
+            {/* CRIAR RENDERIZAÇÃO CONDICIONAL PARA QUANDO O USUARIO ACESSAR O 
               PERFIL DE OUTRO USUARIO NÃO PODER ADICIONAR GOALS NO OUTRO PERFIL */}
 
-              <ModalForm
+            {/* <ModalForm
                 isButton={false}
                 ImgSrc={add}
                 icon={goalsModal}
@@ -137,15 +141,15 @@ const Group = () => {
 
               {loaded && group.goals
                 ? group.goals.map((item) => (
-                    <Ul key={item.id}>
+                    <ul key={item.id}>
                       <ListStyle>
                         {item.title} || {item.difficulty} ||
                         {item.how_much_achieved}%
                       </ListStyle>
-                    </Ul>
+                    </ul>
                   ))
                 : "Nenhuma meta"}
-            </Card>
+            </Card> */}
           </InfoContainer>
 
           {loaded && <CardUsersGroup users={group.users} />}
