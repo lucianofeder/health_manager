@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
-
 export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -10,7 +9,6 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
 export const LimitContainer = styled.div`
   width: 100%;
   max-width: 1733px;
@@ -51,7 +49,6 @@ export const TypeGroup = styled.h4`
   margin: 0;
   padding: 0;
 `;
-
 export const GroupDescriptionContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -60,7 +57,6 @@ export const GroupDescriptionContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
   @media (max-width: 1024px) {
     flex-wrap: wrap;
     flex-direction: column;
@@ -74,7 +70,6 @@ export const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-
   @media (max-width: 768px) {
     width: 100%;
     height: 100%;
@@ -114,7 +109,6 @@ export const UserSubscribedCard = styled.ul`
   background-color: ${Colors.BasePurple};
   border: 1px solid red;
 `;
-
 export const ListStyle = styled.li`
   list-style-type: none;
 `;
