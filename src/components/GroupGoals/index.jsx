@@ -94,6 +94,7 @@ const GroupGoals = () => {
                   {item.title} || {item.difficulty} ||
                   {item.how_much_achieved}%
                   <ModalForm
+                    size="20px"
                     isButton={false}
                     ImgSrc={pen}
                     icon={editGoalsModal}
