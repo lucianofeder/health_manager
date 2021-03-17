@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Colors from "../../global/Colors";
 
 export const ContainerImg = styled.div`
   position: relative;
@@ -43,4 +44,13 @@ export const ContainerImg = styled.div`
 export const Container = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+export const FullScreen = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: ${Colors.BackgroundBaseGray};
 `;

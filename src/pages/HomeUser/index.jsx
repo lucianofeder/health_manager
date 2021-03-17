@@ -1,6 +1,7 @@
 import Menu from "../../components/Header";
 import Footer from "../../components/Footer";
 import Card from "../../components/Card";
+import LoadingProgress from "../../components/LoadingProgress";
 
 import {
   MainContainer,
@@ -58,7 +59,9 @@ const HomeUser = () => {
     !loaded && getDataHomeUser();
   });
 
-  return (
+  return !loaded ? (
+    <LoadingProgress />
+  ) : (
     <MainContainer>
       {!user_id && <Redirect to={`/Login`} />}
       <Menu />
