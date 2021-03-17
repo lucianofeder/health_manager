@@ -43,7 +43,7 @@ export const DivForm = styled.div`
 `;
 
 export const ImgStyled = styled.img.attrs((props) => ({
-  size: props.size || "1em",
+  size: props.size || "20px",
 }))`
   width: ${(props) => props.size};
   height: ${(props) => props.size};
