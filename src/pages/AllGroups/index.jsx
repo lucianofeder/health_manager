@@ -13,6 +13,8 @@ const AllGroups = () => {
   const [groups, setGroups] = useState([]);
   const [actualPage, setActualPage] = useState(1);
   const [nextPage, setNextPage] = useState();
+  const [textSearch, setTextSearch] = useState("");
+  const [formattedText, setFormattedText] = useState("");
 
   const fetchData = (page) => {
     api
@@ -25,10 +27,35 @@ const AllGroups = () => {
       .then(() => setLoaded(true));
   };
 
+  const fetchFiltered = (page = 1) => {
+    api
+      .get(`groups/?search=${formattedText}&page=${page}`)
+      .then((res) => {
+        setActualPage(page);
+        setNextPage(getPageFromURL(res.data.next));
+        setGroups(res.data.results);
+      })
+      .then(() => setLoaded(true));
+  };
+
+  const handleClick = () => {
+    textSearch.length ? fetchFiltered() : fetchData(1);
+  };
+
   const getPageFromURL = (url) => {
     if (url) {
       url = url.split("=");
-      return Number(url[url.length - 1]);
+      if (!isNaN(url[url.length - 1])) {
+        return Number(url[url.length - 1]);
+      } else {
+        url = url.join("=");
+        for (let i = 0; i < url.length; i++) {
+          if (!isNaN(url[i])) {
+            console.log(Number(url[i]));
+            return Number(url[i]);
+          }
+        }
+      }
     }
   };
 
@@ -43,6 +70,12 @@ const AllGroups = () => {
       setLoaded(false);
     }
   };
+  const handleInput = (evt) => {
+    const input = evt.target.value;
+    const text = input.split(" ").join("%20");
+    setFormattedText(text);
+    setTextSearch(input);
+  };
 
   useEffect(() => {
     if (!loaded) {
@@ -54,7 +87,11 @@ const AllGroups = () => {
     <Main>
       <Header />
       <Container>
-        <SearchBar />
+        <SearchBar
+          value={textSearch}
+          handleInput={handleInput}
+          handleClick={handleClick}
+        />
         <ListContainer
           list={groups}
           handleNextPage={handleNextPage}
