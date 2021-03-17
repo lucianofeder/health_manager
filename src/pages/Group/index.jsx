@@ -33,6 +33,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import GroupDescription from "../../components/GroupDescription";
+import GroupName from "../../components/GroupName";
 // import { GroupSharp } from "@material-ui/icons";
 const Group = () => {
   const { id } = useParams();
@@ -82,10 +83,7 @@ const Group = () => {
       <LimitContainer>
         <HeaderComponent />
         <ImageGroupStyles src={ImageGroup} alt="Group Image" />
-        <NameGroupContainer>
-          <Title>{loaded && group.name}</Title>
-          <TypeGroup>{loaded && group.category}</TypeGroup>
-        </NameGroupContainer>
+        <GroupName />
         <GroupDescriptionContainer>
           <InfoContainer>
             <GroupDescription />
