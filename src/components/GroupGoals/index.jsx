@@ -1,4 +1,7 @@
+/* eslint-disable array-callback-return */
 import ModalForm from "../../components/ModalForm";
+import CircularStatic from "../../components/ProgressBar";
+
 import {
   ImgStyled,
   ListStyle,
@@ -40,7 +43,6 @@ const GroupGoals = () => {
     resolver: yupResolver(schema),
   });
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const getDataPageGroup = async () => {
     await api.get(`groups/${id}/`).then((res) => setGroup(res.data));
 
@@ -102,6 +104,7 @@ const GroupGoals = () => {
 
   useEffect(() => {
     !loaded && getDataPageGroup();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [group]);
 
   return (
@@ -114,10 +117,18 @@ const GroupGoals = () => {
               <>
                 <ListStyle key={item.id}>
                   <DivStyledItems>
-                    <DivStyled first>{item.title}</DivStyled>
-                    <DivAdjust>
+                    <DivAdjust first>
+                      <DivStyled>{item.title}</DivStyled>
                       <DivStyled>{item.difficulty}</DivStyled>
-                      <DivStyled>{item.how_much_achieved}%</DivStyled>
+                    </DivAdjust>
+                    <DivAdjust>
+                      <CircularStatic
+                        url="goals"
+                        id={item.id}
+                        valueProgress={item.how_much_achieved}
+                        setLoaded={setLoaded}
+                        getDataPageGroup={getDataPageGroup}
+                      />
                     </DivAdjust>
                   </DivStyledItems>
                   <DivStyledIcons>

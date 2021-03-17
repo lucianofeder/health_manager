@@ -2,7 +2,7 @@ import HeaderComponent from "../../components/Header";
 import Footer from "../../components/Footer";
 // import ModalForm from "../../components/ModalForm";
 import CardUsersGroup from "../../components/CardUsersGroup";
-import Card from "../../components/Card";
+import GroupActivities from "../../components/GroupActivities";
 import GroupGoals from "../../components/GroupGoals";
 import LoadingProgress from "../../components/LoadingProgress";
 
@@ -87,8 +87,9 @@ const Group = () => {
         <GroupDescriptionContainer>
           <InfoContainer>
             <GroupDescription />
-            <Card title="Activities">
-              {loaded && group.activities
+            {/* CARD NOVO !!!*/}
+            <GroupActivities>
+              {/* {loaded && group.activities
                 ? group.activities.map((item) => (
                     <ul key={item.id}>
                       <ListStyle>{item.title}</ListStyle>
@@ -100,8 +101,8 @@ const Group = () => {
                       <hr />
                     </ul>
                   ))
-                : "Sem Atividades"}
-            </Card>
+                : "Sem Atividades"} */}
+            </GroupActivities>
 
             {/* CARD NOVO !!! */}
             <GroupGoals />
