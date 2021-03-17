@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
+import { FaRegTrashAlt } from "react-icons/fa";
+
 export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -74,10 +76,6 @@ export const InfoContainer = styled.div`
   }
 `;
 
-export const ListStyle = styled.li`
-  list-style-type: none;
-`;
-
 export const CardContainer = styled.div`
   width: 310px;
   min-height: 100px;
@@ -125,4 +123,45 @@ export const CardContainer = styled.div`
       color: ${Colors.BaseGreen};
     }
   }
+`;
+
+export const ListStyle = styled.li`
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 10px 0 10px 0;
+`;
+
+export const DivStyledItems = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 240px;
+`;
+
+export const DivAdjust = styled.div`
+  display: flex;
+`;
+
+export const DivStyled = styled.div`
+  display: ${(props) => props.first && "flex"};
+  justify-content: ${(props) => props.first && "center"};
+  padding: ${(props) => (props.first ? "" : " 0 5px 0 5px")};
+  width: ${(props) => props.first && "127px"};
+`;
+
+export const DivStyledIcons = styled.div`
+  display: flex;
+  justify-content: space-around;
+
+  min-width: 55px;
+  height: 20px;
+`;
+
+export const ImgStyled = styled(FaRegTrashAlt)`
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
 `;
