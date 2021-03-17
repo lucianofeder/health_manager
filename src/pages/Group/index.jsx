@@ -2,7 +2,7 @@ import HeaderComponent from "../../components/Header";
 import Footer from "../../components/Footer";
 // import ModalForm from "../../components/ModalForm";
 import CardUsersGroup from "../../components/CardUsersGroup";
-import GroupActivities from "../../components/GroupActivities";
+import Card from "../../components/Card";
 import GroupGoals from "../../components/GroupGoals";
 import LoadingProgress from "../../components/LoadingProgress";
 
@@ -33,7 +33,6 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import GroupDescription from "../../components/GroupDescription";
-import GroupName from "../../components/GroupName";
 // import { GroupSharp } from "@material-ui/icons";
 const Group = () => {
   const { id } = useParams();
@@ -83,13 +82,15 @@ const Group = () => {
       <LimitContainer>
         <HeaderComponent />
         <ImageGroupStyles src={ImageGroup} alt="Group Image" />
-        <GroupName />
+        <NameGroupContainer>
+          <Title>{loaded && group.name}</Title>
+          <TypeGroup>{loaded && group.category}</TypeGroup>
+        </NameGroupContainer>
         <GroupDescriptionContainer>
           <InfoContainer>
             <GroupDescription />
-            {/* CARD NOVO !!!*/}
-            <GroupActivities>
-              {/* {loaded && group.activities
+            <Card title="Activities">
+              {loaded && group.activities
                 ? group.activities.map((item) => (
                     <ul key={item.id}>
                       <ListStyle>{item.title}</ListStyle>
@@ -101,8 +102,8 @@ const Group = () => {
                       <hr />
                     </ul>
                   ))
-                : "Sem Atividades"} */}
-            </GroupActivities>
+                : "Sem Atividades"}
+            </Card>
 
             {/* CARD NOVO !!! */}
             <GroupGoals />

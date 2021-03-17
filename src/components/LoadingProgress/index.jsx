@@ -16,7 +16,7 @@ const LoadingProgress = () => {
           <img id="i4" src={heart3} alt="heart" />
         </ContainerImg>
 
-        <img src={title} alt="Habitus" />
+        <img id="i5" src={title} alt="Habitus" />
       </Container>
     </FullScreen>
   );
