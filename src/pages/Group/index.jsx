@@ -1,13 +1,13 @@
 import HeaderComponent from "../../components/Header";
 import Footer from "../../components/Footer";
-import ModalForm from "../../components/ModalForm";
+// import ModalForm from "../../components/ModalForm";
 import CardUsersGroup from "../../components/CardUsersGroup";
 import Card from "../../components/Card";
 import GroupGoals from "../../components/GroupGoals";
 
 import ImageGroup from "../../images/group.svg";
-import add from "../../images/add.svg";
-import goalsModal from "../../images/Icons/goalsModal.svg";
+// import add from "../../images/add.svg";
+// import goalsModal from "../../images/Icons/goalsModal.svg";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -25,7 +25,7 @@ import {
   // DescriptioCard,
   // ActivitiesCard,
   // GoalsCard,
-  Ul,
+  // Ul,
 } from "./styles";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
