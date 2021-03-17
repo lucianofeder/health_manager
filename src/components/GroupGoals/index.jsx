@@ -6,6 +6,7 @@ import {
   DivStyledIcons,
   DivStyledItems,
   DivStyled,
+  DivAdjust,
 } from "./style";
 
 import add from "../../images/add.svg";
@@ -110,33 +111,38 @@ const GroupGoals = () => {
 
         {loaded && group.goals
           ? group.goals.map((item) => (
-              <ListStyle key={item.id}>
-                <DivStyledItems>
-                  <DivStyled>{item.title}</DivStyled>
-                  <DivStyled>{item.difficulty}</DivStyled>
-                  <DivStyled>{item.how_much_achieved}%</DivStyled>
-                </DivStyledItems>
-                <DivStyledIcons>
-                  <ModalForm
-                    isButton={false}
-                    ImgSrc={pen}
-                    icon={editGoalsModal}
-                    iconWidth="300px"
-                    title="Edit Goals"
-                    inputName={inputEditGoals}
-                    buttonName="Editar"
-                    formAction={handleSubmit((data) =>
-                      handleUpdateGoals(data, item.id)
-                    )}
-                    reference={register}
-                    errors={errors}
-                  />
-                  <ImgStyled
-                    onClick={() => handleDeleteGoals(item.id)}
-                    src={close}
-                  />
-                </DivStyledIcons>
-              </ListStyle>
+              <>
+                <ListStyle key={item.id}>
+                  <DivStyledItems>
+                    <DivStyled first>{item.title}</DivStyled>
+                    <DivAdjust>
+                      <DivStyled>{item.difficulty}</DivStyled>
+                      <DivStyled>{item.how_much_achieved}%</DivStyled>
+                    </DivAdjust>
+                  </DivStyledItems>
+                  <DivStyledIcons>
+                    <ModalForm
+                      isButton={false}
+                      ImgSrc={pen}
+                      icon={editGoalsModal}
+                      iconWidth="300px"
+                      title="Edit Goals"
+                      inputName={inputEditGoals}
+                      buttonName="Editar"
+                      formAction={handleSubmit((data) =>
+                        handleUpdateGoals(data, item.id)
+                      )}
+                      reference={register}
+                      errors={errors}
+                    />
+                    <ImgStyled
+                      onClick={() => handleDeleteGoals(item.id)}
+                      src={close}
+                    />
+                  </DivStyledIcons>
+                </ListStyle>
+                <hr />
+              </>
             ))
           : "Nenhuma meta"}
         <ModalForm

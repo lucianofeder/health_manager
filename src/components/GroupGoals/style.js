@@ -76,15 +76,6 @@ export const InfoContainer = styled.div`
   }
 `;
 
-export const ListStyle = styled.li`
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  margin: 10px 0 10px 0;
-`;
-
 export const CardContainer = styled.div`
   width: 310px;
   min-height: 100px;
@@ -134,17 +125,31 @@ export const CardContainer = styled.div`
   }
 `;
 
-export const ImgStyled = styled(FaRegTrashAlt)`
-  cursor: pointer;
-  width: 20px;
-  height: 20px;
+export const ListStyle = styled.li`
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 10px 0 10px 0;
 `;
 
 export const DivStyledItems = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   width: 240px;
+`;
+
+export const DivAdjust = styled.div`
+  display: flex;
+`;
+
+export const DivStyled = styled.div`
+  display: ${(props) => props.first && "flex"};
+  justify-content: ${(props) => props.first && "center"};
+  padding: ${(props) => (props.first ? "" : " 0 5px 0 5px")};
+  width: ${(props) => props.first && "127px"};
 `;
 
 export const DivStyledIcons = styled.div`
@@ -155,6 +160,8 @@ export const DivStyledIcons = styled.div`
   height: 20px;
 `;
 
-export const DivStyled = styled.div`
-  padding: 0 5px 0 5px;
+export const ImgStyled = styled(FaRegTrashAlt)`
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
 `;
