@@ -51,7 +51,6 @@ const HomeUser = () => {
       .then((res) => setHabits(res.data));
     await api.get(`users/${id}/`).then((res) => setUser(res.data));
     await api.get(`groups/${user.group}/`).then((res) => setGroup(res.data));
-
     setLoaded(true);
   };
 
@@ -102,29 +101,6 @@ const HomeUser = () => {
               ))}
           </Card>
         </DivGroup>
-
-        <LastContainer>
-          {loaded &&
-            user_id === id &&
-            habits.map((item, index) => (
-              <div key={index}>
-                <h1>Habits</h1>
-                <DivHabits>
-                  <Card title={item.title}>
-                    <DivHabitsCard>Categoria: {item.category}</DivHabitsCard>
-                    <DivHabitsCard>
-                      Dificuldade: {item.difficulty}
-                    </DivHabitsCard>
-                    <DivHabitsCard>Frequência: {item.frequency}</DivHabitsCard>
-                    <DivHabitsCard>
-                      Quanto foi alcançado: {item.how_much_achieved}%
-                    </DivHabitsCard>
-                  </Card>
-                  <Traveler src={TravelerImg} />
-                </DivHabits>
-              </div>
-            ))}
-        </LastContainer>
       </LimitContainer>
       <Footer />
     </MainContainer>
