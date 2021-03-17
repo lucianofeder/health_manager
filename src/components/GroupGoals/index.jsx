@@ -126,6 +126,8 @@ const GroupGoals = () => {
                         url="goals"
                         id={item.id}
                         valueProgress={item.how_much_achieved}
+                        setLoaded={setLoaded}
+                        getDataPageGroup={getDataPageGroup}
                       />
                     </DivAdjust>
                   </DivStyledItems>
