@@ -1,9 +1,10 @@
 import ModalForm from "../../components/ModalForm";
-import { Subtitle, ListStyle } from "./style";
+import { Subtitle, ListStyle, CardContainer } from "./style";
 
 import add from "../../images/add.svg";
 import pen from "../../images/pen.svg";
 import goalsModal from "../../images/Icons/goalsModal.svg";
+import editGoalsModal from "../../images/Icons/editGoalsModal.svg";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -43,8 +44,8 @@ const GroupGoals = () => {
   ];
 
   const inputEditGoals = [
-    ["title", "NOME DA META"],
-    ["difficulty", "DIFICULDADE"],
+    ["title", "EDITE SUA META"],
+    ["difficulty", "EDITE A DIFICULDADE"],
   ];
 
   const handleCreateGoals = (data) => {
@@ -83,21 +84,8 @@ const GroupGoals = () => {
 
   return (
     <>
-      <div>
+      <CardContainer>
         <h2>Goals</h2>
-
-        <ModalForm
-          isButton={false}
-          ImgSrc={add}
-          icon={goalsModal}
-          iconWidth="300px"
-          title="Create Goals"
-          inputName={inputName}
-          buttonName="Enviar"
-          formAction={handleSubmit(handleCreateGoals)}
-          reference={register}
-          errors={errors}
-        />
 
         {loaded && group.goals
           ? group.goals.map((item) => (
@@ -108,7 +96,7 @@ const GroupGoals = () => {
                   <ModalForm
                     isButton={false}
                     ImgSrc={pen}
-                    icon={goalsModal}
+                    icon={editGoalsModal}
                     iconWidth="300px"
                     title="Edit Goals"
                     inputName={inputEditGoals}
@@ -123,7 +111,19 @@ const GroupGoals = () => {
               </ul>
             ))
           : "Nenhuma meta"}
-      </div>
+        <ModalForm
+          isButton={false}
+          ImgSrc={add}
+          icon={goalsModal}
+          iconWidth="300px"
+          title="Create Goals"
+          inputName={inputName}
+          buttonName="Enviar"
+          formAction={handleSubmit(handleCreateGoals)}
+          reference={register}
+          errors={errors}
+        />
+      </CardContainer>
     </>
   );
 };

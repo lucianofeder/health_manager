@@ -122,11 +122,11 @@ const Group = () => {
             {/* CARD NOVO !!! */}
             <GroupGoals />
 
-            <Card title="Goals">
-              {/* CRIAR RENDERIZAÇÃO CONDICIONAL PARA QUANDO O USUARIO ACESSAR O 
+            {/* <Card title="Goals"> */}
+            {/* CRIAR RENDERIZAÇÃO CONDICIONAL PARA QUANDO O USUARIO ACESSAR O 
               PERFIL DE OUTRO USUARIO NÃO PODER ADICIONAR GOALS NO OUTRO PERFIL */}
 
-              <ModalForm
+            {/* <ModalForm
                 isButton={false}
                 ImgSrc={add}
                 icon={goalsModal}
@@ -149,7 +149,7 @@ const Group = () => {
                     </ul>
                   ))
                 : "Nenhuma meta"}
-            </Card>
+            </Card> */}
           </InfoContainer>
 
           {loaded && <CardUsersGroup users={group.users} />}
