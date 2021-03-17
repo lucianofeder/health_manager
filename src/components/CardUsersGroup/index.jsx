@@ -1,5 +1,6 @@
 import CardUsersGroupStyled from "./style";
 import userIcon from "../../images/Undraw/user.svg";
+import GroupSubscribe from "../GroupSubscribe";
 
 /*
 todo Props necessaria = users
@@ -15,6 +16,7 @@ todo Props necessaria = users
 const CardUsersGroup = ({ users }) => {
   return (
     <CardUsersGroupStyled>
+      <GroupSubscribe />
       <h2>Participating Users</h2>
       <div id="containerUsers">
         {users?.map((user, index) => (

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
+
 export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -9,6 +10,13 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const ContainerButtons = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+`;
+
 export const LimitContainer = styled.div`
   width: 100%;
   max-width: 1733px;

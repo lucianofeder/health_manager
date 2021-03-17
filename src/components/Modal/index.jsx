@@ -19,13 +19,13 @@ import Button from "../Button";
 
 import close from "../../images/Icons/close.png";
 
-const Modal = ({ isButton, nameBtn, ImgSrc, children }) => {
+const Modal = ({ isButton, nameBtn, ImgSrc, children, Open, setOpen }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
   const toggleModal = () => {
     setOpacity(0);
-    setIsOpen(!isOpen);
+    setOpen(!Open);
   };
 
   const afterOpen = () => {
@@ -51,7 +51,7 @@ const Modal = ({ isButton, nameBtn, ImgSrc, children }) => {
         <ImgStyled onClick={() => toggleModal()} src={ImgSrc} alt="icon" />
       )}
       <StyledModal
-        isOpen={isOpen}
+        isOpen={Open}
         afterOpen={afterOpen}
         beforeClose={beforeClose}
         onBackgroundClick={toggleModal}
