@@ -5,6 +5,7 @@ import CardUsersGroup from "../../components/CardUsersGroup";
 import Card from "../../components/Card";
 import GroupGoals from "../../components/GroupGoals";
 import LoadingProgress from "../../components/LoadingProgress";
+import GroupActivities from "../../components/GroupActivities";
 
 import ImageGroup from "../../images/group.svg";
 // import add from "../../images/add.svg";
@@ -89,21 +90,7 @@ const Group = () => {
         <GroupDescriptionContainer>
           <InfoContainer>
             <GroupDescription />
-            <Card title="Activities">
-              {loaded && group.activities
-                ? group.activities.map((item) => (
-                    <ul key={item.id}>
-                      <ListStyle>{item.title}</ListStyle>
-                      <ListStyle>
-                        {new Date(item.realization_time)
-                          .toUTCString()
-                          .slice(0, -7)}
-                      </ListStyle>
-                      <hr />
-                    </ul>
-                  ))
-                : "Sem Atividades"}
-            </Card>
+            <GroupActivities />
 
             {/* CARD NOVO !!! */}
             <GroupGoals />
