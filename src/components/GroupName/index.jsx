@@ -11,7 +11,9 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import { CardContainer } from "./style";
-import { NameGroupContainer, Title, ListStyle, TypeGroup } from "./style";
+import { NameGroupContainer, Title, TypeGroup } from "./style";
+import { ContainerButtons } from "./style";
+import GroupSubscribe from "../GroupSubscribe";
 const GroupName = () => {
   const { id } = useParams();
   const { token } = useSelector((state) => state.users);
@@ -60,18 +62,20 @@ const GroupName = () => {
   return (
     <div>
       <div id="pen">
-        <ModalForm
-          isButton={false}
-          ImgSrc={pen}
-          icon={goalsModal}
-          iconWidth="300px"
-          title="edit group"
-          inputName={inputEditGoals}
-          buttonName="Editar"
-          formAction={handleSubmit(handleUpdateName)}
-          reference={register}
-          errors={errors}
-        />
+        <ContainerButtons>
+          <ModalForm
+            isButton={false}
+            ImgSrc={pen}
+            icon={goalsModal}
+            iconWidth="300px"
+            title="edit group"
+            inputName={inputEditGoals}
+            buttonName="Editar"
+            formAction={handleSubmit(handleUpdateName)}
+            reference={register}
+            errors={errors}
+          />
+        </ContainerButtons>
       </div>
       <NameGroupContainer>
         <Title>{loaded && group.name}</Title>

@@ -49,7 +49,7 @@ import Input from "../Input";
 import Button from "../Button";
 import InputSelector from "../InputSelector";
 
-const FormStyle = ({ instructions, form }) => {
+const FormStyle = ({ instructions, form, setOpen }) => {
   const { icon, iconWidth, title, inputName, buttonName } = instructions;
 
   const { formAction, ref, errors } = form;
@@ -79,7 +79,11 @@ const FormStyle = ({ instructions, form }) => {
             />
           );
         })}
-        <Button>{buttonName}</Button>
+        {setOpen ? (
+          <Button action={() => setOpen(false)}>{buttonName}</Button>
+        ) : (
+          <Button>{buttonName}</Button>
+        )}
       </form>
     </FormContainer>
   );

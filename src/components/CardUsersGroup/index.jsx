@@ -1,5 +1,9 @@
 import CardUsersGroupStyled from "./style";
 import userIcon from "../../images/Undraw/user.svg";
+import GroupSubscribe from "../GroupSubscribe";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../../services/api";
 
 /*
 todo Props necessaria = users
@@ -13,11 +17,33 @@ todo Props necessaria = users
 */
 
 const CardUsersGroup = ({ users }) => {
+  const { id } = useParams();
+  const [group, setGroup] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+
+  const getDataPageGroup = async () => {
+    await api
+      .get(`groups/${id}/`)
+      .then((res) => setGroup(res.data))
+      .catch((res) => console.log(res));
+    setLoaded(true);
+  };
+  useEffect(() => {
+    !loaded && getDataPageGroup();
+  }, []);
+
+  const teste = (texto) => {
+    console.log(texto);
+  };
   return (
     <CardUsersGroupStyled>
+      <GroupSubscribe
+        setLoaded={setLoaded}
+        getDataPageGroup={getDataPageGroup}
+      />
       <h2>Participating Users</h2>
       <div id="containerUsers">
-        {users?.map((user, index) => (
+        {group.users?.map((user, index) => (
           <div id="containerInfos" key={index}>
             <img src={userIcon} alt="User Icon" />
             <p>{user.username}</p>
