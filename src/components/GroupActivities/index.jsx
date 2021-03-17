@@ -6,8 +6,8 @@ import { useEffect } from "react";
 import api from "../../services/api";
 
 import close from "../../images/Icons/close.png";
-import pen from "../../images/pen.svg";
-import add from "../../images/add.svg";
+import edit from "../../images/Icons/edit.svg";
+import add from "../../images/Icons/addSTD2.svg";
 import ActivityModal from "../../images/Icons/activityModal.svg";
 
 import * as yup from "yup";
@@ -127,7 +127,7 @@ const GroupActivities = () => {
                 <ButtonsContainer>
                   <ModalForm
                     isButton={false}
-                    ImgSrc={pen}
+                    ImgSrc={edit}
                     icon={ActivityModal}
                     iconWidth="300px"
                     title="Create Activity"

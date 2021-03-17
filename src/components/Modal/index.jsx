@@ -59,7 +59,7 @@ const Modal = ({ isButton, nameBtn, ImgSrc, children, Open, setOpen }) => {
         opacity={opacity}
         backgroundProps={{ opacity }}
       >
-        <DivImg>
+        <DivImg >
           <img src={close} alt="logo" onClick={() => toggleModal()}></img>
         </DivImg>
 
