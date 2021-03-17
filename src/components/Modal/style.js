@@ -18,7 +18,8 @@ position:relative;
 border-radius: 1%;
 
 @media(max-width: 640px) {
-width: 400px;}
+width: 400px;
+}
 `;
 
 export const DivImg = styled.div`
@@ -43,7 +44,7 @@ export const DivForm = styled.div`
 `;
 
 export const ImgStyled = styled.img.attrs((props) => ({
-  size: props.size || "20px",
+  size: props.size || "28px",
 }))`
   width: ${(props) => props.size};
   height: ${(props) => props.size};

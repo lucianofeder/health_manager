@@ -37,6 +37,7 @@ export const Hr = styled.hr`
 export const ButtonsContainer = styled.div`
   width: 20%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
 `;
 export const Ul = styled.ul`
@@ -58,6 +59,7 @@ export const AddButtonDiv = styled.div`
 
 export const ImgStyled = styled(FaRegTrashAlt)`
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
+  color: #1c1362;
 `;

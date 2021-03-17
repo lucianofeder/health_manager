@@ -18,3 +18,9 @@ export const ProgressContainer = styled.div`
     font-weight: bold;
   }
 `;
+
+export const ProgressButtons = styled.img`
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+`;

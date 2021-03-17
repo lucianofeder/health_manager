@@ -135,6 +135,7 @@ export const DivStyledIcons = styled.div`
 
 export const ImgStyled = styled(FaRegTrashAlt)`
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
+  color: #1c1362;
 `;

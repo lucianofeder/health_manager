@@ -13,8 +13,8 @@ import {
   CardContainerSecond,
 } from "./style";
 
-import add from "../../images/add.svg";
-import pen from "../../images/pen.svg";
+import add from "../../images/Icons/addSTD2.svg";
+import edit from "../../images/Icons/edit.svg";
 import close from "../../images/Icons/close.png";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 import editGoalsModal from "../../images/Icons/editGoalsModal.svg";
@@ -135,7 +135,7 @@ const GroupGoals = () => {
                   <DivStyledIcons>
                     <ModalForm
                       isButton={false}
-                      ImgSrc={pen}
+                      ImgSrc={edit}
                       icon={editGoalsModal}
                       iconWidth="300px"
                       title="Edit Goals"

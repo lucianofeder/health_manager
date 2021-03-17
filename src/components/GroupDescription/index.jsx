@@ -1,7 +1,5 @@
 import ModalForm from "../../components/ModalForm";
-import { Subtitle, ListStyle } from "./style";
-import add from "../../images/add.svg";
-import pen from "../../images/pen.svg";
+import edit from "../../images/Icons/edit.svg";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -55,7 +53,7 @@ const GroupDescription = () => {
         <div id="pen">
           <ModalForm
             isButton={false}
-            ImgSrc={pen}
+            ImgSrc={edit}
             icon={goalsModal}
             iconWidth="300px"
             title="edit description"
