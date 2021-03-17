@@ -6,7 +6,7 @@ import { ProgressContainer } from "./style";
 
 import api from "../../services/api";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 function CircularProgressWithLabel(props) {
@@ -39,6 +39,7 @@ CircularProgressWithLabel.propTypes = {
 
 export default function CircularStatic(valueProgress) {
   const { token } = useSelector((state) => state.users);
+  const [progressNumber, setProgressNumber] = useState(0);
 
   const patchDataProgess = async (isPositive) => {
     let data = {};
@@ -52,10 +53,15 @@ export default function CircularStatic(valueProgress) {
       .patch(`${valueProgress.url}/${valueProgress.id.toString()}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then();
+      .then(() => setProgressNumber(progressNumber + 1));
+    valueProgress.setLoaded(false);
   };
 
   const [progress, setProgress] = useState(valueProgress);
+
+  useEffect(() => {
+    !valueProgress.loaded && valueProgress.getDataPageGroup();
+  }, [progressNumber]);
 
   return (
     <ProgressContainer progress={progress}>
