@@ -89,6 +89,7 @@ const Group = () => {
         </NameGroupContainer>
         <GroupDescriptionContainer>
           <InfoContainer>
+            {/* CARD NOVO !!! */}
             <GroupDescription />
             <GroupActivities />
 

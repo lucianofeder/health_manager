@@ -10,6 +10,7 @@ import {
   DivStyledItems,
   DivStyled,
   DivAdjust,
+  CardContainerSecond,
 } from "./style";
 
 import add from "../../images/add.svg";
@@ -109,7 +110,7 @@ const GroupGoals = () => {
 
   return (
     <>
-      <CardContainer>
+      <CardContainer className="container">
         <h2>Goals</h2>
 
         {loaded && group.goals
@@ -156,6 +157,8 @@ const GroupGoals = () => {
               </>
             ))
           : "Nenhuma meta"}
+      </CardContainer>
+      <CardContainerSecond>
         <ModalForm
           isButton={false}
           ImgSrc={add}
@@ -168,7 +171,7 @@ const GroupGoals = () => {
           reference={register}
           errors={errors}
         />
-      </CardContainer>
+      </CardContainerSecond>
     </>
   );
 };
