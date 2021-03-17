@@ -2,6 +2,7 @@ import ListContainer from "../../components/ListContainer";
 import Header from "../../components/Header";
 import SearchBar from "../../components/SearchBar";
 import Footer from "../../components/Footer";
+import LoadingProgress from "../../components/LoadingProgress";
 
 import { useEffect, useState } from "react";
 import api from "../../services/api";
@@ -24,7 +25,7 @@ const AllGroups = () => {
         setNextPage(getPageFromURL(res.data.next));
         setGroups(res.data.results);
       })
-      .then(() => setLoaded(true));
+      .then(() => setTimeout(() => setLoaded(true), 1000));
   };
 
   const fetchFiltered = (page = 1) => {
@@ -83,7 +84,9 @@ const AllGroups = () => {
     }
   });
 
-  return (
+  return !loaded ? (
+    <LoadingProgress />
+  ) : (
     <Main>
       <Header />
       <Container>

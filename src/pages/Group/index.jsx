@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import CardUsersGroup from "../../components/CardUsersGroup";
 import Card from "../../components/Card";
 import GroupGoals from "../../components/GroupGoals";
+import LoadingProgress from "../../components/LoadingProgress";
 
 import ImageGroup from "../../images/group.svg";
 // import add from "../../images/add.svg";
@@ -50,7 +51,7 @@ const Group = () => {
   const getDataPageGroup = async () => {
     // await api.get(`users/${user_id}/`).then((res) => setUser(res.data));
     await api.get(`groups/${id}/`).then((res) => setGroup(res.data));
-    setLoaded(true);
+    setTimeout(() => setLoaded(true), 500);
   };
   const inputName = [
     ["title", "NOME DA META"],
@@ -74,7 +75,9 @@ const Group = () => {
   useEffect(() => {
     !loaded && getDataPageGroup();
   });
-  return (
+  return !loaded ? (
+    <LoadingProgress />
+  ) : (
     <MainContainer>
       <LimitContainer>
         <HeaderComponent />
