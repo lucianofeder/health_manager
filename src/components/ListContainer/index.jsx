@@ -7,7 +7,8 @@ import {
   DivButtons,
 } from "./style";
 import ListedInfo from "../ListedInfo";
-import Button from "../Button/";
+
+import CreateGroup from "../../components/CreateGroup";
 
 const ListContainer = ({
   list,
@@ -22,7 +23,7 @@ const ListContainer = ({
       {type === "group" && (
         <Header>
           <Title>Groups</Title>
-          <Button action={() => console.log("oi")}>New Group</Button>
+          <CreateGroup />
         </Header>
       )}
       <DivButtons>
