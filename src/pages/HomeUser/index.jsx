@@ -1,5 +1,7 @@
 import Menu from "../../components/Header";
 import Footer from "../../components/Footer";
+import Card from "../../components/Card";
+
 import {
   MainContainer,
   LimitContainer,
@@ -23,12 +25,10 @@ import TravelerImg from "../../images/Undraw/Traveler.svg";
 import { Redirect } from "react-router-dom";
 
 import { useHistory, useParams } from "react-router-dom";
-
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 
 import { useSelector } from "react-redux";
-import Card from "../../components/Card";
 
 const HomeUser = () => {
   const { id } = useParams();
@@ -36,8 +36,8 @@ const HomeUser = () => {
   const history = useHistory();
 
   const { token, user_id } = useSelector((state) => state.users);
-  const [loaded, setLoaded] = useState(false);
 
+  const [loaded, setLoaded] = useState(false);
   const [habits, setHabits] = useState([]);
   const [user, setUser] = useState([]);
   const [group, setGroup] = useState([]);

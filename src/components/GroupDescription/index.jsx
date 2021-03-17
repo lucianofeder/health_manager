@@ -67,7 +67,7 @@ const GroupDescription = () => {
           />
         </div>
         <h1>Description</h1>
-        {loaded && group.description ? group.description : ""}
+        {loaded && group.description ? group.description : "sem descrição"}
       </CardContainer>
     </>
   );

@@ -50,10 +50,11 @@ const ModalForm = ({
   errors,
   isButton,
   nameBtn,
+  size,
 }) => {
   return (
     <>
-      <Modal ImgSrc={ImgSrc} isButton={isButton} nameBtn={nameBtn}>
+      <Modal ImgSrc={ImgSrc} isButton={isButton} nameBtn={nameBtn} size={size}>
         <FormStyle
           instructions={{
             icon: icon,

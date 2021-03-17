@@ -3,6 +3,8 @@ import Footer from "../../components/Footer";
 import ModalForm from "../../components/ModalForm";
 import CardUsersGroup from "../../components/CardUsersGroup";
 import Card from "../../components/Card";
+import GroupGoals from "../../components/GroupGoals";
+
 import ImageGroup from "../../images/group.svg";
 import add from "../../images/add.svg";
 import goalsModal from "../../images/Icons/goalsModal.svg";
@@ -83,7 +85,54 @@ const Group = () => {
         </NameGroupContainer>
         <GroupDescriptionContainer>
           <InfoContainer>
-            <GroupDescription></GroupDescription>
+            <GroupDescription />
+            <Card title="Activities">
+              {loaded && group.activities
+                ? group.activities.map((item) => (
+                    <ul key={item.id}>
+                      <ListStyle>{item.title}</ListStyle>
+                      <ListStyle>
+                        {new Date(item.realization_time)
+                          .toUTCString()
+                          .slice(0, -7)}
+                      </ListStyle>
+                      <hr />
+                    </ul>
+                  ))
+                : "Sem Atividades"}
+            </Card>
+
+            {/* CARD NOVO !!! */}
+            <GroupGoals />
+
+            {/* <Card title="Goals"> */}
+            {/* CRIAR RENDERIZAÇÃO CONDICIONAL PARA QUANDO O USUARIO ACESSAR O 
+              PERFIL DE OUTRO USUARIO NÃO PODER ADICIONAR GOALS NO OUTRO PERFIL */}
+
+            {/* <ModalForm
+                isButton={false}
+                ImgSrc={add}
+                icon={goalsModal}
+                iconWidth="300px"
+                title="Create Goals"
+                inputName={inputName}
+                buttonName="Enviar"
+                formAction={handleSubmit(handleForm)}
+                reference={register}
+                errors={errors}
+              />
+
+              {loaded && group.goals
+                ? group.goals.map((item) => (
+                    <ul key={item.id}>
+                      <ListStyle>
+                        {item.title} || {item.difficulty} ||
+                        {item.how_much_achieved}%
+                      </ListStyle>
+                    </ul>
+                  ))
+                : "Nenhuma meta"}
+            </Card> */}
           </InfoContainer>
           {loaded && <CardUsersGroup users={group.users} />}
         </GroupDescriptionContainer>
