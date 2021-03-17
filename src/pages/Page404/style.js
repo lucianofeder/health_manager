@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  min-height: 650px;
+  min-height: 680px;
 
   background: ${Colors.BackgroundLinear};
   font-family: Montserrat;
@@ -21,6 +21,7 @@ export const Container = styled.div`
   /* Tablet */
   @media (min-width: 700px) {
     font-size: 40px;
+    min-height: 620px;
   }
 
   /* Desktop */
