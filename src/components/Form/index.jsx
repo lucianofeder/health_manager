@@ -79,7 +79,11 @@ const FormStyle = ({ instructions, form, setOpen }) => {
             />
           );
         })}
-        <Button action={() => setOpen(false)}>{buttonName}</Button>
+        {setOpen ? (
+          <Button action={() => setOpen(false)}>{buttonName}</Button>
+        ) : (
+          <Button>{buttonName}</Button>
+        )}
       </form>
     </FormContainer>
   );
