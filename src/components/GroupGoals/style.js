@@ -136,6 +136,7 @@ export const ListStyle = styled.li`
 
 export const DivStyledItems = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 240px;
@@ -143,6 +144,8 @@ export const DivStyledItems = styled.div`
 
 export const DivAdjust = styled.div`
   display: flex;
+  width: ${(props) => props.first && "100%"};
+  justify-content: ${(props) => props.first && "center"};
 `;
 
 export const DivStyled = styled.div`
