@@ -39,12 +39,10 @@ export const Title = styled.h1`
   margin: 0;
   padding: 0;
 `;
-
 export const Subtitle = styled.h3`
-  margin: 0;
+  margin-top: 10px;
   padding: 0;
 `;
-
 export const TypeGroup = styled.h4`
   margin: 0;
   padding: 0;
@@ -75,7 +73,6 @@ export const InfoContainer = styled.div`
     height: 100%;
   }
 `;
-
 export const DescriptioCard = styled.div`
   width: 60%;
   height: 80%;
@@ -83,9 +80,28 @@ export const DescriptioCard = styled.div`
   margin: 10px 0 10px 0;
   background-color: ${Colors.BasePurple};
 `;
-export const ActivitiesCard = styled(DescriptioCard)``;
-export const GoalsCard = styled(DescriptioCard)``;
 
+export const ActivitiesCard = styled(DescriptioCard)`
+  color: #fff;
+  border: 3px solid ${Colors.BaseLightBlue};
+`;
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+export const ButtonStyles = styled.button`
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  outline: none;
+`;
+export const ImageButtonStyles = styled.img`
+  width: 100%;
+  height: 100%;
+`;
+
+export const GoalsCard = styled(DescriptioCard)``;
 export const UsersContainer = styled.div`
   width: 45%;
   height: 100%;
@@ -99,7 +115,6 @@ export const UsersContainer = styled.div`
     height: 100%;
   }
 `;
-
 export const UserSubscribedCard = styled.ul`
   text-align: center;
   width: 60%;
@@ -111,4 +126,8 @@ export const UserSubscribedCard = styled.ul`
 `;
 export const ListStyle = styled.li`
   list-style-type: none;
+`;
+
+export const Hr = styled.hr`
+  width: 80%;
 `;

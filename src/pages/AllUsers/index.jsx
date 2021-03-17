@@ -1,6 +1,7 @@
 import ListContainer from "../../components/ListContainer";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import LoadingProgress from "../../components/LoadingProgress";
 
 import { useEffect, useState } from "react";
 import api from "../../services/api";
@@ -21,7 +22,7 @@ const AllUsers = () => {
         setNextPage(getPageFromURL(res.data.next));
         setUsers(res.data.results);
       })
-      .then(() => setLoaded(true));
+      .then(() => setTimeout(() => setLoaded(true), 1000));
   };
 
   const getPageFromURL = (url) => {
@@ -49,7 +50,9 @@ const AllUsers = () => {
     }
   });
 
-  return (
+  return !loaded ? (
+    <LoadingProgress />
+  ) : (
     <Main>
       <Header />
       <Container>
