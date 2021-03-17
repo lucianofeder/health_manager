@@ -34,7 +34,7 @@ const GroupActivities = () => {
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
   const [group, setGroup] = useState([]);
-  
+
   const getDataPageGroupActivities = async () => {
     await api.get(`groups/${id}/`).then((res) => setGroup(res.data));
     setLoaded(true);

@@ -42,6 +42,7 @@ const CreateHabit = () => {
       })
       .then((resp) => {
         reset();
+        document.location.reload();
       });
   };
 

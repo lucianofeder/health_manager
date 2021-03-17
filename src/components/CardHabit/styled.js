@@ -17,6 +17,16 @@ export const Adjust = styled.div`
   .travelImage {
     display: none;
   }
+  .scroll {
+    width: 300px;
+    position: relative;
+    top: 0;
+    background-color: ${Colors.BasePurple};
+    border: solid 3px ${Colors.BaseLightBlue};
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    margin: 0 auto;
+  }
 
   @media (min-width: 900px) {
     display: flex;
@@ -34,15 +44,7 @@ export const Adjust = styled.div`
   }
 `;
 
-const TravelImg = styled.img``;
-
 export const DivHabits = styled.div`
-  background-color: ${Colors.BasePurple};
-  border: solid 3px ${Colors.BaseLightBlue};
-  border-bottom: none;
-  border-radius: 20px 20px 0 0;
-  width: 300px;
-  margin: 0 auto;
   text-align: center;
   color: ${Colors.TextColorWhite};
   display: flex;
