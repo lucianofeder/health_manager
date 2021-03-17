@@ -15,9 +15,9 @@ import api from "../../services/api";
 import Edit from "../../images/pen.svg";
 import Image from "../../images/Undraw/Habit.svg";
 import TravelImage from "../../images/Undraw/Traveler.svg";
+import { useEffect, useState } from "react";
 
 const CardHabit = ({
-  TravelImg,
   habits,
   loaded,
   setLoaded,
@@ -26,6 +26,8 @@ const CardHabit = ({
   token,
   getDataHomeUser,
 }) => {
+  const [update, setUpdate] = useState(0);
+
   const schema = yup.object().shape({
     title: yup.string(),
     category: yup.string(),
@@ -43,14 +45,18 @@ const CardHabit = ({
       .patch(`habits/${id_habit}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then();
+      .then((resp) => setUpdate(update + 1));
+    setLoaded(false);
     reset();
   };
 
   const DeleteDataHabits = async (id) => {
-    await api.delete(`habits/${id}/`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    await api
+      .delete(`habits/${id}/`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((resp) => setUpdate(update + 1));
+    setLoaded(false);
   };
 
   const inputName = [
@@ -60,61 +66,65 @@ const CardHabit = ({
     ["frequency", "Frequencia"],
   ];
 
+  useEffect(() => {
+    !loaded && getDataHomeUser();
+  }, [update]);
+
   return (
     <LastContainer>
       <h1>Habits</h1>
       <Adjust>
-        <DivHabits className="container">
-          {habits === undefined ? (
-            <p>No Habits</p>
-          ) : loaded && id === user_id ? (
-            habits.map((personHabit, index) => (
-              <div key={index}>
-                <h2>{personHabit.title}</h2>
-                <h3>{personHabit.category}</h3>
-                <HabitLine>
-                  <p>{personHabit.frequency}</p>
-                  <p>{personHabit.difficulty}</p>
-                  <CircularStatic
-                    url="habits"
-                    id={personHabit.id}
-                    valueProgress={personHabit.how_much_achieved}
-                    setLoaded={setLoaded}
-                    loaded={loaded}
-                    getDataHomeUser={getDataHomeUser}
+        <div className="container scroll">
+          <DivHabits>
+            {habits === undefined ? (
+              <p>No Habits</p>
+            ) : loaded && id === user_id ? (
+              habits.map((personHabit, index) => (
+                <div key={index}>
+                  <h2>{personHabit.title}</h2>
+                  <h3>{personHabit.category}</h3>
+                  <HabitLine>
+                    <p>{personHabit.frequency}</p>
+                    <p>{personHabit.difficulty}</p>
+                    <CircularStatic
+                      url="habits"
+                      id={personHabit.id}
+                      valueProgress={personHabit.how_much_achieved}
+                      setLoaded={setLoaded}
+                      loaded={loaded}
+                      getDataHomeUser={getDataHomeUser}
+                    />
+                  </HabitLine>
+                  <ModalForm
+                    isButton={false}
+                    ImgSrc={Edit}
+                    icon={Image}
+                    iconWidth="200px"
+                    title="Editar Habit"
+                    inputName={inputName}
+                    buttonName="Editar"
+                    formAction={handleSubmit((data) =>
+                      PatchDataHabits(
+                        personHabit.id,
+                        data,
+                        personHabit.how_much_achieved
+                      )
+                    )}
+                    reference={register}
+                    errors={errors}
                   />
-                </HabitLine>
-                <ModalForm
-                  isButton={false}
-                  ImgSrc={Edit}
-                  icon={Image}
-                  iconWidth="200px"
-                  title="Editar Habit"
-                  inputName={inputName}
-                  buttonName="Editar"
-                  formAction={handleSubmit((data) =>
-                    PatchDataHabits(
-                      personHabit.id,
-                      data,
-                      personHabit.how_much_achieved
-                    )
-                  )}
-                  reference={register}
-                  errors={errors}
-                />
-                <button onClick={() => DeleteDataHabits(personHabit.id)}>
-                  X
-                </button>
-                <hr />
-              </div>
-            ))
-          ) : (
-            <p>Você não pode ver habitos de outros</p>
-          )}
-        </DivHabits>
-        <DivAdd>
-          <CreateHabit />
-        </DivAdd>
+                  <button onClick={() => DeleteDataHabits(personHabit.id)}>
+                    X
+                  </button>
+                  <hr />
+                </div>
+              ))
+            ) : (
+              <p>Você não pode ver habitos de outros</p>
+            )}
+          </DivHabits>
+        </div>
+        <DivAdd>{user_id === id && <CreateHabit />}</DivAdd>
 
         <img src={TravelImage} className="travelImage" />
       </Adjust>
