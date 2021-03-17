@@ -1,8 +1,16 @@
 import ModalForm from "../../components/ModalForm";
-import { Subtitle, ListStyle, CardContainer } from "./style";
+import {
+  ImgStyled,
+  ListStyle,
+  CardContainer,
+  DivStyledIcons,
+  DivStyledItems,
+  DivStyled,
+} from "./style";
 
 import add from "../../images/add.svg";
 import pen from "../../images/pen.svg";
+import close from "../../images/Icons/close.png";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 import editGoalsModal from "../../images/Icons/editGoalsModal.svg";
 
@@ -78,6 +86,19 @@ const GroupGoals = () => {
     setLoaded(false);
   };
 
+  const handleDeleteGoals = (idGoal) => {
+    group.goals.map((item) => {
+      if (item.id === idGoal) {
+        api
+          .delete(`goals/${idGoal}/`, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then(() => setGroup({ ...group, goals: [group.goals] }));
+      }
+    });
+    setLoaded(false);
+  };
+
   useEffect(() => {
     !loaded && getDataPageGroup();
   }, [group]);
@@ -89,10 +110,13 @@ const GroupGoals = () => {
 
         {loaded && group.goals
           ? group.goals.map((item) => (
-              <ul key={item.id}>
-                <ListStyle>
-                  {item.title} || {item.difficulty} ||
-                  {item.how_much_achieved}%
+              <ListStyle key={item.id}>
+                <DivStyledItems>
+                  <DivStyled>{item.title}</DivStyled>
+                  <DivStyled>{item.difficulty}</DivStyled>
+                  <DivStyled>{item.how_much_achieved}%</DivStyled>
+                </DivStyledItems>
+                <DivStyledIcons>
                   <ModalForm
                     isButton={false}
                     ImgSrc={pen}
@@ -107,8 +131,12 @@ const GroupGoals = () => {
                     reference={register}
                     errors={errors}
                   />
-                </ListStyle>
-              </ul>
+                  <ImgStyled
+                    onClick={() => handleDeleteGoals(item.id)}
+                    src={close}
+                  />
+                </DivStyledIcons>
+              </ListStyle>
             ))
           : "Nenhuma meta"}
         <ModalForm
