@@ -15,11 +15,13 @@ import { useForm } from "react-hook-form";
 import {
   ListStyle,
   ActivitiesCard,
-  Ul,
   Hr,
+  Ul,
   Subtitle,
   ButtonsContainer,
-} from "../../pages/Group/styles";
+  MainContainer,
+  AddButtonDiv,
+} from "./styles";
 import ModalForm from "../../components/ModalForm";
 
 const GroupActivities = () => {
@@ -27,13 +29,6 @@ const GroupActivities = () => {
   const { id } = useParams();
   const [loaded, setLoaded] = useState(false);
   const [group, setGroup] = useState([]);
-
-  const inputActivity = [
-    ["title", "NOME DA ATIVIDADE"],
-    ["realization_time", "DATE", "datetime-local"],
-  ];
-
-  
 
   const getDataPageGroupActivities = async () => {
     await api.get(`groups/${id}/`).then((res) => setGroup(res.data));
@@ -50,9 +45,10 @@ const GroupActivities = () => {
     resolver: yupResolver(schema),
   });
 
-  const handleUpdateActivity = () => {
-    
-  }
+  const inputActivity = [
+    ["title", "NOME DA ATIVIDADE"],
+    ["realization_time", "", "datetime-local"],
+  ];
 
   const handleFormActivities = (data) => {
     const newActivity = {
@@ -67,25 +63,49 @@ const GroupActivities = () => {
       .then(() =>
         setGroup({ ...group, activities: [group.activities, newActivity] })
       );
-    console.log(typeof data.realization_time.toISOString());
+    // console.log(typeof data.realization_time.toISOString());
+  };
+
+  const inputEditActivity = [
+    ["title", "EDITE SUA META"],
+    ["realization_time", "", "datetime-local"],
+  ];
+
+  const handleUpdateActivity = (data, idActivity) => {
+    group.activities.map((item) => {
+      if (item.id === idActivity) {
+        api
+          .patch(`activities/${idActivity}/`, data, {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+          .then(() =>
+            setGroup({ ...group, activities: [group.activities, data] })
+          );
+      }
+    });
+    setLoaded(false);
   };
 
   useEffect(() => {
     !loaded && getDataPageGroupActivities();
+    console.log(group);
   });
 
   return (
-    <ActivitiesCard>
+    <ActivitiesCard className="container">
       <Subtitle>{group.name}</Subtitle>
 
       {loaded && group.activities
         ? group.activities.map((item) => (
-            <Ul key={item.id}>
-              <ListStyle>{item.title}</ListStyle>
+            <MainContainer>
+              <Ul key={item.id}>
+                <ListStyle>{item.title}</ListStyle>
 
-              <ListStyle>
-                {new Date(item.realization_time).toUTCString().slice(0, -7)}
-              </ListStyle>
+                <ListStyle>
+                  {new Date(item.realization_time).toUTCString().slice(0, -7)}
+                </ListStyle>
+                <Hr />
+              </Ul>
               <ButtonsContainer>
                 <ModalForm
                   isButton={false}
@@ -95,27 +115,30 @@ const GroupActivities = () => {
                   title="Create Activity"
                   inputName={inputActivity}
                   buttonName="Enviar"
-                  formAction={handleSubmit(handleFormActivities)}
+                  formAction={handleSubmit((data) =>
+                    handleUpdateActivity(data, item.id)
+                  )}
                   reference={register}
                   errors={errors}
                 />
               </ButtonsContainer>
-              <Hr />
-            </Ul>
+            </MainContainer>
           ))
         : "Sem Atividades"}
-      <ModalForm
-        isButton={false}
-        ImgSrc={add}
-        icon={ActivityModal}
-        iconWidth="300px"
-        title="Create Activity"
-        inputName={inputActivity}
-        buttonName="Enviar"
-        formAction={handleSubmit(handleFormActivities)}
-        reference={register}
-        errors={errors}
-      />
+      <AddButtonDiv>
+        <ModalForm
+          isButton={false}
+          ImgSrc={add}
+          icon={ActivityModal}
+          iconWidth="300px"
+          title="Create Activity"
+          inputName={inputEditActivity}
+          buttonName="Enviar"
+          formAction={handleSubmit(handleFormActivities)}
+          reference={register}
+          errors={errors}
+        />
+      </AddButtonDiv>
     </ActivitiesCard>
   );
 };
