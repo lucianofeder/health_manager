@@ -1,4 +1,4 @@
-import ModalForm from "../../components/ModalForm";
+import ModalConfirm from "../../components/ModalConfirm";
 import { Subtitle } from "./style";
 import add from "../../images/add.svg";
 import pen from "../../images/pen.svg";
@@ -18,51 +18,37 @@ import { NameGroupContainer, Title, ListStyle, TypeGroup } from "./style";
 import { ButtonAdd } from "./style";
 import Modal from "../Modal";
 import { ButtonStyle } from "../Button/style";
-const GroupSubscribe = () => {
+const GroupSubscribe = ({ getDataPageGroup, setLoaded }) => {
   const { id } = useParams();
   const { token } = useSelector((state) => state.users);
-  const [loaded, setLoaded] = useState(false);
+
   const [group, setGroup] = useState([]);
   const [ParticipantsNew, SetParticipantsNew] = useState(0);
-
-  console.log(group);
-  const schema = yup.object().shape({
-    name: yup.string().required("Campo Obrigatório"),
-    category: yup.string().required("Campo Obrigatório"),
-  });
-  const { register, handleSubmit, errors } = useForm({
-    resolver: yupResolver(schema),
-  });
-
-  const getDataPageGroup = async () => {
-    await api
-      .get(`groups/${id}/`)
-      .then((res) => SetParticipantsNew(ParticipantsNew + 1))
-      .catch((res) => console.log(res));
-    setLoaded(true);
-  };
 
   const handleSubscribe = (data) => {
     api
       .post(`groups/${id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => console.log(res))
+      .then((res) => SetParticipantsNew(ParticipantsNew + 1))
       .catch((res) => console.log(res));
     console.log(token);
     setLoaded(false);
   };
   useEffect(() => {
-    !loaded && getDataPageGroup();
-
-    console.log(ParticipantsNew);
+    getDataPageGroup();
   }, [ParticipantsNew]);
   return (
     <ButtonAdd>
-      <Modal id="modal" isButton={false} ImgSrc={adduser} iconWidth="300px">
+      <ModalConfirm
+        id="modal"
+        isButton={false}
+        ImgSrc={adduser}
+        iconWidth="300px"
+        handleSubscribe={handleSubscribe}
+      >
         <h2>Desejar entrar no grupo ??</h2>
-        <ButtonStyle onClick={handleSubscribe}>Entrar no grupo</ButtonStyle>
-      </Modal>
+      </ModalConfirm>
     </ButtonAdd>
   );
 };
