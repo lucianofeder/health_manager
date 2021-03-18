@@ -1,4 +1,4 @@
-import { MainContainer } from "./style";
+import { MainContainer, Leged } from "./style";
 import FormStyle from "../../components/Form";
 import LogoTipo from "../../images/Logo/logo2.png";
 import Image from "../../images/NewUsers/NewUser.svg";
@@ -7,7 +7,7 @@ import Clouds from "../../images/Undraw/clouds.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import api from "../../services/api";
 
 const NewUser = () => {
@@ -37,27 +37,34 @@ const NewUser = () => {
 
   return (
     <MainContainer>
-      <img src={LogoTipo} alt="Logo Tipo" id="logo" />
+      <Link to={"/"}>
+        <img src={LogoTipo} alt="Logo Tipo" id="logo" />
+      </Link>
       <div>
         <img src={Image} alt="AnotherImage" id="image" />
-        <FormStyle
-          instructions={{
-            icon: Icone,
-            title: "Crie Sua Conta",
-            iconWidth: "200px",
-            inputName: [
-              ["username", "userName"],
-              ["password", "Password", "password"],
-              ["email", "email"],
-            ],
-            buttonName: "Register",
-          }}
-          form={{
-            formAction: handleSubmit(handleForm),
-            ref: register,
-            errors: errors,
-          }}
-        />
+        <div className="adjust">
+          <FormStyle
+            instructions={{
+              icon: Icone,
+              title: "Crie Sua Conta",
+              iconWidth: "200px",
+              inputName: [
+                ["username", "userName"],
+                ["password", "Password", "password"],
+                ["email", "email"],
+              ],
+              buttonName: "Register",
+            }}
+            form={{
+              formAction: handleSubmit(handleForm),
+              ref: register,
+              errors: errors,
+            }}
+          />
+          <Leged>
+            Your have an account? <Link to={`/Login`}>Login</Link>
+          </Leged>
+        </div>
       </div>
 
       <img src={Clouds} alt="Nuvens" id="cloud" />

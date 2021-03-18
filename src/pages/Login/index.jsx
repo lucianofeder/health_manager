@@ -1,4 +1,4 @@
-import { Container, LogoStyled, Div } from "./style";
+import { Container, LogoStyled, Div, Leged } from "./style";
 import logo2 from "../../images/Logo/logo2.png";
 import ImageLogin from "../../images/Login/imageLogin.svg";
 import clouds from "../../images/Undraw/clouds.svg";
@@ -75,13 +75,15 @@ const Login = () => {
       {user_id && <Redirect to={`/HomeUser/${user_id}`} />}
 
       <Div>
-        <LogoStyled small src={logo2} />
+        <Link to={"/"}>
+          <LogoStyled small src={logo2} />
+        </Link>
       </Div>
 
       <Div>
         <LogoStyled medium src={ImageLogin} />
         <section id="form">
-          <div>
+          <div className="adjust">
             {erroMsg && (
               <p
                 style={{
@@ -95,9 +97,9 @@ const Login = () => {
               </p>
             )}
             <FormStyle form={form} instructions={instruction} />
-            <div id="containerRegister">
-              <Link to={`/NewUser`}>Don't have an account? Sign-in</Link>
-            </div>
+            <Leged>
+              Don't have an account?<Link to={`/NewUser`}> Sign-in</Link>
+            </Leged>
           </div>
         </section>
       </Div>

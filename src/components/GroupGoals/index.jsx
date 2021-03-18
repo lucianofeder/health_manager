@@ -27,7 +27,7 @@ const GroupGoals = () => {
   const { token } = useSelector((state) => state.users);
   const [loaded, setLoaded] = useState(false);
   const [group, setGroup] = useState([]);
-  console.log(group);
+
   const schema = yup.object().shape({
     title: yup.string().required("Campo Obrigatório"),
     difficulty: yup.string().required("Campo obrigatório"),

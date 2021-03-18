@@ -11,8 +11,10 @@ export const MainContainer = styled.section`
   justify-content: space-between;
 
   #logo {
-    width: 140px;
+    width: 250px;
     margin: 10px;
+    cursor: pointer;
+    float: left;
   }
 
   div {
@@ -40,5 +42,24 @@ export const MainContainer = styled.section`
       width: 450px;
       display: block;
     }
+  }
+
+  .adjust {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+  }
+`;
+
+export const Leged = styled.p`
+  font-size: 18px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0px;
+
+  a {
+    text-decoration: none;
+    color: ${Colors.BasePurple};
   }
 `;

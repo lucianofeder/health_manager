@@ -17,18 +17,6 @@ export const Container = styled.div`
   color: ${Colors.BasePurple};
   overflow-x: hidden;
   overflow-y: hidden;
-  #containerRegister {
-    text-align: center;
-    position: relative;
-
-    a {
-      text-decoration: none;
-      color: ${Colors.BasePurple};
-      font-size: 16px;
-      left: 0;
-      position: absolute;
-    }
-  }
 
   /* Desktop */
   @media (min-width: 1020px) {
@@ -84,6 +72,18 @@ export const LogoStyled = styled.img`
   }
 `;
 
+export const Leged = styled.p`
+  font-size: 18px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 0px;
+  color: black;
+  a {
+    text-decoration: none;
+    color: ${Colors.BasePurple};
+  }
+`;
+
 export const Div = styled.div`
   display: flex;
   justify-content: center;
@@ -91,6 +91,15 @@ export const Div = styled.div`
   padding: ${(props) => (props.nullPadding ? "" : "0.5em")};
   width: 99vw;
   margin: 0;
+
+  #form {
+    .adjust {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      align-items: center;
+    }
+  }
 
   /* Tablet */
   @media (min-width: 800px) {
