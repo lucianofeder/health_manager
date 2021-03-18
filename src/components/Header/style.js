@@ -61,6 +61,9 @@ export const HeaderContainer = styled.header`
   div.nav {
     width: 150px;
   }
+  #logo {
+    cursor: auto;
+  }
 
   .nav {
     position: absolute;

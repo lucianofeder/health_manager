@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  min-height: 650px;
+  min-height: 600px;
 
   background: ${Colors.BackgroundLinear};
   font-family: Montserrat;
