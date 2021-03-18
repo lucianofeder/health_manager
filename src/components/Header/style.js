@@ -4,11 +4,7 @@ import Colors from "../../global/Colors";
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 60px;
-  max-width: 1733px;
   background-color: ${Colors.BasePurple};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin: 0 auto 50px auto;
 
   .containerUser {
@@ -111,4 +107,11 @@ export const HeaderContainer = styled.header`
       margin: 0 auto;
     }
   }
+`;
+
+export const Container = styled.div`
+  max-width: 1733px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
