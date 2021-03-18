@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Colors from "../../global/Colors";
 
 export const CardContainer = styled.div`
-  width: 310px;
   min-height: 100px;
   padding: 15px 10px 15px 10px;
   background-color: ${Colors.BasePurple};
@@ -10,6 +9,11 @@ export const CardContainer = styled.div`
   border-radius: 15px;
   color: ${Colors.TextColorWhite};
   position: relative;
+  width: 290px;
+
+  @media (min-width: 700px) {
+    width: 320px;
+  }
 
   #pen {
     position: absolute;

@@ -78,7 +78,6 @@ export const InfoContainer = styled.div`
 
 export const CardContainer = styled.div`
   position: relative;
-  width: 310px;
   padding: 15px 10px 15px 10px;
   border-radius: 20px 20px 0 0;
   margin: 10px 0 0 0;
@@ -86,6 +85,12 @@ export const CardContainer = styled.div`
   color: #fff;
   border: 3px solid ${Colors.BaseLightBlue};
   border-bottom: 0;
+
+  width: 290px;
+
+  @media (min-width: 700px) {
+    width: 320px;
+  }
 `;
 
 export const CardContainerSecond = styled(CardContainer)`
@@ -115,7 +120,7 @@ export const DivStyledItems = styled.div`
 export const DivAdjust = styled.div`
   display: flex;
   width: ${(props) => props.first && "100%"};
-  justify-content: ${(props) => props.first && "center"};
+  justify-content: ${(props) => props.first && "space-around"};
 `;
 
 export const DivStyled = styled.div`
