@@ -26,6 +26,7 @@ import api from "../../services/api";
 import { useSelector } from "react-redux";
 
 import CardHabit from "../../components/CardHabit";
+
 const HomeUser = () => {
   const { id } = useParams();
 
@@ -50,8 +51,6 @@ const HomeUser = () => {
 
     setLoaded(true);
   };
-
-  console.log(group);
 
   useEffect(() => {
     !loaded && getDataHomeUser();
