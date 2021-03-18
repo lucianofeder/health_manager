@@ -88,7 +88,7 @@ const AllGroups = () => {
     <LoadingProgress />
   ) : (
     <Main>
-      <Header />
+      <Header setLoaded={setLoaded} />
       <Container>
         <SearchBar
           value={textSearch}

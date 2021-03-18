@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Colors from "../../global/Colors";
+
 export const ButtonAdd = styled.button`
   display: inline;
   background-color: #0000;

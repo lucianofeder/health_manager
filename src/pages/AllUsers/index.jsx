@@ -54,7 +54,7 @@ const AllUsers = () => {
     <LoadingProgress />
   ) : (
     <Main>
-      <Header />
+      <Header setLoaded={setLoaded} />
       <Container>
         <ListContainer
           list={users}
