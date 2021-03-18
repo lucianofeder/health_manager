@@ -44,10 +44,9 @@ export const Avatar = styled.img`
 
 export const GroupInfo = styled.div`
   width: 300px;
-  height: 80px;
 
   h2 {
-    line-height: 0;
+    line-height: 1;
     cursor: pointer;
     &:hover {
       color: ${Colors.BasePurpleDarker};
