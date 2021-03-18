@@ -6,7 +6,7 @@ const Colors = {
   BasePurple: "#5F4DEF",
   BasePurpleDarker: "#442fa7",
   BackgroundBaseGray: "#F3F2FE",
-  TextColorBlack: "#1F214A",
+  TextColorBlack: "#1c1362",
   TextColorWhite: "#ffffff",
   BackgroundInput: "#EDEDED",
   BorderBottom: "#ccc",
@@ -14,6 +14,7 @@ const Colors = {
   ShadowColor: "rgba(0, 0, 0, 0.2)",
   ShadowColorHighlight: "rgba(95, 77, 239, 0.6)",
   ErrorInput: "#f00",
+  BaseRose: "#ff6584",
 };
 
 export default Colors;
