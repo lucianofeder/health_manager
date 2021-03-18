@@ -57,20 +57,20 @@ const GroupActivities = () => {
     ["realization_time", "", "datetime-local"],
   ];
 
-  const handleFormActivities = (data) => {
+  const handleFormActivities = async (data) => {
     const newActivity = {
       title: data.title,
       realization_time: data.realization_time.toISOString(),
       group: group.id,
     };
-    api
+    await api
       .post(`activities/`, newActivity, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then(() =>
         setGroup({ ...group, activities: [...group.activities, newActivity] })
-      );
-    // console.log(typeof data.realization_time.toISOString());
+      )
+      .then(() => getDataPageGroupActivities());
   };
 
   const inputEditActivity = [
@@ -108,7 +108,6 @@ const GroupActivities = () => {
 
   useEffect(() => {
     !loaded && getDataPageGroupActivities();
-    console.log(group);
   });
 
   return (
@@ -117,8 +116,8 @@ const GroupActivities = () => {
         <Subtitle>Activities</Subtitle>
         {loaded && group.activities
           ? group.activities.map((item) => (
-              <MainContainer>
-                <Ul key={item.id}>
+              <MainContainer key={item.id}>
+                <Ul>
                   <ListStyle>{item.title}</ListStyle>
                   <ListStyle>
                     {new Date(item.realization_time).toUTCString().slice(0, -7)}
@@ -141,7 +140,10 @@ const GroupActivities = () => {
                     errors={errors}
                   />
                   <ImgStyled
-                    onClick={() => handleDeleteActivity(item.id)}
+                    onClick={() => {
+                      console.log(item.id);
+                      handleDeleteActivity(item.id);
+                    }}
                     src={close}
                   />
                 </ButtonsContainer>

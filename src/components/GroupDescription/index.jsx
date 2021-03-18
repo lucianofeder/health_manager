@@ -17,7 +17,6 @@ const GroupDescription = () => {
   const [group, setGroup] = useState([]);
   const [descriptionNew, SetDescriptionNew] = useState("");
 
-  console.log(group);
   const schema = yup.object().shape({
     description: yup.string().required("Campo Obrigatório"),
   });
@@ -45,8 +44,6 @@ const GroupDescription = () => {
   };
   useEffect(() => {
     !loaded && getDataPageGroup();
-
-    console.log(descriptionNew);
   }, [descriptionNew]);
   return (
     <>

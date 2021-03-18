@@ -57,7 +57,10 @@ const HomeUser = () => {
   });
 
   return !loaded ? (
-    <LoadingProgress />
+    <>
+      <LoadingProgress />
+      {!user_id && <Redirect to={`/Login`} />}
+    </>
   ) : (
     <MainContainer>
       {!user_id && <Redirect to={`/Login`} />}
