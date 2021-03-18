@@ -12,7 +12,7 @@ const FooterStyled = styled.div`
   width: 260px;
 
   @media (min-width: 700px) {
-    width: 290px;
+    width: 275px;
   }
 
   div#containerInfos {
