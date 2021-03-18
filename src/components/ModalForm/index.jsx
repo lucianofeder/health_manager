@@ -37,6 +37,7 @@ reference={ref}
 
 import Modal from "../../components/Modal";
 import FormStyle from "../../components/Form";
+import { useState } from "react";
 
 const ModalForm = ({
   ImgSrc,
@@ -51,10 +52,19 @@ const ModalForm = ({
   isButton,
   nameBtn,
 }) => {
+  const [Open, setOpen] = useState(false);
+
   return (
     <>
-      <Modal ImgSrc={ImgSrc} isButton={isButton} nameBtn={nameBtn}>
+      <Modal
+        Open={Open}
+        setOpen={setOpen}
+        ImgSrc={ImgSrc}
+        isButton={isButton}
+        nameBtn={nameBtn}
+      >
         <FormStyle
+          setOpen={setOpen}
           instructions={{
             icon: icon,
             iconWidth: iconWidth,

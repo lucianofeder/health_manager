@@ -31,6 +31,7 @@ import api from "../../services/api";
 
 import { useSelector } from "react-redux";
 
+import CardHabit from "../../components/CardHabit";
 const HomeUser = () => {
   const { id } = useParams();
 
@@ -50,7 +51,12 @@ const HomeUser = () => {
       })
       .then((res) => setHabits(res.data));
     await api.get(`users/${id}/`).then((res) => setUser(res.data));
-    await api.get(`groups/${user.group}/`).then((res) => setGroup(res.data));
+
+    user.group !== null &&
+      (await api
+        .get(`groups/${user.group}/`)
+        .then((res) => setGroup(res.data)));
+
     setLoaded(true);
   };
 
@@ -71,14 +77,18 @@ const HomeUser = () => {
         </UserContainer>
 
         <GroupInfo>
-          <h2 onClick={() => history.push(`/Group/${group.id}/`)}>
-            {loaded && group.name ? group.name : "Sem grupo"}
-          </h2>
+          {loaded && group.name && (
+            <h2 onClick={() => history.push(`/Group/${group.id}/`)}>
+              {group.name}
+            </h2>
+          )}
           <h3>{loaded && group.category}</h3>
         </GroupInfo>
         <DivGroup>
           <Card title="Description">
-            <DivHabitsCard>Descrição: {group.description}</DivHabitsCard>
+            <DivHabitsCard>
+              {user.group === null ? <p>No Discription</p> : group.description}
+            </DivHabitsCard>
           </Card>
           <Community src={CommunityImg} alt="Community" />
           <Card title="Calendar">
@@ -88,7 +98,9 @@ const HomeUser = () => {
               src={Calendar}
               alt="Calendar Icon"
             />
-            {loaded &&
+            {loaded && user.group === null ? (
+              <p>No Activides</p>
+            ) : (
               group.activities.map((item) => (
                 <DivHabitsCard key={item.id}>
                   <div>Título: {item.title} </div>
@@ -98,9 +110,20 @@ const HomeUser = () => {
                   </div>
                   <hr></hr>
                 </DivHabitsCard>
-              ))}
+              ))
+            )}
           </Card>
         </DivGroup>
+        <CardHabit
+          id={id}
+          habits={habits}
+          loaded={loaded}
+          user={user}
+          user_id={user_id}
+          token={token}
+          setLoaded={setLoaded}
+          getDataHomeUser={getDataHomeUser}
+        />
       </LimitContainer>
       <Footer />
     </MainContainer>

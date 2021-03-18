@@ -1,5 +1,7 @@
 import ModalForm from "../../components/ModalForm";
-import edit from "../../images/Icons/edit.svg";
+import { Subtitle } from "./style";
+import add from "../../images/add.svg";
+import pen from "../../images/pen.svg";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -9,7 +11,10 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import { CardContainer } from "./style";
-const GroupDescription = () => {
+import { NameGroupContainer, Title, TypeGroup } from "./style";
+import { ContainerButtons } from "./style";
+import GroupSubscribe from "../GroupSubscribe";
+const GroupName = () => {
   const { id } = useParams();
   const { token } = useSelector((state) => state.users);
   const [loaded, setLoaded] = useState(false);
@@ -18,26 +23,33 @@ const GroupDescription = () => {
 
   console.log(group);
   const schema = yup.object().shape({
-    description: yup.string().required("Campo Obrigatório"),
+    name: yup.string().required("Campo Obrigatório"),
+    category: yup.string().required("Campo Obrigatório"),
   });
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(schema),
   });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getDataPageGroup = async () => {
-    await api.get(`groups/${id}/`).then((res) => setGroup(res.data));
+    await api
+      .get(`groups/${id}/`)
+      .then((res) => setGroup(res.data))
+      .catch((res) => console.log(res));
     setLoaded(true);
   };
 
-  const inputEditGoals = [["description", "DESCRIÇÃO"]];
+  const inputEditGoals = [
+    ["name", "NOME DO GRUPO"],
+    ["category", "CATEGORIA"],
+  ];
 
-  const handleUpdateDescription = (data) => {
+  const handleUpdateName = (data) => {
     api
       .patch(`groups/${group.id}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        SetDescriptionNew(data.description);
+        SetDescriptionNew(data.name);
       });
 
     setLoaded(false);
@@ -48,27 +60,29 @@ const GroupDescription = () => {
     console.log(descriptionNew);
   }, [descriptionNew]);
   return (
-    <>
-      <CardContainer>
-        <div id="pen">
+    <div>
+      <div id="pen">
+        <ContainerButtons>
           <ModalForm
             isButton={false}
-            ImgSrc={edit}
+            ImgSrc={pen}
             icon={goalsModal}
             iconWidth="300px"
-            title="edit description"
+            title="edit group"
             inputName={inputEditGoals}
             buttonName="Editar"
-            formAction={handleSubmit(handleUpdateDescription)}
+            formAction={handleSubmit(handleUpdateName)}
             reference={register}
             errors={errors}
           />
-        </div>
-        <h1>Description</h1>
-        {loaded && group.description ? group.description : "sem descrição"}
-      </CardContainer>
-    </>
+        </ContainerButtons>
+      </div>
+      <NameGroupContainer>
+        <Title>{loaded && group.name}</Title>
+        <TypeGroup>{loaded && group.category}</TypeGroup>
+      </NameGroupContainer>
+    </div>
   );
 };
 
-export default GroupDescription;
+export default GroupName;

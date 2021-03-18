@@ -3,7 +3,7 @@ import Colors from "../../global/Colors";
 
 export const LastContainer = styled.section`
   width: 100%;
-  margin: 20px 0;
+  margin: 20px 0 80px 0;
   display: flex;
   flex-direction: column;
 
@@ -13,19 +13,43 @@ export const LastContainer = styled.section`
 `;
 
 export const Adjust = styled.div`
-  img {
+  position: relative;
+  .travelImage {
     display: none;
+  }
+  .scroll {
+    width: 300px;
+    position: relative;
+    top: 0;
+    background-color: ${Colors.BasePurple};
+    border: solid 3px ${Colors.BaseLightBlue};
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    margin: 0 auto;
+  }
+
+  @media (min-width: 900px) {
+    display: flex;
+    flex-direction: row;
+    .travelImage {
+      display: block;
+      width: 400px;
+    }
+  }
+
+  @media (min-width: 1100px) {
+    .travelImage {
+      width: 500px;
+    }
   }
 `;
 
 export const DivHabits = styled.div`
-  background-color: ${Colors.BasePurple};
-  border: solid 4px ${Colors.BaseLightBlue};
-  border-radius: 10px;
-  width: 310px;
-  margin: 0 auto;
   text-align: center;
   color: ${Colors.TextColorWhite};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   h3 {
     margin: 0;
@@ -38,4 +62,36 @@ export const HabitLine = styled.div`
   flex-direction: row;
   justify-content: space-around;
   margin: 0;
+`;
+
+export const DivAdd = styled.div`
+  background-color: ${Colors.BasePurple};
+  width: 300px;
+  height: 30px;
+  border: solid 3px ${Colors.BaseLightBlue};
+  border-top: none;
+  border-radius: 0 0 20px 20px;
+  left: 15px;
+  z-index: 2;
+  position: absolute;
+
+  @media (min-width: 900px) {
+    bottom: -20px;
+    left: 0;
+  }
+
+  @media (min-width: 1051px) {
+    left: 137px;
+  }
+
+  @media (min-width: 1100px) {
+    left: 87px;
+  }
+`;
+
+export const ImageDelet = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  cursor: pointer;
 `;

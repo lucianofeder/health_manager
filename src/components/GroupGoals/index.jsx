@@ -10,10 +10,11 @@ import {
   DivStyledItems,
   DivStyled,
   DivAdjust,
+  CardContainerSecond,
 } from "./style";
 
-import add from "../../images/add.svg";
-import pen from "../../images/pen.svg";
+import add from "../../images/Icons/addSTD2.svg";
+import edit from "../../images/Icons/edit.svg";
 import close from "../../images/Icons/close.png";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 import editGoalsModal from "../../images/Icons/editGoalsModal.svg";
@@ -64,8 +65,7 @@ const GroupGoals = () => {
       title: data.title,
       difficulty: data.difficulty,
       group: group.id,
-      // !MUDAR ACHIEVED COM BARRA DE STATUS
-      how_much_achieved: 70,
+      how_much_achieved: 0,
     };
     api
       .post(`goals/`, newData, {
@@ -109,53 +109,57 @@ const GroupGoals = () => {
 
   return (
     <>
-      <CardContainer>
+      <CardContainer className="container">
         <h2>Goals</h2>
 
         {loaded && group.goals
-          ? group.goals.map((item) => (
-              <>
-                <ListStyle key={item.id}>
-                  <DivStyledItems>
-                    <DivAdjust first>
-                      <DivStyled>{item.title}</DivStyled>
-                      <DivStyled>{item.difficulty}</DivStyled>
-                    </DivAdjust>
-                    <DivAdjust>
-                      <CircularStatic
-                        url="goals"
-                        id={item.id}
-                        valueProgress={item.how_much_achieved}
-                        setLoaded={setLoaded}
-                        getDataPageGroup={getDataPageGroup}
+          ? group.goals
+              .sort((a, b) => a.id - b.id)
+              .map((item) => (
+                <>
+                  <ListStyle key={item.id}>
+                    <DivStyledItems>
+                      <DivAdjust first>
+                        <DivStyled>{item.title}</DivStyled>
+                        <DivStyled>{item.difficulty}</DivStyled>
+                      </DivAdjust>
+                      <DivAdjust>
+                        <CircularStatic
+                          url="goals"
+                          id={item.id}
+                          valueProgress={item.how_much_achieved}
+                          setLoaded={setLoaded}
+                          getDataPageGroup={getDataPageGroup}
+                        />
+                      </DivAdjust>
+                    </DivStyledItems>
+                    <DivStyledIcons>
+                      <ModalForm
+                        isButton={false}
+                        ImgSrc={edit}
+                        icon={editGoalsModal}
+                        iconWidth="300px"
+                        title="Edit Goals"
+                        inputName={inputEditGoals}
+                        buttonName="Editar"
+                        formAction={handleSubmit((data) =>
+                          handleUpdateGoals(data, item.id)
+                        )}
+                        reference={register}
+                        errors={errors}
                       />
-                    </DivAdjust>
-                  </DivStyledItems>
-                  <DivStyledIcons>
-                    <ModalForm
-                      isButton={false}
-                      ImgSrc={pen}
-                      icon={editGoalsModal}
-                      iconWidth="300px"
-                      title="Edit Goals"
-                      inputName={inputEditGoals}
-                      buttonName="Editar"
-                      formAction={handleSubmit((data) =>
-                        handleUpdateGoals(data, item.id)
-                      )}
-                      reference={register}
-                      errors={errors}
-                    />
-                    <ImgStyled
-                      onClick={() => handleDeleteGoals(item.id)}
-                      src={close}
-                    />
-                  </DivStyledIcons>
-                </ListStyle>
-                <hr />
-              </>
-            ))
+                      <ImgStyled
+                        onClick={() => handleDeleteGoals(item.id)}
+                        src={close}
+                      />
+                    </DivStyledIcons>
+                  </ListStyle>
+                  <hr />
+                </>
+              ))
           : "Nenhuma meta"}
+      </CardContainer>
+      <CardContainerSecond>
         <ModalForm
           isButton={false}
           ImgSrc={add}
@@ -168,7 +172,7 @@ const GroupGoals = () => {
           reference={register}
           errors={errors}
         />
-      </CardContainer>
+      </CardContainerSecond>
     </>
   );
 };

@@ -77,52 +77,22 @@ export const InfoContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  width: 310px;
-  min-height: 100px;
-  padding: 30px 10px 30px 10px;
-  background-color: ${Colors.BasePurple};
-  border: solid 3px ${Colors.BaseLightBlue};
-  border-radius: 15px;
-  color: ${Colors.TextColorWhite};
-  text-align: center;
   position: relative;
+  width: 310px;
+  padding: 15px 10px 15px 10px;
+  border-radius: 20px 20px 0 0;
+  margin: 10px 0 0 0;
+  background-color: ${Colors.BasePurple};
+  color: #fff;
+  border: 3px solid ${Colors.BaseLightBlue};
+  border-bottom: 0;
+`;
 
-  h1 {
-    margin: 0;
-    font-size: 25px;
-    font-weight: normal;
-    margin-bottom: 10px;
-  }
-
-  p {
-    width: 80%;
-    margin: 10px auto;
-  }
-
-  .iconModal {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    display: flex;
-
-    h1 {
-      color: ${Colors.BaseGreen};
-      font-size: 30px;
-      margin: 0 5px;
-    }
-
-    img {
-      margin: 0;
-      width: 25px;
-      border: none;
-    }
-  }
-
-  .goal {
-    span {
-      color: ${Colors.BaseGreen};
-    }
-  }
+export const CardContainerSecond = styled(CardContainer)`
+  border-top: 0;
+  border-radius: 0 0 20px 20px;
+  margin: 0 0 10px 0;
+  min-height: 10px;
 `;
 
 export const ListStyle = styled.li`
@@ -145,7 +115,7 @@ export const DivStyledItems = styled.div`
 export const DivAdjust = styled.div`
   display: flex;
   width: ${(props) => props.first && "100%"};
-  justify-content: ${(props) => props.first && "center"};
+  justify-content: ${(props) => props.first && "space-around"};
 `;
 
 export const DivStyled = styled.div`
@@ -165,6 +135,7 @@ export const DivStyledIcons = styled.div`
 
 export const ImgStyled = styled(FaRegTrashAlt)`
   cursor: pointer;
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
+  color: #1c1362;
 `;

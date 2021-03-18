@@ -18,14 +18,21 @@ import { StyledModal, DivImg, ImgStyled } from "./style";
 import Button from "../Button";
 
 import close from "../../images/Icons/close.png";
+import { ButtonStyle } from "../Button/style";
 
-const Modal = ({ isButton, nameBtn, ImgSrc, children, Open, setOpen }) => {
+const ModalConfirm = ({
+  isButton,
+  nameBtn,
+  ImgSrc,
+  children,
+  handleSubscribe,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
   const toggleModal = () => {
     setOpacity(0);
-    setOpen(!Open);
+    setIsOpen(!isOpen);
   };
 
   const afterOpen = () => {
@@ -41,6 +48,11 @@ const Modal = ({ isButton, nameBtn, ImgSrc, children, Open, setOpen }) => {
     });
   };
 
+  const handleModal = () => {
+    handleSubscribe();
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       {/* Aqui embaixo estará o ícone clicável que abrirá o Modal  */}
@@ -51,7 +63,7 @@ const Modal = ({ isButton, nameBtn, ImgSrc, children, Open, setOpen }) => {
         <ImgStyled onClick={() => toggleModal()} src={ImgSrc} alt="icon" />
       )}
       <StyledModal
-        isOpen={Open}
+        isOpen={isOpen}
         afterOpen={afterOpen}
         beforeClose={beforeClose}
         onBackgroundClick={toggleModal}
@@ -59,14 +71,15 @@ const Modal = ({ isButton, nameBtn, ImgSrc, children, Open, setOpen }) => {
         opacity={opacity}
         backgroundProps={{ opacity }}
       >
-        <DivImg >
+        <DivImg>
           <img src={close} alt="logo" onClick={() => toggleModal()}></img>
         </DivImg>
 
         {children}
+        <ButtonStyle onClick={handleModal}>Entrar no grupo</ButtonStyle>
       </StyledModal>
     </>
   );
 };
 
-export default Modal;
+export default ModalConfirm;

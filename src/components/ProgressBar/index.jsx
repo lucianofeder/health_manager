@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import { ProgressContainer } from "./style";
+import { ProgressContainer, ProgressButtons } from "./style";
+
+import addProgress from "../../images/Icons/addProgress.svg";
+import subProgress from "../../images/Icons/subProgress.svg";
 
 import api from "../../services/api";
 
@@ -64,10 +67,23 @@ export default function CircularStatic(valueProgress) {
   }, [progressNumber]);
 
   return (
-    <ProgressContainer progress={progress}>
-      <button onClick={() => patchDataProgess(true)}>Up</button>
+    <ProgressContainer progress={valueProgress.valueProgress}>
+      <ProgressButtons
+        onClick={() =>
+          valueProgress.valueProgress === 100 ? null : patchDataProgess(true)
+        }
+        src={addProgress}
+        alt="add progress icon"
+      />
       <CircularProgressWithLabel id="ProgressBar" value={progress} />
-      <button onClick={() => patchDataProgess(false)}>Down</button>
+
+      <ProgressButtons
+        onClick={() =>
+          valueProgress.valueProgress === 0 ? null : patchDataProgess(false)
+        }
+        src={subProgress}
+        alt="subProgress Icon"
+      />
     </ProgressContainer>
   );
 }

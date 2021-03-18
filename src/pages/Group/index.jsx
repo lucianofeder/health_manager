@@ -5,6 +5,7 @@ import CardUsersGroup from "../../components/CardUsersGroup";
 import Card from "../../components/Card";
 import GroupGoals from "../../components/GroupGoals";
 import LoadingProgress from "../../components/LoadingProgress";
+import GroupActivities from "../../components/GroupActivities";
 
 import ImageGroup from "../../images/group.svg";
 // import add from "../../images/add.svg";
@@ -33,6 +34,7 @@ import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
 import GroupDescription from "../../components/GroupDescription";
+import GroupName from "../../components/GroupName";
 // import { GroupSharp } from "@material-ui/icons";
 const Group = () => {
   const { id } = useParams();
@@ -51,7 +53,7 @@ const Group = () => {
   const getDataPageGroup = async () => {
     // await api.get(`users/${user_id}/`).then((res) => setUser(res.data));
     await api.get(`groups/${id}/`).then((res) => setGroup(res.data));
-    setTimeout(() => setLoaded(true), 500);
+    setTimeout(() => setLoaded(true), 100);
   };
   const inputName = [
     ["title", "NOME DA META"],
@@ -83,27 +85,13 @@ const Group = () => {
         <HeaderComponent />
         <ImageGroupStyles src={ImageGroup} alt="Group Image" />
         <NameGroupContainer>
-          <Title>{loaded && group.name}</Title>
-          <TypeGroup>{loaded && group.category}</TypeGroup>
+          <GroupName />
         </NameGroupContainer>
         <GroupDescriptionContainer>
           <InfoContainer>
+            {/* CARD NOVO !!! */}
             <GroupDescription />
-            <Card title="Activities">
-              {loaded && group.activities
-                ? group.activities.map((item) => (
-                    <ul key={item.id}>
-                      <ListStyle>{item.title}</ListStyle>
-                      <ListStyle>
-                        {new Date(item.realization_time)
-                          .toUTCString()
-                          .slice(0, -7)}
-                      </ListStyle>
-                      <hr />
-                    </ul>
-                  ))
-                : "Sem Atividades"}
-            </Card>
+            <GroupActivities />
 
             {/* CARD NOVO !!! */}
             <GroupGoals />
@@ -137,7 +125,7 @@ const Group = () => {
                 : "Nenhuma meta"}
             </Card> */}
           </InfoContainer>
-          {loaded && <CardUsersGroup users={group.users} />}
+          {loaded && <CardUsersGroup />}
         </GroupDescriptionContainer>
         <Footer />
       </LimitContainer>
