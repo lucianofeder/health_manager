@@ -51,12 +51,6 @@ const HomeUser = () => {
       })
       .then((res) => setHabits(res.data));
     await api.get(`users/${id}/`).then((res) => setUser(res.data));
-    {
-      user.group !== null &&
-        (await api
-          .get(`groups/${user.group}/`)
-          .then((res) => setGroup(res.data)));
-    }
 
     setLoaded(true);
   };
@@ -78,9 +72,11 @@ const HomeUser = () => {
         </UserContainer>
 
         <GroupInfo>
-          <h2 onClick={() => history.push(`/Group/${group.id}/`)}>
-            {loaded && group.name ? group.name : "Sem grupo"}
-          </h2>
+          {loaded && group.name && (
+            <h2 onClick={() => history.push(`/Group/${group.id}/`)}>
+              {group.name}
+            </h2>
+          )}
           <h3>{loaded && group.category}</h3>
         </GroupInfo>
         <DivGroup>
@@ -118,7 +114,6 @@ const HomeUser = () => {
           habits={habits}
           loaded={loaded}
           user={user}
-          id={id}
           user_id={user_id}
           token={token}
           setLoaded={setLoaded}
