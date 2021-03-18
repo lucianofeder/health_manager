@@ -143,4 +143,8 @@ export const ImgStyled = styled(FaRegTrashAlt)`
   width: 28px;
   height: 28px;
   color: #1c1362;
+
+  &:hover {
+    color: #ff6584;
+  }
 `;

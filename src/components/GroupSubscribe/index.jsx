@@ -18,11 +18,10 @@ import { NameGroupContainer, Title, ListStyle, TypeGroup } from "./style";
 import { ButtonAdd } from "./style";
 import Modal from "../Modal";
 import { ButtonStyle } from "../Button/style";
-const GroupSubscribe = ({ getDataPageGroup, setLoaded }) => {
+const GroupSubscribe = ({ getDataPageGroup, setLoaded, group }) => {
   const { id } = useParams();
-  const { token } = useSelector((state) => state.users);
+  const { token, user_id } = useSelector((state) => state.users);
 
-  const [group, setGroup] = useState([]);
   const [ParticipantsNew, SetParticipantsNew] = useState(0);
 
   const handleSubscribe = (data) => {
@@ -37,18 +36,36 @@ const GroupSubscribe = ({ getDataPageGroup, setLoaded }) => {
   };
   useEffect(() => {
     getDataPageGroup();
+    console.log(group.users?.find((elem) => elem.id == user_id));
+    console.log(group.users);
+
+    console.log(user_id);
   }, [ParticipantsNew]);
   return (
     <ButtonAdd>
-      <ModalConfirm
-        id="modal"
-        isButton={false}
-        ImgSrc={adduser}
-        iconWidth="300px"
-        handleSubscribe={handleSubscribe}
-      >
-        <h2>Desejar entrar no grupo ??</h2>
-      </ModalConfirm>
+      {group.users?.find((elem) => elem.id == user_id) ? (
+        <ModalConfirm
+          id="modal"
+          isButton={false}
+          ImgSrc={adduser}
+          iconWidth="300px"
+          handleSubscribe={handleSubscribe}
+          message="OK"
+        >
+          <h2>Você já está nessa equipe</h2>
+        </ModalConfirm>
+      ) : (
+        <ModalConfirm
+          id="modal"
+          isButton={false}
+          ImgSrc={adduser}
+          iconWidth="300px"
+          handleSubscribe={handleSubscribe}
+          message="Confirmar"
+        >
+          <h2>Desejar entrar neste grupo ?</h2>
+        </ModalConfirm>
+      )}
     </ButtonAdd>
   );
 };

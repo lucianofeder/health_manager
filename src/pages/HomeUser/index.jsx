@@ -114,16 +114,7 @@ const HomeUser = () => {
             )}
           </Card>
         </DivGroup>
-        <CardHabit
-          id={id}
-          habits={habits}
-          loaded={loaded}
-          user={user}
-          user_id={user_id}
-          token={token}
-          setLoaded={setLoaded}
-          getDataHomeUser={getDataHomeUser}
-        />
+        <CardHabit />
       </LimitContainer>
       <Footer />
     </MainContainer>

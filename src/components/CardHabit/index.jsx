@@ -11,13 +11,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import CircularStatic from "../ProgressBar";
-
-import ModalForm from "../ModalForm";
-
-import CreateHabit from "../CreateHabit";
-
 import api from "../../services/api";
+
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
+import CircularStatic from "../ProgressBar";
+import ModalForm from "../ModalForm";
+import CreateHabit from "../CreateHabit";
 
 import Edit from "../../images/Icons/edit.svg";
 import Image from "../../images/Undraw/Habit.svg";
@@ -26,16 +27,26 @@ import Delete from "../../images/Icons/remove.svg";
 
 import { useEffect, useState } from "react";
 
-const CardHabit = ({
-  habits,
-  loaded,
-  setLoaded,
-  id,
-  user_id,
-  token,
-  getDataHomeUser,
-}) => {
+const CardHabit = () => {
   const [update, setUpdate] = useState(0);
+
+  const { id } = useParams();
+  const { token, user_id } = useSelector((state) => state.users);
+
+  const [habits, setHabits] = useState([]);
+  const [loaded, setLoaded] = useState(false);
+  const [user, setUser] = useState([]);
+
+  const getDataHabitsUser = async () => {
+    await api
+      .get("habits/personal/", {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setHabits(res.data));
+    await api.get(`users/${id}/`).then((res) => setUser(res.data));
+
+    setLoaded(true);
+  };
 
   const schema = yup.object().shape({
     title: yup.string(),
@@ -76,7 +87,7 @@ const CardHabit = ({
   ];
 
   useEffect(() => {
-    !loaded && getDataHomeUser();
+    !loaded && getDataHabitsUser();
   }, [update]);
 
   return (
@@ -85,9 +96,9 @@ const CardHabit = ({
       <Adjust>
         <div className="container scroll">
           <DivHabits>
-            {habits.length === 0 ? (
+            {habits.length < 1 ? (
               <p>No Habits</p>
-            ) : loaded && id === user_id ? (
+            ) : loaded && id == user_id ? (
               habits.map((personHabit, index) => (
                 <div key={index}>
                   <h2>{personHabit.title}</h2>
@@ -100,8 +111,7 @@ const CardHabit = ({
                       id={personHabit.id}
                       valueProgress={personHabit.how_much_achieved}
                       setLoaded={setLoaded}
-                      loaded={loaded}
-                      getDataHomeUser={getDataHomeUser}
+                      getDataPageGroup={getDataHabitsUser}
                     />
                   </HabitLine>
                   <ModalForm
@@ -134,7 +144,15 @@ const CardHabit = ({
             )}
           </DivHabits>
         </div>
-        <DivAdd>{user_id === id && <CreateHabit />}</DivAdd>
+        <DivAdd>
+          {user_id == id && (
+            <CreateHabit
+              setLoaded={setLoaded}
+              getDataHabitsUser={getDataHabitsUser}
+              loaded={loaded}
+            />
+          )}
+        </DivAdd>
 
         <img src={TravelImage} className="travelImage" />
       </Adjust>

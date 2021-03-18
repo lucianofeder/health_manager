@@ -23,6 +23,15 @@ const FooterStyled = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  a {
+    color: ${Colors.TextColorWhite};
+    text-decoration: none;
+    margin: 10px;
+
+    &:hover {
+      color: ${Colors.TextColorBlack};
+    }
+  }
 
   p {
     margin: 10px;

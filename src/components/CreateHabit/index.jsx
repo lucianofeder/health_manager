@@ -8,10 +8,12 @@ import ModalForm from "../ModalForm";
 
 import { useSelector } from "react-redux";
 
-import Image from "../../images/Undraw/Habit.svg";
-import IconAdd from "../../images/Icons/addSTD.svg";
+import { useEffect } from "react";
 
-const CreateHabit = () => {
+import Image from "../../images/Undraw/Habit.svg";
+import IconAdd from "../../images/Icons/addSTD2.svg";
+
+const CreateHabit = ({ setLoaded, getDataHabitsUser, loaded }) => {
   const token = useSelector((state) => state.users.token);
   const id = useSelector((state) => state.users.user_id);
 
@@ -42,9 +44,13 @@ const CreateHabit = () => {
       })
       .then((resp) => {
         reset();
-        document.location.reload();
       });
+    setLoaded(false);
   };
+
+  useEffect(() => {
+    !loaded && getDataHabitsUser();
+  });
 
   const inputName = [
     ["title", "Definir Habito"],
