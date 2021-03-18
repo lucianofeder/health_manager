@@ -114,48 +114,50 @@ const GroupGoals = () => {
         <h2>Goals</h2>
 
         {loaded && group.goals
-          ? group.goals.map((item) => (
-              <>
-                <ListStyle key={item.id}>
-                  <DivStyledItems>
-                    <DivAdjust first>
-                      <DivStyled>{item.title}</DivStyled>
-                      <DivStyled>{item.difficulty}</DivStyled>
-                    </DivAdjust>
-                    <DivAdjust>
-                      <CircularStatic
-                        url="goals"
-                        id={item.id}
-                        valueProgress={item.how_much_achieved}
-                        setLoaded={setLoaded}
-                        getDataPageGroup={getDataPageGroup}
+          ? group.goals
+              .sort((a, b) => a.id - b.id)
+              .map((item) => (
+                <>
+                  <ListStyle key={item.id}>
+                    <DivStyledItems>
+                      <DivAdjust first>
+                        <DivStyled>{item.title}</DivStyled>
+                        <DivStyled>{item.difficulty}</DivStyled>
+                      </DivAdjust>
+                      <DivAdjust>
+                        <CircularStatic
+                          url="goals"
+                          id={item.id}
+                          valueProgress={item.how_much_achieved}
+                          setLoaded={setLoaded}
+                          getDataPageGroup={getDataPageGroup}
+                        />
+                      </DivAdjust>
+                    </DivStyledItems>
+                    <DivStyledIcons>
+                      <ModalForm
+                        isButton={false}
+                        ImgSrc={edit}
+                        icon={editGoalsModal}
+                        iconWidth="300px"
+                        title="Edit Goals"
+                        inputName={inputEditGoals}
+                        buttonName="Editar"
+                        formAction={handleSubmit((data) =>
+                          handleUpdateGoals(data, item.id)
+                        )}
+                        reference={register}
+                        errors={errors}
                       />
-                    </DivAdjust>
-                  </DivStyledItems>
-                  <DivStyledIcons>
-                    <ModalForm
-                      isButton={false}
-                      ImgSrc={edit}
-                      icon={editGoalsModal}
-                      iconWidth="300px"
-                      title="Edit Goals"
-                      inputName={inputEditGoals}
-                      buttonName="Editar"
-                      formAction={handleSubmit((data) =>
-                        handleUpdateGoals(data, item.id)
-                      )}
-                      reference={register}
-                      errors={errors}
-                    />
-                    <ImgStyled
-                      onClick={() => handleDeleteGoals(item.id)}
-                      src={close}
-                    />
-                  </DivStyledIcons>
-                </ListStyle>
-                <hr />
-              </>
-            ))
+                      <ImgStyled
+                        onClick={() => handleDeleteGoals(item.id)}
+                        src={close}
+                      />
+                    </DivStyledIcons>
+                  </ListStyle>
+                  <hr />
+                </>
+              ))
           : "Nenhuma meta"}
       </CardContainer>
       <CardContainerSecond>
