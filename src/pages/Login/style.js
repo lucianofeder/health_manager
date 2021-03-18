@@ -17,6 +17,18 @@ export const Container = styled.div`
   color: ${Colors.BasePurple};
   overflow-x: hidden;
   overflow-y: hidden;
+  #containerRegister {
+    text-align: center;
+    position: relative;
+
+    a {
+      text-decoration: none;
+      color: ${Colors.BasePurple};
+      font-size: 16px;
+      left: 0;
+      position: absolute;
+    }
+  }
 
   /* Desktop */
   @media (min-width: 1020px) {
@@ -35,7 +47,7 @@ export const LogoStyled = styled.img`
     props.small ? "200px" : props.medium ? "0" : props.fullWidth ? "100%" : ""};
 
   /* Tablet */
-  @media (min-width: 800px) {
+  @media (min-width: 830px) {
     margin-top: ${(props) => (props.fullWidth ? "-180px" : "")};
     width: ${(props) =>
       props.small

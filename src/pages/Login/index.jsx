@@ -4,7 +4,7 @@ import ImageLogin from "../../images/Login/imageLogin.svg";
 import clouds from "../../images/Undraw/clouds.svg";
 import FormStyle from "../../components/Form";
 import IconLogin from "../../images/Login/iconeLogin.svg";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, Link } from "react-router-dom";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -81,19 +81,24 @@ const Login = () => {
       <Div>
         <LogoStyled medium src={ImageLogin} />
         <section id="form">
-          <FormStyle form={form} instructions={instruction} />
-          {erroMsg && (
-            <p
-              style={{
-                color: "red",
-                fontSize: "15px",
-                margin: "0",
-                marginTop: "-20px",
-              }}
-            >
-              Login ou senha invalidos{" "}
-            </p>
-          )}
+          <div>
+            {erroMsg && (
+              <p
+                style={{
+                  color: "red",
+                  fontSize: "15px",
+                  margin: "0",
+                  marginTop: "-20px",
+                }}
+              >
+                Login ou senha invalidos{" "}
+              </p>
+            )}
+            <FormStyle form={form} instructions={instruction} />
+            <div id="containerRegister">
+              <Link to={`/NewUser`}>Don't have an account? Sign-in</Link>
+            </div>
+          </div>
         </section>
       </Div>
 

@@ -8,12 +8,7 @@ import {
   LimitContainer,
   UserContainer,
   Avatar,
-  LastContainer,
   DivGroup,
-  BioCardContainer,
-  DivHabits,
-  HabitsCardContainer,
-  Traveler,
   Community,
   GroupInfo,
   DivHabitsCard,
@@ -22,7 +17,6 @@ import {
 import Calendar from "../../images/Icons/calendar.png";
 import Imagem from "../../images/Undraw/user.svg";
 import CommunityImg from "../../images/Undraw/community.svg";
-import TravelerImg from "../../images/Undraw/Traveler.svg";
 import { Redirect } from "react-router-dom";
 
 import { useHistory, useParams } from "react-router-dom";
@@ -60,6 +54,8 @@ const HomeUser = () => {
     setLoaded(true);
   };
 
+  console.log(group);
+
   useEffect(() => {
     !loaded && getDataHomeUser();
   });
@@ -69,7 +65,7 @@ const HomeUser = () => {
   ) : (
     <MainContainer>
       {!user_id && <Redirect to={`/Login`} />}
-      <Menu />
+      <Menu setLoaded={setLoaded} />
       <LimitContainer>
         <UserContainer>
           <Avatar src={Imagem} alt="User" />
@@ -87,7 +83,7 @@ const HomeUser = () => {
         <DivGroup>
           <Card title="Description">
             <DivHabitsCard>
-              {user.group === null ? <p>No Discription</p> : group.description}
+              {loaded && !group ? <p>No Discription</p> : group.description}
             </DivHabitsCard>
           </Card>
           <Community src={CommunityImg} alt="Community" />
@@ -98,7 +94,8 @@ const HomeUser = () => {
               src={Calendar}
               alt="Calendar Icon"
             />
-            {loaded && user.group === null ? (
+
+            {loaded && !group ? (
               <p>No Activides</p>
             ) : (
               group.activities.map((item) => (
