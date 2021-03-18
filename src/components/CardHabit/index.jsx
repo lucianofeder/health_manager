@@ -1,4 +1,11 @@
-import { DivHabits, LastContainer, Adjust, HabitLine, DivAdd } from "./styled";
+import {
+  DivHabits,
+  LastContainer,
+  Adjust,
+  HabitLine,
+  DivAdd,
+  ImageDelet,
+} from "./styled";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,9 +19,11 @@ import CreateHabit from "../CreateHabit";
 
 import api from "../../services/api";
 
-import Edit from "../../images/pen.svg";
+import Edit from "../../images/Icons/edit.svg";
 import Image from "../../images/Undraw/Habit.svg";
 import TravelImage from "../../images/Undraw/Traveler.svg";
+import Delete from "../../images/Icons/remove.svg";
+
 import { useEffect, useState } from "react";
 
 const CardHabit = ({
@@ -76,7 +85,7 @@ const CardHabit = ({
       <Adjust>
         <div className="container scroll">
           <DivHabits>
-            {habits === undefined ? (
+            {habits.length === 0 ? (
               <p>No Habits</p>
             ) : loaded && id === user_id ? (
               habits.map((personHabit, index) => (
@@ -113,9 +122,10 @@ const CardHabit = ({
                     reference={register}
                     errors={errors}
                   />
-                  <button onClick={() => DeleteDataHabits(personHabit.id)}>
-                    X
-                  </button>
+                  <ImageDelet
+                    src={Delete}
+                    onClick={() => DeleteDataHabits(personHabit.id)}
+                  />
                   <hr />
                 </div>
               ))

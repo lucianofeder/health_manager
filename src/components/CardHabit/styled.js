@@ -88,3 +88,10 @@ export const DivAdd = styled.div`
     left: 87px;
   }
 `;
+
+export const ImageDelet = styled.img`
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+`;
