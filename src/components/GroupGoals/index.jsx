@@ -148,10 +148,7 @@ const GroupGoals = () => {
                         reference={register}
                         errors={errors}
                       />
-                      <ImgStyled
-                        onClick={() => handleDeleteGoals(item.id)}
-                        src={close}
-                      />
+                      <ImgStyled onClick={() => handleDeleteGoals(item.id)} />
                     </DivStyledIcons>
                   </ListStyle>
                   <hr />
