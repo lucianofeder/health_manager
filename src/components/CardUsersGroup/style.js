@@ -9,13 +9,19 @@ const FooterStyled = styled.div`
   padding: 5px 25px;
   border: 3px solid ${Colors.BaseLightBlue};
   border-radius: 10px;
+  width: 260px;
+
+  @media (min-width: 700px) {
+    width: 290px;
+  }
+
   div#containerInfos {
     display: flex;
   }
   div#containerUsers {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
   }
 
   p {

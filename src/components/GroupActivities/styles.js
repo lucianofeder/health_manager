@@ -4,7 +4,6 @@ import { FaRegTrashAlt } from "react-icons/fa";
 
 export const ActivitiesCard = styled.div`
   position: relative;
-  width: 310px;
   padding: 15px 10px 15px 10px;
   border-radius: 20px 20px 0 0;
   margin: 10px 0 0 0;
@@ -12,6 +11,12 @@ export const ActivitiesCard = styled.div`
   color: #fff;
   border: 3px solid ${Colors.BaseLightBlue};
   border-bottom: 0;
+
+  width: 290px;
+
+  @media (min-width: 700px) {
+    width: 320px;
+  }
 `;
 export const ActivitiesCardSecond = styled(ActivitiesCard)`
   border-top: 0;
