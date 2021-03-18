@@ -43,4 +43,5 @@ export const IconButtonContainer = styled.button`
 export const Img = styled.img`
   height: 25px;
   width: 25px;
+  cursor: pointer;
 `;
