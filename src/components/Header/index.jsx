@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HeaderContainer } from "./style";
+import { HeaderContainer, Container } from "./style";
 import { useHistory, Link } from "react-router-dom";
 import Avatar from "../../images/Undraw/user.svg";
 import Logo from "../../images/Logo/logo4.png";
@@ -33,44 +33,46 @@ const HeaderComponent = ({ setLoaded }) => {
 
   return (
     <HeaderContainer>
-      <div className="containerUser">
-        <img id="logo" src={Logo} alt="Logo Tipo" />
-        <div id="containerLinks">
-          <div className="user">
-            <button onClick={handleUser}>
-              <img src={Avatar} alt="Avatar" />
-            </button>
-            <button onClick={() => SetOpen(!open)} onBlur={handleOnBlurMenu}>
-              <img src={Menu} alt="Menu" className="menor" />
-            </button>
-            <button onClick={handleLogout} id="logout">
-              <img src={Logout} alt="Logout" className="menor" />
-            </button>
-          </div>
-          {open && (
-            <div
-              onMouseEnter={() => SetonMenu(true)}
-              onMouseLeave={() => SetonMenu(false)}
-              className="nav"
-            >
-              <nav>
-                <ul>
-                  <li>
-                    <Link to={"/AllGroups"}>
-                      <p>All Groups</p>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={"/AllUsers"}>
-                      <p>All Users</p>
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
+      <Container>
+        <div className="containerUser">
+          <img id="logo" src={Logo} alt="Logo Tipo" />
+          <div id="containerLinks">
+            <div className="user">
+              <button onClick={handleUser}>
+                <img src={Avatar} alt="Avatar" />
+              </button>
+              <button onClick={() => SetOpen(!open)} onBlur={handleOnBlurMenu}>
+                <img src={Menu} alt="Menu" className="menor" />
+              </button>
+              <button onClick={handleLogout} id="logout">
+                <img src={Logout} alt="Logout" className="menor" />
+              </button>
             </div>
-          )}
+            {open && (
+              <div
+                onMouseEnter={() => SetonMenu(true)}
+                onMouseLeave={() => SetonMenu(false)}
+                className="nav"
+              >
+                <nav>
+                  <ul>
+                    <li>
+                      <Link to={"/AllGroups"}>
+                        <p>All Groups</p>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={"/AllUsers"}>
+                        <p>All Users</p>
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </Container>
     </HeaderContainer>
   );
 };

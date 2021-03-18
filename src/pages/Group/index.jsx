@@ -35,8 +35,8 @@ const Group = () => {
     <LoadingProgress />
   ) : (
     <MainContainer>
+      <Header setLoaded={setLoaded} />
       <LimitContainer>
-        <Header setLoaded={setLoaded} />
         <ImageGroupStyles src={ImageGroup} alt="Group Image" />
         <NameGroupContainer>
           <GroupName />
@@ -49,8 +49,8 @@ const Group = () => {
           </InfoContainer>
           <CardUsersGroup />
         </GroupDescriptionContainer>
-        <Footer />
       </LimitContainer>
+      <Footer />
     </MainContainer>
   );
 };
