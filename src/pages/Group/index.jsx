@@ -1,4 +1,4 @@
-import HeaderComponent from "../../components/Header";
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import CardUsersGroup from "../../components/CardUsersGroup";
 import GroupGoals from "../../components/GroupGoals";
@@ -36,7 +36,7 @@ const Group = () => {
   ) : (
     <MainContainer>
       <LimitContainer>
-        <HeaderComponent />
+        <Header setLoaded={setLoaded} />
         <ImageGroupStyles src={ImageGroup} alt="Group Image" />
         <NameGroupContainer>
           <GroupName />

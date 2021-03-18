@@ -1,3 +1,5 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   DivHabits,
   LastContainer,
@@ -35,7 +37,6 @@ const CardHabit = () => {
 
   const [habits, setHabits] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [user, setUser] = useState([]);
 
   const getDataHabitsUser = async () => {
     await api
@@ -43,7 +44,7 @@ const CardHabit = () => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setHabits(res.data));
-    await api.get(`users/${id}/`).then((res) => setUser(res.data));
+    await api.get(`users/${id}/`);
 
     setLoaded(true);
   };
@@ -154,7 +155,7 @@ const CardHabit = () => {
           )}
         </DivAdd>
 
-        <img src={TravelImage} className="travelImage" />
+        <img src={TravelImage} className="travelImage" alt="travel" />
       </Adjust>
     </LastContainer>
   );

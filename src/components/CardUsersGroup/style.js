@@ -32,15 +32,6 @@ const FooterStyled = styled.div`
       color: ${Colors.TextColorBlack};
     }
   }
-  a {
-    color: ${Colors.TextColorWhite};
-    text-decoration: none;
-    margin: 10px;
-
-    &:hover {
-      color: ${Colors.TextColorBlack};
-    }
-  }
 
   p {
     margin: 10px;

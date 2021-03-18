@@ -20,7 +20,6 @@ import Button from "../Button";
 import close from "../../images/Icons/close.png";
 
 const Modal = ({ isButton, nameBtn, ImgSrc, children, Open, setOpen }) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
 
   const toggleModal = () => {

@@ -1,4 +1,4 @@
-import Menu from "../../components/Header";
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import Card from "../../components/Card";
 import LoadingProgress from "../../components/LoadingProgress";
@@ -26,6 +26,7 @@ import api from "../../services/api";
 import { useSelector } from "react-redux";
 
 import CardHabit from "../../components/CardHabit";
+
 const HomeUser = () => {
   const { id } = useParams();
 
@@ -34,16 +35,13 @@ const HomeUser = () => {
   const { token, user_id } = useSelector((state) => state.users);
 
   const [loaded, setLoaded] = useState(false);
-  const [habits, setHabits] = useState([]);
   const [user, setUser] = useState([]);
   const [group, setGroup] = useState([]);
 
   const getDataHomeUser = async () => {
-    await api
-      .get("habits/personal/", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((res) => setHabits(res.data));
+    await api.get("habits/personal/", {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     await api.get(`users/${id}/`).then((res) => setUser(res.data));
 
     user.group !== null &&
@@ -54,8 +52,6 @@ const HomeUser = () => {
     setLoaded(true);
   };
 
-  console.log(group);
-
   useEffect(() => {
     !loaded && getDataHomeUser();
   });
@@ -65,7 +61,7 @@ const HomeUser = () => {
   ) : (
     <MainContainer>
       {!user_id && <Redirect to={`/Login`} />}
-      <Menu setLoaded={setLoaded} />
+      <Header setLoaded={setLoaded} />
       <LimitContainer>
         <UserContainer>
           <Avatar src={Imagem} alt="User" />

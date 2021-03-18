@@ -1,23 +1,14 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-hooks/exhaustive-deps */
 import ModalConfirm from "../../components/ModalConfirm";
-import { Subtitle } from "./style";
-import add from "../../images/add.svg";
-import pen from "../../images/pen.svg";
 import adduser from "../../images/addUser.svg";
 
-import goalsModal from "../../images/Icons/goalsModal.svg";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
-import { CardContainer } from "./style";
-import { NameGroupContainer, Title, ListStyle, TypeGroup } from "./style";
 import { ButtonAdd } from "./style";
-import Modal from "../Modal";
-import { ButtonStyle } from "../Button/style";
+
 const GroupSubscribe = ({ getDataPageGroup, setLoaded, group }) => {
   const { id } = useParams();
   const { token, user_id } = useSelector((state) => state.users);
@@ -29,17 +20,11 @@ const GroupSubscribe = ({ getDataPageGroup, setLoaded, group }) => {
       .post(`groups/${id}/subscribe/`, null, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => SetParticipantsNew(ParticipantsNew + 1))
-      .catch((res) => console.log(res));
-    console.log(token);
+      .then((res) => SetParticipantsNew(ParticipantsNew + 1));
     setLoaded(false);
   };
   useEffect(() => {
     getDataPageGroup();
-    console.log(group.users?.find((elem) => elem.id == user_id));
-    console.log(group.users);
-
-    console.log(user_id);
   }, [ParticipantsNew]);
   return (
     <ButtonAdd>

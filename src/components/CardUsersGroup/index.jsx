@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import CardUsersGroupStyled from "./style";
 import userIcon from "../../images/Undraw/user.svg";
 import GroupSubscribe from "../GroupSubscribe";
@@ -32,9 +33,6 @@ const CardUsersGroup = ({ users }) => {
     !loaded && getDataPageGroup();
   }, []);
 
-  const teste = (texto) => {
-    console.log(texto);
-  };
   return (
     <CardUsersGroupStyled>
       <GroupSubscribe
