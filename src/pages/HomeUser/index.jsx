@@ -79,7 +79,11 @@ const HomeUser = () => {
         <DivGroup>
           <Card title="Description">
             <DivHabitsCard>
-              {loaded && !group ? <p>No Discription</p> : group.description}
+              {loaded && group.length === 0 ? (
+                <p>No Discription</p>
+              ) : (
+                group.description
+              )}
             </DivHabitsCard>
           </Card>
           <Community src={CommunityImg} alt="Community" />
@@ -91,7 +95,7 @@ const HomeUser = () => {
               alt="Calendar Icon"
             />
 
-            {loaded && !group ? (
+            {loaded && group.length === 0 ? (
               <p>No Activides</p>
             ) : (
               group.activities.map((item) => (
