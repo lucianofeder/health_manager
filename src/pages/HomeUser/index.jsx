@@ -52,6 +52,11 @@ const HomeUser = () => {
       .then((res) => setHabits(res.data));
     await api.get(`users/${id}/`).then((res) => setUser(res.data));
 
+    user.group !== null &&
+      (await api
+        .get(`groups/${user.group}/`)
+        .then((res) => setGroup(res.data)));
+
     setLoaded(true);
   };
 
