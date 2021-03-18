@@ -18,7 +18,6 @@ const GroupName = () => {
   const [group, setGroup] = useState([]);
   const [descriptionNew, SetDescriptionNew] = useState("");
 
-  console.log(group);
   const schema = yup.object().shape({
     name: yup.string().required("Campo Obrigatório"),
     category: yup.string().required("Campo Obrigatório"),
