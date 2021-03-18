@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from "prop-types";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
@@ -49,7 +50,7 @@ export default function CircularStatic(valueProgress) {
       .then(() => setProgressNumber(progressNumber + 1));
     valueProgress.setLoaded(false);
   };
-  const [progress, setProgress] = useState(valueProgress);
+  const [progress] = useState(valueProgress);
   useEffect(() => {
     !valueProgress.loaded && valueProgress.getDataPageGroup();
   }, [progressNumber]);

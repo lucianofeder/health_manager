@@ -54,7 +54,6 @@ const FormStyle = ({ instructions, form, setOpen }) => {
 
   const { formAction, ref, errors } = form;
 
-  console.log(instructions, form);
   return (
     <FormContainer>
       <img src={icon} alt="Icon" style={{ width: iconWidth }} />

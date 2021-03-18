@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ModalForm from "../../components/ModalForm";
 import edit from "../../images/Icons/edit.svg";
 import goalsModal from "../../images/Icons/goalsModal.svg";
@@ -52,8 +53,6 @@ const GroupName = () => {
   };
   useEffect(() => {
     !loaded && getDataPageGroup();
-
-    console.log(descriptionNew);
   }, [descriptionNew]);
   return (
     <div>

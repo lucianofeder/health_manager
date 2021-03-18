@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Colors from "../../global/Colors";
 
 export const ProgressContainer = styled.div`
   display: flex;

@@ -13,7 +13,6 @@ import {
 } from "./style";
 import add from "../../images/Icons/addSTD2.svg";
 import edit from "../../images/Icons/edit.svg";
-import close from "../../images/Icons/close.png";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 import editGoalsModal from "../../images/Icons/editGoalsModal.svg";
 import * as yup from "yup";
