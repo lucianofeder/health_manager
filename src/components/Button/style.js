@@ -11,7 +11,7 @@ export const ButtonStyle = styled.button`
   color: ${Colors.BasePurpleDarker};
   padding: 8px 16px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 17px;
 
   cursor: pointer;
   outline: transparent;
@@ -29,5 +29,6 @@ export const ButtonStyle = styled.button`
   }
   @media (min-width: 700px) {
     width: 200px;
+    font-size: 20px;
   }
 `;
