@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
+import BgGroup from "../../images/Undraw/BgGroup.svg";
+
 export const MainContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -17,6 +19,14 @@ export const LimitContainer = styled.div`
   align-items: center;
   align-content: center;
   justify-content: space-between;
+
+  @media (min-width: 1025px) {
+    background-image: url(${BgGroup});
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 700px;
+    background-size: 700px;
+  }
 `;
 export const NameGroupContainer = styled.div`
   width: 100%;
