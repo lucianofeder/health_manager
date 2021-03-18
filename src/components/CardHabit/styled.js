@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Colors from "../../global/Colors";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 export const LastContainer = styled.section`
   width: 100%;
@@ -89,9 +90,14 @@ export const DivAdd = styled.div`
   }
 `;
 
-export const ImageDelet = styled.img`
+export const ImageDelet = styled(FaRegTrashAlt)`
   width: 30px;
   height: 30px;
   margin-left: 10px;
   cursor: pointer;
+  color: ${Colors.TextColorBlack};
+
+  &:hover {
+    color: #ff6584;
+  }
 `;
