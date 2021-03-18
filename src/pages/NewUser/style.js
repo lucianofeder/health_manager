@@ -3,7 +3,7 @@ import Colors from "../../global/Colors";
 
 export const MainContainer = styled.section`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: ${Colors.BackgroundLinear};
   display: flex;
   flex-direction: column;
