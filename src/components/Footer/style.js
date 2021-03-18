@@ -9,6 +9,8 @@ const CardUsersGroupStyled = styled.footer`
   align-items: center;
   width: 100%;
   p {
+    color: ${Colors.TextColorBlack};
+
     padding: 15px 0;
   }
 `;

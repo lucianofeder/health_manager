@@ -17,6 +17,7 @@ export const HeaderContainer = styled.header`
     justify-content: space-between;
   }
   button {
+    padding: 0;
     background-color: #0000;
     height: 100%;
     border: none;

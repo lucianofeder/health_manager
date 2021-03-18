@@ -141,7 +141,11 @@ const CardHabit = () => {
                 </div>
               ))
             ) : (
-              <p>Você não pode ver habitos de outros</p>
+              <p>
+                {id == user_id
+                  ? "carregando..."
+                  : "Você não pode ver habitos de outros"}
+              </p>
             )}
           </DivHabits>
         </div>
