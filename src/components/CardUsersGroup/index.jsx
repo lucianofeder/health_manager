@@ -1,7 +1,7 @@
 import CardUsersGroupStyled from "./style";
 import userIcon from "../../images/Undraw/user.svg";
 import GroupSubscribe from "../GroupSubscribe";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../services/api";
 
@@ -38,6 +38,7 @@ const CardUsersGroup = ({ users }) => {
   return (
     <CardUsersGroupStyled>
       <GroupSubscribe
+        group={group}
         setLoaded={setLoaded}
         getDataPageGroup={getDataPageGroup}
       />
@@ -46,7 +47,7 @@ const CardUsersGroup = ({ users }) => {
         {group.users?.map((user, index) => (
           <div id="containerInfos" key={index}>
             <img src={userIcon} alt="User Icon" />
-            <p>{user.username}</p>
+            <Link to={`/HomeUser/${user.id}`}>{user.username}</Link>
           </div>
         ))}
         <span>{users?.length}</span>

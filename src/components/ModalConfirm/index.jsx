@@ -26,6 +26,7 @@ const ModalConfirm = ({
   ImgSrc,
   children,
   handleSubscribe,
+  message,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
@@ -76,7 +77,7 @@ const ModalConfirm = ({
         </DivImg>
 
         {children}
-        <ButtonStyle onClick={handleModal}>Entrar no grupo</ButtonStyle>
+        <ButtonStyle onClick={handleModal}>{message}</ButtonStyle>
       </StyledModal>
     </>
   );
