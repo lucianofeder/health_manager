@@ -21,7 +21,7 @@ const FooterStyled = styled.div`
   div#containerUsers {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   a {
     color: ${Colors.TextColorWhite};
