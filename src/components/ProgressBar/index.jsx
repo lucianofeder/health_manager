@@ -3,15 +3,11 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { ProgressContainer, ProgressButtons } from "./style";
-
 import addProgress from "../../images/Icons/addProgress.svg";
 import subProgress from "../../images/Icons/subProgress.svg";
-
 import api from "../../services/api";
-
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-
 function CircularProgressWithLabel(props) {
   return (
     <Box position="relative" display="inline-flex">
@@ -35,23 +31,17 @@ function CircularProgressWithLabel(props) {
     </Box>
   );
 }
-
 CircularProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
-
 export default function CircularStatic(valueProgress) {
   const { token } = useSelector((state) => state.users);
   const [progressNumber, setProgressNumber] = useState(0);
-
   const patchDataProgess = async (isPositive) => {
     let data = {};
-
     let positive = valueProgress.valueProgress + 10;
     let negative = valueProgress.valueProgress - 10;
-
     data["how_much_achieved"] = isPositive ? positive : negative;
-
     await api
       .patch(`${valueProgress.url}/${valueProgress.id.toString()}/`, data, {
         headers: { Authorization: `Bearer ${token}` },
@@ -59,13 +49,10 @@ export default function CircularStatic(valueProgress) {
       .then(() => setProgressNumber(progressNumber + 1));
     valueProgress.setLoaded(false);
   };
-
   const [progress, setProgress] = useState(valueProgress);
-
   useEffect(() => {
     !valueProgress.loaded && valueProgress.getDataPageGroup();
   }, [progressNumber]);
-
   return (
     <ProgressContainer progress={valueProgress.valueProgress}>
       <ProgressButtons
@@ -76,7 +63,6 @@ export default function CircularStatic(valueProgress) {
         alt="add progress icon"
       />
       <CircularProgressWithLabel id="ProgressBar" value={progress} />
-
       <ProgressButtons
         onClick={() =>
           valueProgress.valueProgress === 0 ? null : patchDataProgess(false)

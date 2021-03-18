@@ -66,9 +66,8 @@ export const ImgStyled = styled(FaRegTrashAlt)`
   cursor: pointer;
   width: 28px;
   height: 28px;
-  color: #1c1362;
-
+  color: ${Colors.TextColorBlack};
   &:hover {
-    color: #ff6584;
+    color: ${Colors.BaseRose};
   }
 `;

@@ -1,7 +1,5 @@
 import ModalForm from "../../components/ModalForm";
-import { Subtitle } from "./style";
-import add from "../../images/add.svg";
-import pen from "../../images/pen.svg";
+import edit from "../../images/Icons/edit.svg";
 import goalsModal from "../../images/Icons/goalsModal.svg";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -10,10 +8,8 @@ import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import api from "../../services/api";
-import { CardContainer } from "./style";
 import { NameGroupContainer, Title, TypeGroup } from "./style";
 import { ContainerButtons } from "./style";
-import GroupSubscribe from "../GroupSubscribe";
 const GroupName = () => {
   const { id } = useParams();
   const { token } = useSelector((state) => state.users);
@@ -65,7 +61,7 @@ const GroupName = () => {
         <ContainerButtons>
           <ModalForm
             isButton={false}
-            ImgSrc={pen}
+            ImgSrc={edit}
             icon={goalsModal}
             iconWidth="300px"
             title="edit group"

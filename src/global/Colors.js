@@ -5,6 +5,7 @@ const Colors = {
   BaseLightBlue: "#97DFF5",
   BasePurple: "#5F4DEF",
   BasePurpleDarker: "#442fa7",
+  BaseRose: "#FF6584",
   BackgroundBaseGray: "#F3F2FE",
   TextColorBlack: "#1c1362",
   TextColorWhite: "#ffffff",
