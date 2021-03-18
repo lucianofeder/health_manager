@@ -67,6 +67,7 @@ export default function CircularStatic(valueProgress) {
   }, [progressNumber]);
 
   return (
+<<<<<<< HEAD
     <ProgressContainer progress={progress}>
       <ProgressButtons
         src={addProgress}
@@ -80,6 +81,22 @@ export default function CircularStatic(valueProgress) {
         alt="subProgress Icon"
         onClick={() => patchDataProgess(false)}
       />
+=======
+    <ProgressContainer progress={valueProgress.valueProgress}>
+      <button
+        disabled={valueProgress.valueProgress === 100}
+        onClick={() => patchDataProgess(true)}
+      >
+        Up
+      </button>
+      <CircularProgressWithLabel id="ProgressBar" value={progress} />
+      <button
+        disabled={valueProgress.valueProgress === 0}
+        onClick={() => patchDataProgess(false)}
+      >
+        Down
+      </button>
+>>>>>>> 124aa65323694c453c5687803c0ec6be52dbff16
     </ProgressContainer>
   );
 }
