@@ -18,12 +18,8 @@ position:relative;
 border-radius: 1%;
 
 @media(max-width: 640px) {
-<<<<<<< HEAD
 width: 400px;
 }
-=======
-width: 400px;}
->>>>>>> 124aa65323694c453c5687803c0ec6be52dbff16
 `;
 
 export const DivImg = styled.div`
