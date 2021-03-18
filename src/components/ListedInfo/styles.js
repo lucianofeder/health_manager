@@ -47,8 +47,8 @@ export const MainText = styled.h2`
   &:hover {
     color: ${Colors.BasePurpleDarker};
   }
-  @media (max-width: 550px) {
-    font-size: 1.2rem;
+  @media (max-width: 740px) {
+    font-size: 0.92rem;
   }
 `;
 
