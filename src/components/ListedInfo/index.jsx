@@ -32,7 +32,7 @@ const ListedInfo = ({ info, type }) => {
     return text
       .trim()
       .split(" ")
-      .map((word) => word[0].toUpperCase() + word.slice(1))
+      .map((word) => word[0]?.toUpperCase() + word.slice(1))
       .join(" ");
   };
 
@@ -46,7 +46,9 @@ const ListedInfo = ({ info, type }) => {
               {capitalize(info.name)}
             </MainText>
           </ExtraMainText>
-          <ExtraTextArea>{capitalize(info.category)}</ExtraTextArea>
+          <ExtraTextArea>
+            {info.category && capitalize(info.category)}
+          </ExtraTextArea>
           <ExtraTextArea>{info.description}</ExtraTextArea>
         </>
       ) : (
