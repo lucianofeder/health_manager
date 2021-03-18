@@ -135,7 +135,7 @@ const GroupGoals = () => {
                   <hr />
                 </>
               ))
-          : "Nenhuma meta"}
+          : "carregando..."}
       </CardContainer>
       <CardContainerSecond>
         <ModalForm

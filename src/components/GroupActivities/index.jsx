@@ -147,7 +147,7 @@ const GroupActivities = () => {
                 </ButtonsContainer>
               </MainContainer>
             ))
-          : "Sem Atividades"}
+          : "carregando..."}
       </ActivitiesCard>
       <ActivitiesCardSecond>
         <AddButtonDiv>
