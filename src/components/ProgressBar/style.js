@@ -11,8 +11,9 @@ export const ProgressContainer = styled.div`
     margin: 5px;
     color: ${({ progress }) =>
       (progress < 25 && "red") ||
-      (progress < 50 && "yellow") ||
-      (progress < 75 && "green")};
+      (progress < 50 && "orange") ||
+      (progress < 75 && "yellow") ||
+      (progress <= 100 && "green")};
   }
   #number {
     font-weight: bold;
