@@ -60,6 +60,8 @@ const HomeUser = () => {
     setLoaded(true);
   };
 
+  console.log(group);
+
   useEffect(() => {
     !loaded && getDataHomeUser();
   });
@@ -69,7 +71,7 @@ const HomeUser = () => {
   ) : (
     <MainContainer>
       {!user_id && <Redirect to={`/Login`} />}
-      <Menu />
+      <Menu setLoaded={setLoaded} />
       <LimitContainer>
         <UserContainer>
           <Avatar src={Imagem} alt="User" />
@@ -87,7 +89,7 @@ const HomeUser = () => {
         <DivGroup>
           <Card title="Description">
             <DivHabitsCard>
-              {user.group === null ? <p>No Discription</p> : group.description}
+              {loaded && !group ? <p>No Discription</p> : group.description}
             </DivHabitsCard>
           </Card>
           <Community src={CommunityImg} alt="Community" />
@@ -98,7 +100,8 @@ const HomeUser = () => {
               src={Calendar}
               alt="Calendar Icon"
             />
-            {loaded && user.group === null ? (
+
+            {loaded && !group ? (
               <p>No Activides</p>
             ) : (
               group.activities.map((item) => (

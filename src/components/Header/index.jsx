@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 import { signInThunk } from "../../store/modules/users/thunk";
 import { useDispatch } from "react-redux";
 
-const HeaderComponent = () => {
+const HeaderComponent = ({ setLoaded }) => {
   const [open, SetOpen] = useState(false);
   const [onMenu, SetonMenu] = useState(false);
 
@@ -26,13 +26,18 @@ const HeaderComponent = () => {
     !onMenu && SetOpen(false);
   };
 
+  const handleUser = () => {
+    history.push(`/HomeUser/${user_id}`);
+    setLoaded(false);
+  };
+
   return (
     <HeaderContainer>
       <div className="containerUser">
         <img id="logo" src={Logo} alt="Logo Tipo" />
         <div id="containerLinks">
           <div className="user">
-            <button onClick={() => history.push(`/HomeUser/${user_id}`)}>
+            <button onClick={handleUser}>
               <img src={Avatar} alt="Avatar" />
             </button>
             <button onClick={() => SetOpen(!open)} onBlur={handleOnBlurMenu}>
